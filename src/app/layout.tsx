@@ -30,6 +30,8 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+const isDemo = process.env.NEXT_PUBLIC_DEMO === "1";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -65,7 +67,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/images/bts-02.webp"],
   },
-  robots: { index: true, follow: true },
+  // Bản demo (build với NEXT_PUBLIC_DEMO=1) bị chặn lập chỉ mục, tránh Google
+  // coi link demo là bản sao trùng nội dung với tên miền chính sau này.
+  robots: isDemo ? { index: false, follow: false } : { index: true, follow: true },
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/images/brand/logo-mark.png", type: "image/png" }],
