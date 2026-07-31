@@ -89,33 +89,21 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-12">
+        <div
+          data-reveal
+          className="relative mt-16 h-72 overflow-hidden rounded-hero border border-line sm:h-[480px]"
+        >
+          <Image
+            src="/images/bts-02.webp"
+            alt="Ekip Diary Agency căn khung hình tại hiện trường sản xuất"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
           <div
-            data-reveal
-            data-reveal-group="story-imgs"
-            className="relative h-64 overflow-hidden rounded-block border border-line sm:col-span-7 sm:h-[420px]"
-          >
-            <Image
-              src="/images/bts-02.webp"
-              alt="Ekip Diary Agency căn khung hình tại hiện trường sản xuất"
-              fill
-              sizes="(max-width: 640px) 100vw, 58vw"
-              className="object-cover"
-            />
-          </div>
-          <div
-            data-reveal
-            data-reveal-group="story-imgs"
-            className="relative h-64 overflow-hidden rounded-block border border-line sm:col-span-5 sm:h-[420px]"
-          >
-            <Image
-              src="/images/bts-04.webp"
-              alt="Ekip kiểm tra thiết bị trước giờ ghi hình"
-              fill
-              sizes="(max-width: 640px) 100vw, 42vw"
-              className="object-cover"
-            />
-          </div>
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+          />
         </div>
       </Container>
 
@@ -130,18 +118,24 @@ export default function AboutPage() {
       <section id="founder" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
           <div className="grain relative isolate overflow-hidden rounded-hero grad-dusk">
-            <div className="relative z-10 grid gap-10 lg:grid-cols-12">
-              <div className="relative order-2 min-h-[420px] lg:order-1 lg:col-span-5">
+            <div className="relative z-10 grid gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
+              {/* Ảnh gốc có nền đen đặc, nên đóng khung thành panel chân dung
+                  thay vì thả trực tiếp lên gradient. */}
+              <div className="relative order-2 aspect-square overflow-hidden rounded-block border border-white/15 bg-black shadow-2xl shadow-black/40 lg:order-1 lg:col-span-5 lg:aspect-auto lg:min-h-[540px]">
                 <Image
                   src={site.founder.photo}
                   alt={`${site.founder.name}, ${site.founder.role} của ${site.name}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-contain object-bottom mix-blend-luminosity opacity-95"
+                  className="object-cover object-top"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand/25 to-transparent"
                 />
               </div>
 
-              <div className="order-1 px-7 pb-4 pt-12 lg:order-2 lg:col-span-6 lg:col-start-7 lg:px-0 lg:py-20 lg:pr-12">
+              <div className="order-1 lg:order-2 lg:col-span-6 lg:col-start-7 lg:py-10">
                 <SectionLabel tone="light" className="mb-5">
                   Founder
                 </SectionLabel>

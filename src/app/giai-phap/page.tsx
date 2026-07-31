@@ -72,7 +72,7 @@ export default function SolutionsPage() {
         kicker="Hai dòng dịch vụ, một đầu mối chịu trách nhiệm."
         lead="Doanh nghiệp cần hệ thống thì đi theo dòng 01. Thương hiệu cần đơn vị sản xuất tin cậy thì đi theo dòng 02. Cả hai đều do cùng một ekip vận hành nên không có khoảng trống giữa chiến lược và sản phẩm cuối."
         gradient="grad-fire"
-        image="/images/bts-04.webp"
+        image="/images/work/wellness-05.webp"
         imageAlt=""
       />
 
