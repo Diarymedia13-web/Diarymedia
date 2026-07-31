@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   DIARY AGENCY — DESIGN TOKENS
+   Bảng màu lấy trực tiếp từ logo trong portfolio: gradient đồng/cam
+   (#D2601C → #F0873F → #FBC79A) đặt trên nền tối gần như đen.
+   ========================================================================= */
+
+@theme {
+  /* --- Nền & bề mặt --- */
+  --color-ink: #08080a;
+  --color-ink-2: #0e0e11;
+  --color-surface: #151518;
+  --color-surface-2: #1c1c20;
+  --color-line: #26262b;
+
+  /* --- Chữ --- */
+  --color-fg: #f6f6f7;
+  --color-fg-muted: #a3a3ad;
+  --color-fg-dim: #6f6f7a;
+
+  /* --- Thương hiệu (từ logo Diary) --- */
+  --color-brand: #f0873f;
+  --color-brand-light: #fbc79a;
+  --color-brand-deep: #d2601c;
+  --color-brand-ember: #a8380a;
+  --color-brand-ink: #2a1005;
+
+  /* --- Typography --- */
+  --font-display: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* --- Bo góc: khối lớn bo mềm như phong cách tham chiếu --- */
+  --radius-card: 1.5rem;
+  --radius-block: 2rem;
+  --radius-hero: 2.5rem;
+
+  /* --- Nhịp chuyển động --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+/* ============================================================================
+   NỀN TẢNG
+   ========================================================================= */
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #12060a;
+}
+
+/* Focus ring nhìn thấy rõ cho điều hướng bàn phím — không bao giờ tắt outline. */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Thanh cuộn tông tối đồng bộ với giao diện */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #2e2e34;
+  border-radius: 99px;
+  border: 2px solid var(--color-ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-deep);
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ========================================================================= */
+
+/* Tiêu đề khổng lồ kiểu editorial — co giãn mượt theo viewport */
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.t-lead {
+  font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-fg-muted);
+}
+
+/* Nhãn mono nhỏ (#01, SELECTED WORK…) — chữ ký thị giác của bố cục */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+   TIỆN ÍCH THƯƠNG HIỆU
+   ========================================================================= */
+
+.text-gradient-brand {
+  background: linear-gradient(100deg, var(--color-brand-light), var(--color-brand) 45%, var(--color-brand-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Các nền gradient lớn cho hero từng trang — đều neo vào tông cam đồng của logo */
+.grad-fire {
+  background:
+    radial-gradient(120% 90% at 12% 6%, #ffb066 0%, transparent 55%),
+    radial-gradient(130% 110% at 92% 12%, #ff6a1f 0%, transparent 60%),
+    linear-gradient(160deg, #f2701c 0%, #c2400f 48%, #5e1c07 100%);
+}
+
+.grad-ember {
+  background:
+    radial-gradient(110% 90% at 88% 8%, #ffc487 0%, transparent 55%),
+    radial-gradient(120% 100% at 8% 92%, #b9310c 0%, transparent 58%),
+    linear-gradient(145deg, #e2571f 0%, #8f2a0c 55%, #34120a 100%);
+}
+
+.grad-copper {
+  background:
+    radial-gradient(100% 80% at 20% 90%, #ffd7ae 0%, transparent 50%),
+    radial-gradient(120% 110% at 85% 10%, #f0873f 0%, transparent 62%),
+    linear-gradient(150deg, #c76a2a 0%, #7a3312 52%, #241009 100%);
+}
+
+.grad-dusk {
+  background:
+    radial-gradient(110% 90% at 78% 10%, #ffa45c 0%, transparent 52%),
+    radial-gradient(130% 120% at 10% 80%, #7b1f3a 0%, transparent 60%),
+    linear-gradient(155deg, #e0561f 0%, #8a2340 55%, #1f0d14 100%);
+}
+
+/* Vầng sáng cam mềm phía sau các khối nội dung */
+.glow-brand {
+  position: relative;
+}
+.glow-brand::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(240, 135, 63, 0.16), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lớp hạt nhiễu rất nhẹ — khử hiện tượng dải màu trên các mảng gradient lớn */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hairline {
+  border-top: 1px solid var(--color-line);
+}
+
+/* ============================================================================
+   CHUYỂN ĐỘNG
+   ========================================================================= */
+
+/* Trạng thái ban đầu của phần tử sẽ được GSAP reveal khi cuộn tới.
+   Chỉ ẩn khi JS đã khởi động (html.js-ready) → không JS thì nội dung vẫn hiện. */
+.js-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.marquee-track {
+  animation: marquee 42s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+/* Tôn trọng lựa chọn giảm chuyển động của hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
