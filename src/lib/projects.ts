@@ -3,7 +3,8 @@ export type ProjectCategory =
   | "Sự kiện & Livestream"
   | "Fashion Film"
   | "Nhiếp ảnh thương mại"
-  | "Brand Film";
+  | "Brand Film"
+  | "Giải pháp truyền thông";
 
 export interface Project {
   slug: string;
@@ -181,9 +182,34 @@ export const projects: Project[] = [
     gallery: ["/images/work/gala-01.webp", "/images/work/gala-02.webp"],
     span: "wide",
   },
+  {
+    slug: "le-frachie-organic-giai-phap-truyen-thong",
+    title: "Xây dựng hệ thống truyền thông từ A-Z cho nhà phân phối Organic",
+    client: "Le Frachie Organic — Tổng Đại Lý Phân Phối Việt Nam",
+    category: "Giải pháp truyền thông",
+    year: "2026",
+    location: "Đà Nẵng",
+    summary:
+      "Đồng hành toàn diện cùng Le Frachie Organic từ những ngày đầu: xây dựng bộ nhận diện hình ảnh sản phẩm, vận hành fanpage và sản xuất nội dung đều đặn mỗi tuần — kết hợp hình ảnh dựng bằng AI để rút ngắn thời gian sản xuất mà vẫn giữ chất lượng cao cấp. Từ một fanpage mới, thương hiệu đã có hơn 5.000 người theo dõi cùng hệ thống nội dung tuyển đại lý, minigame tương tác và chăm sóc khách hàng chạy liên tục.",
+    scope: [
+      "Chiến lược nội dung & định vị thương hiệu",
+      "Thiết kế hình ảnh sản phẩm ứng dụng AI",
+      "Quản trị fanpage & sản xuất nội dung hằng tuần",
+      "Chiến dịch tương tác & minigame thu hút khách hàng",
+      "Nội dung tuyển đại lý, cộng tác viên toàn quốc",
+    ],
+    cover: "/images/work/lefrachie-01.webp",
+    gallery: [
+      "/images/work/lefrachie-01.webp",
+      "/images/work/lefrachie-03.webp",
+      "/images/work/lefrachie-02.webp",
+    ],
+    span: "wide",
+  },
 ];
 
 export const projectCategories: ProjectCategory[] = [
+  "Giải pháp truyền thông",
   "TVC & Phim quảng cáo",
   "Sự kiện & Livestream",
   "Fashion Film",
@@ -196,12 +222,12 @@ export const projectCategories: ProjectCategory[] = [
  * cần ảnh sạch chữ để lớp tiêu đề đè lên vẫn đọc được.
  */
 const featuredOrder = [
+  "le-frachie-organic-giai-phap-truyen-thong",
   "aia-duong-dua-bung-thinh-vuong",
   "ao-dai-yen-fashion-film",
   "le-gia-brand-food",
   "panasonic-giai-phap-khong-khi",
   "agreco-coffee",
-  "danang-guitar-festival",
 ];
 
 export const featuredProjects = featuredOrder
