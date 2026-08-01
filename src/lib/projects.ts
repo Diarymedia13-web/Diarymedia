@@ -183,6 +183,29 @@ export const projects: Project[] = [
     span: "wide",
   },
   {
+    slug: "futaland-timesquare-noi-that",
+    title: "Bộ ảnh nội thất căn hộ mẫu dự án Timesquare",
+    client: "Futa Land — Dự án Timesquare",
+    category: "Nhiếp ảnh thương mại",
+    year: "2025",
+    summary:
+      "Ghi lại trọn vẹn không gian sống của căn hộ mẫu cao cấp: từ phòng khách, bếp, phòng ăn cho tới từng phòng ngủ — tận dụng ánh sáng tự nhiên và view thành phố để tôn lên chất liệu, màu sắc và độ hoàn thiện nội thất. Bộ ảnh phục vụ trực tiếp cho việc giới thiệu căn hộ mẫu tới khách hàng tiềm năng của dự án.",
+    scope: [
+      "Chụp ảnh nội thất toàn bộ không gian sống",
+      "Set sáng chuyên nghiệp cho từng phòng",
+      "Canh góc kiến trúc & chiều sâu không gian",
+      "Hậu kỳ màu chuẩn thương mại bất động sản",
+    ],
+    cover: "/images/work/timesquare-01.webp",
+    gallery: [
+      "/images/work/timesquare-01.webp",
+      "/images/work/timesquare-02.webp",
+      "/images/work/timesquare-03.webp",
+      "/images/work/timesquare-04.webp",
+    ],
+    span: "wide",
+  },
+  {
     slug: "le-frachie-organic-giai-phap-truyen-thong",
     title: "Xây dựng hệ thống truyền thông từ A-Z cho nhà phân phối Organic",
     client: "Le Frachie Organic — Tổng Đại Lý Phân Phối Việt Nam",
@@ -223,11 +246,11 @@ export const projectCategories: ProjectCategory[] = [
  */
 const featuredOrder = [
   "le-frachie-organic-giai-phap-truyen-thong",
+  "futaland-timesquare-noi-that",
   "aia-duong-dua-bung-thinh-vuong",
   "ao-dai-yen-fashion-film",
   "le-gia-brand-food",
   "panasonic-giai-phap-khong-khi",
-  "agreco-coffee",
 ];
 
 export const featuredProjects = featuredOrder
