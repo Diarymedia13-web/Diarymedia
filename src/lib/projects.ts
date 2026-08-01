@@ -229,6 +229,31 @@ export const projects: Project[] = [
     ],
     span: "wide",
   },
+  {
+    slug: "tabalo-glamping-brand-film",
+    title: "Bộ ảnh & phim thương hiệu cho Tabalo Glamping",
+    client: "Tabalo Glamping",
+    category: "Brand Film",
+    year: "2026",
+    summary:
+      "Tabalo không chỉ bán bàn ghế dã ngoại — họ bán một phong cách sống: sang trọng nhưng gần gũi thiên nhiên, đủ ấm cúng để một gia đình muốn xách balo lên và đi ngay. Chúng tôi tái hiện đúng tinh thần đó trong từng khung hình: từ chi tiết chất liệu gỗ, vải bố trên từng sản phẩm, cho tới khoảnh khắc thật của một gia đình cùng nhau cắm trại bên sông, dưới chân núi.",
+    scope: [
+      "Concept & chỉ đạo hình ảnh thương hiệu",
+      "Sản xuất bộ ảnh lifestyle ngoại cảnh",
+      "Sản xuất phim quảng bá thương hiệu",
+      "Casting & dàn dựng bối cảnh gia đình",
+      "Hậu kỳ màu phong cách cao cấp, ấm áp",
+    ],
+    cover: "/images/work/tabalo-01.webp",
+    gallery: [
+      "/images/work/tabalo-01.webp",
+      "/images/work/tabalo-02.webp",
+      "/images/work/tabalo-03.webp",
+      "/images/work/tabalo-04.webp",
+      "/images/work/tabalo-05.webp",
+    ],
+    span: "wide",
+  },
 ];
 
 export const projectCategories: ProjectCategory[] = [
@@ -247,10 +272,10 @@ export const projectCategories: ProjectCategory[] = [
 const featuredOrder = [
   "le-frachie-organic-giai-phap-truyen-thong",
   "futaland-timesquare-noi-that",
+  "tabalo-glamping-brand-film",
   "aia-duong-dua-bung-thinh-vuong",
   "ao-dai-yen-fashion-film",
   "le-gia-brand-food",
-  "panasonic-giai-phap-khong-khi",
 ];
 
 export const featuredProjects = featuredOrder
