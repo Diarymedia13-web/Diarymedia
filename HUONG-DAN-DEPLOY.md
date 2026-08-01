@@ -1,141 +1,66 @@
 # Hướng dẫn đưa website lên mạng
 
-Ba bước: đẩy code lên GitHub → khai báo thông tin FTP → website tự động cập nhật mỗi lần sửa.
+Cập nhật: website này dùng **tích hợp GitHub App có sẵn của Hostinger** — đơn giản hơn nhiều so với cách FTP truyền thống. Không cần tạo Personal Access Token, không cần khai FTP secret.
 
-Toàn bộ lệnh chạy trong thư mục `diary-agency`.
-
----
-
-## Bước 1 — Đẩy code lên GitHub
-
-### 1.1. Tạo kho chứa trên GitHub
-
-Vào https://github.com/new
-
-- **Repository name**: `diary-agency`
-- Chọn **Private** (nên chọn, vì trong code có thông tin doanh nghiệp)
-- **KHÔNG** tích "Add a README file" — dự án đã có sẵn
-- Bấm **Create repository**
-
-### 1.2. Kết nối và đẩy lên
-
-Thay `TEN-GITHUB-CUA-BAN` bằng tên tài khoản GitHub của bạn:
-
-```bash
-git remote add origin https://github.com/TEN-GITHUB-CUA-BAN/diary-agency.git
-```
-
-```bash
-git push -u origin main
-```
-
-GitHub sẽ hỏi tài khoản. Lưu ý: **không dùng mật khẩu GitHub thông thường**, phải dùng Personal Access Token:
-
-1. Vào https://github.com/settings/tokens → **Generate new token (classic)**
-2. Đặt tên bất kỳ, tích quyền **repo**
-3. Bấm **Generate token**, sao chép chuỗi hiện ra
-4. Khi terminal hỏi *Password*, dán chuỗi token đó vào
+**Website đang chạy tại**: https://diaryagencygiaiphaptruyenthong.com
 
 ---
 
-## Bước 2 — Lấy thông tin FTP từ Hostinger
+## Cách hoạt động
 
-Đăng nhập hPanel → chọn tên miền → **Files → FTP Accounts**.
+1. Bạn sửa code trên máy → `git push` lên GitHub (nhánh `main`)
+2. Hostinger tự động phát hiện commit mới, build, và thay thế bản cũ
+3. Mất khoảng 2 phút, xem tiến trình tại: **hPanel → chọn website → Bảng điều khiển → Tất cả các triển khai**
 
-Ghi lại 3 thông tin:
-
-| Cần lấy | Nằm ở đâu trên hPanel |
-|---|---|
-| FTP hostname | Dòng *FTP hostname*, ví dụ `ftp.tenmien.com` hoặc một dãy IP |
-| FTP username | Dòng *FTP username* |
-| FTP password | Bấm **Change account password** để đặt mật khẩu mới nếu chưa nhớ |
-
-Còn một thông tin nữa là **thư mục đích**:
-
-- Nếu đây là tên miền chính của gói hosting → `/public_html/`
-- Nếu là tên miền phụ thêm vào sau → `/domains/tenmien.com/public_html/`
-
-Kiểm tra bằng **Files → File Manager**: đường dẫn hiện trên thanh địa chỉ chính là thư mục cần dùng.
+Không có bước "khai FTP secret" hay "chạy GitHub Actions" nào cần làm nữa.
 
 ---
 
-## Bước 3 — Khai báo bí mật trên GitHub
+## Từ giờ, muốn sửa nội dung thì làm sao
 
-Vào kho chứa vừa tạo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+1. Sửa file cần thiết (xem bảng trong `README.md` mục 4 — hầu hết chỉ cần sửa 3 file trong `src/lib/`)
+2. Mở **GitHub Desktop**
+3. App tự hiện danh sách file thay đổi → gõ mô tả ngắn ở ô **Summary** → bấm **Commit to main**
+4. Bấm **Push origin** ở góc trên bên phải
+5. Đợi khoảng 2 phút, Hostinger tự deploy xong — mở lại website để kiểm tra
 
-Thêm lần lượt 5 mục (tên phải viết đúng chính xác):
-
-| Name | Secret |
-|---|---|
-| `FTP_SERVER` | FTP hostname ở bước 2 |
-| `FTP_USERNAME` | FTP username ở bước 2 |
-| `FTP_PASSWORD` | FTP password ở bước 2 |
-| `FTP_SERVER_DIR` | `/public_html/` (hoặc đường dẫn tên miền phụ) |
-| `WEB3FORMS_KEY` | Access key lấy ở https://web3forms.com |
-
-**Lấy `WEB3FORMS_KEY` như thế nào:** vào https://web3forms.com, nhập email muốn nhận yêu cầu tư vấn (ví dụ `Diarymedia13@gmail.com`), bấm gửi. Access key sẽ được gửi vào chính hộp thư đó. Đây là dịch vụ miễn phí không giới hạn số lượt gửi.
+Nếu chưa cài GitHub Desktop: tải tại https://desktop.github.com, đăng nhập bằng nút bấm qua trình duyệt (không cần token), rồi **File → Add Local Repository** → chọn thư mục dự án.
 
 ---
 
-## Bước 4 — Chạy deploy
+## Việc cần làm để hoàn thiện
 
-Vào kho chứa trên GitHub → tab **Actions** → chọn **Build & Deploy to Hostinger** → bấm **Run workflow**.
+### 1. Xác minh email đăng ký tên miền (quan trọng)
 
-Quá trình mất khoảng 2 – 3 phút. Khi thấy dấu tích xanh là website đã lên.
+hPanel có thể cảnh báo dòng: *"Xác minh email để đăng ký tên miền. Hoàn tất đăng ký để duy trì trang web trực tuyến."* Nếu thấy cảnh báo này:
 
-Mở `https://tenmien.com` để kiểm tra.
+1. Kiểm tra hộp thư đã dùng để đăng ký tên miền
+2. Tìm mail xác minh từ Hostinger hoặc nhà đăng ký tên miền (ICANN)
+3. Bấm link xác nhận trong mail
 
----
+Bỏ qua bước này có nguy cơ tên miền bị tạm khoá theo quy định ICANN.
 
-## Từ giờ về sau: sửa nội dung như thế nào
+### 2. Kết nối form liên hệ nhận mail thật
 
-1. Mở file cần sửa (xem bảng trong `README.md` mục 4).
-2. Lưu lại, rồi chạy:
+Form báo giá ở trang `/lien-he` hiện chưa gửi được mail vì thiếu access key.
 
-```bash
-git add -A && git commit -m "Cập nhật nội dung" && git push
-```
+1. Vào https://web3forms.com, nhập email muốn nhận yêu cầu tư vấn (ví dụ email công ty), bấm tạo key
+2. Access key sẽ được gửi vào chính email đó
+3. Vào **hPanel → chọn website → Bảng điều khiển**, tìm mục **Environment Variables** (biến môi trường)
+4. Thêm biến:
+   - Tên: `NEXT_PUBLIC_WEB3FORMS_KEY`
+   - Giá trị: access key vừa nhận
+5. Bấm **Tái triển khai (Redeploy)** để áp dụng
 
-3. GitHub tự build và đẩy lên hosting. Khoảng 3 phút sau website đã cập nhật.
+### 3. Bật HTTPS / SSL (nếu chưa tự động)
 
----
+hPanel → **Security → SSL** → kiểm tra chứng chỉ đã cài cho tên miền. Hostinger thường tự cấp SSL miễn phí cho domain mua qua họ, nhưng nên kiểm tra lại.
 
-## Việc cần làm ngay sau lần deploy đầu tiên
-
-### 1. Bật HTTPS (bắt buộc)
-
-hPanel → **Security → SSL** → cài chứng chỉ miễn phí cho tên miền. Chờ khoảng 15 phút.
-
-Sau khi SSL hoạt động, mở **File Manager → public_html → .htaccess**, tìm đoạn:
-
-```apache
-  # RewriteCond %{HTTPS} !=on
-  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-```
-
-Bỏ hai dấu `#` ở đầu dòng rồi lưu lại. Từ đó mọi truy cập `http://` sẽ tự chuyển sang `https://`.
-
-> Nếu File Manager không hiện file `.htaccess`: bấm biểu tượng **Settings** ở góc trên rồi bật **Show hidden files**.
-
-### 2. Cập nhật tên miền thật
-
-Mở `src/lib/site.ts`, sửa dòng:
-
-```ts
-url: "https://diaryagency.vn",
-```
-
-thành tên miền thật của bạn, rồi `git push` lại. Nếu bỏ qua bước này, `sitemap.xml` gửi cho Google sẽ trỏ sai địa chỉ.
-
-### 3. Khai báo với Google
+### 4. Khai báo với Google
 
 1. Vào https://search.google.com/search-console
-2. Thêm tên miền, xác minh quyền sở hữu theo hướng dẫn
+2. Thêm tên miền `diaryagencygiaiphaptruyenthong.com`, xác minh quyền sở hữu
 3. Mục **Sitemaps**, nhập `sitemap.xml` rồi bấm **Submit**
-
-### 4. Kiểm tra form liên hệ
-
-Vào trang `/lien-he`, điền thử một yêu cầu và bấm gửi. Kiểm tra hộp thư đã đăng ký với Web3Forms xem đã nhận được chưa.
 
 ---
 
@@ -143,27 +68,8 @@ Vào trang `/lien-he`, điền thử một yêu cầu và bấm gửi. Kiểm tr
 
 | Hiện tượng | Nguyên nhân & cách sửa |
 |---|---|
-| Trang chủ hiện, nhưng vào `/du-an/` báo 404 | Thiếu file `.htaccess` trong `public_html`. Bật *Show hidden files* trong File Manager để kiểm tra. Nếu thiếu, tải file `public/.htaccess` từ dự án lên. |
-| Actions báo lỗi ở bước FTP | Sai `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` hoặc `FTP_SERVER_DIR`. Đối chiếu lại với hPanel, chú ý `FTP_SERVER_DIR` phải có dấu `/` ở đầu và cuối. |
-| Vẫn thấy trang mặc định của Hostinger | Trong `public_html` còn file `default.php` hoặc `index.php` cũ. Xoá đi. |
-| Form gửi xong báo "chưa được kết nối" | Chưa khai báo secret `WEB3FORMS_KEY`, hoặc khai báo sau khi đã deploy. Thêm secret rồi chạy lại workflow. |
-| Sửa nội dung nhưng web chưa đổi | Trình duyệt đang giữ bản cũ. Nhấn `Ctrl + Shift + R` (Windows) hoặc `Cmd + Shift + R` (Mac). |
-| Ảnh không hiện | Kiểm tra thư mục `images` đã được tải lên `public_html` chưa. |
-
----
-
-## Cách thủ công (nếu không muốn dùng GitHub)
-
-```bash
-npm run build
-```
-
-Sau đó:
-
-1. Mở thư mục `out/`, chọn **toàn bộ nội dung bên trong** (không nén cả thư mục `out`).
-2. Nén thành `site.zip`.
-3. hPanel → **File Manager** → vào `public_html` → xoá file cũ.
-4. Upload `site.zip` → bấm **Extract**.
-5. Kiểm tra `.htaccess` đã có trong `public_html` (bật *Show hidden files*).
-
-Lưu ý: cách này phải lặp lại thủ công mỗi lần sửa nội dung.
+| Push code xong nhưng web chưa đổi | Chờ thêm — quá trình build mất khoảng 2 phút. Kiểm tra tiến trình ở hPanel → Tất cả các triển khai. |
+| hPanel báo triển khai thất bại | Mở chi tiết triển khai đó, xem "Xây dựng nhật ký" (build log) để biết lỗi cụ thể — thường là lỗi cú pháp code. |
+| Form gửi xong báo "chưa được kết nối" | Chưa thêm biến `NEXT_PUBLIC_WEB3FORMS_KEY` trong Environment Variables, hoặc thêm xong nhưng chưa bấm Redeploy. |
+| Sửa nội dung nhưng web chưa đổi dù đã deploy xong | Trình duyệt đang giữ bản cũ. Nhấn `Ctrl + Shift + R` (Windows) hoặc `Cmd + Shift + R` (Mac). |
+| Cảnh báo "xác minh email tên miền" không biến mất | Kiểm tra đúng hộp thư dùng khi đăng ký domain, không phải hộp thư nhận yêu cầu tư vấn của khách. |

@@ -2,7 +2,9 @@
 
 Website giới thiệu và bán hàng cho **Diary Agency** — đối tác giải pháp truyền thông toàn diện cho doanh nghiệp.
 
-Xây bằng **Next.js 15 (App Router) + TypeScript + Tailwind CSS v4 + GSAP**, xuất ra HTML tĩnh để chạy được trên **Hostinger Shared Hosting** mà không cần Node runtime.
+Xây bằng **Next.js 15 (App Router) + TypeScript + Tailwind CSS v4 + GSAP**, xuất ra HTML tĩnh. Deploy tự động qua tích hợp GitHub App có sẵn của Hostinger — mỗi lần push lên nhánh `main`, Hostinger tự kéo mã nguồn, build và cập nhật website, không cần FTP hay GitHub Actions.
+
+**Website đang chạy tại**: https://diaryagencygiaiphaptruyenthong.com
 
 ---
 
@@ -81,55 +83,46 @@ Sau khi sửa, chạy lại `npm run build` rồi deploy.
 
 ## 5. Kết nối form liên hệ
 
-Hosting tĩnh không chạy được backend, nên form dùng **Web3Forms** (miễn phí, không giới hạn).
+Site chạy dưới dạng xuất tĩnh nên form dùng **Web3Forms** (miễn phí, không giới hạn) thay vì backend riêng.
 
 1. Vào https://web3forms.com, nhập email muốn nhận yêu cầu → nhận **Access Key** qua thư.
-2. Tạo file `.env.local` ở thư mục gốc dự án:
+2. Chạy thử trên máy: tạo file `.env.local` ở thư mục gốc dự án:
 
 ```bash
 echo "NEXT_PUBLIC_WEB3FORMS_KEY=dan-access-key-vao-day" > .env.local
 ```
 
-3. Khi deploy tự động: thêm key đó vào **GitHub → Settings → Secrets and variables → Actions** với tên `WEB3FORMS_KEY`.
+3. Trên bản chạy thật: vào **hPanel → website → Bảng điều khiển → Environment Variables** (hoặc mục tương đương trong phần cấu hình app Node.js), thêm biến `NEXT_PUBLIC_WEB3FORMS_KEY` với giá trị là key vừa lấy, rồi bấm **Tái triển khai (Redeploy)**.
 
 Chưa cấu hình key thì form vẫn hiển thị bình thường, nhưng khi bấm gửi sẽ hướng khách gọi hotline hoặc gửi email — không báo lỗi kỹ thuật.
 
 ---
 
-## 6. Deploy lên Hostinger
+## 6. Deploy — đã tự động, không cần thao tác thêm
 
-### Cách A — Tự động qua GitHub Actions (khuyến nghị)
+Website này được deploy qua **tích hợp GitHub App có sẵn của Hostinger** (thấy ở hPanel → website → Bảng điều khiển → mục "Đã kết nối với GitHub"). Cơ chế:
 
-Đã có sẵn workflow tại `.github/workflows/deploy-hostinger.yml`. Mỗi lần `git push` lên nhánh `main`, GitHub sẽ tự build và đẩy lên hosting.
+1. Bạn sửa code, `git push` lên nhánh `main` (qua GitHub Desktop hoặc dòng lệnh).
+2. Hostinger tự phát hiện commit mới, chạy `npm install` + `npm run build`, rồi thay thế bản cũ bằng bản mới.
+3. Toàn bộ quá trình mất khoảng 2 phút, theo dõi tiến trình ở hPanel → Bảng điều khiển → **Tất cả các triển khai**.
 
-Cần khai báo 5 secret trong **GitHub → Settings → Secrets and variables → Actions → New repository secret**:
+Không cần FTP, không cần secret, không cần GitHub Actions. Muốn build/deploy lại thủ công (không đổi code): vào hPanel, bấm nút **Tái triển khai**.
 
-| Tên secret | Lấy ở đâu / giá trị |
-|---|---|
-| `FTP_SERVER` | hPanel → Files → FTP Accounts → mục **FTP hostname** (ví dụ `ftp.tenmien.com`) |
-| `FTP_USERNAME` | Tên tài khoản FTP trong cùng trang đó |
-| `FTP_PASSWORD` | Mật khẩu FTP (bấm *Change account password* nếu chưa nhớ) |
-| `FTP_SERVER_DIR` | `/public_html/` — hoặc `/domains/tenmien.com/public_html/` nếu là addon domain |
-| `WEB3FORMS_KEY` | Access key ở bước 5 |
+### Việc cần làm ngay sau khi có tên miền
 
-Sau khi thêm đủ, push code lên là xong. Theo dõi tiến trình ở tab **Actions** trên GitHub.
+- **Xác minh email đăng ký tên miền**: hPanel thường cảnh báo ngay trên trang website nếu domain chưa xác minh xong — bỏ qua có thể khiến tên miền bị thu hồi.
+- **Bật SSL**: hPanel → Security → SSL (thường tự động với domain qua Hostinger).
+- **Cập nhật tên miền thật vào code**: sửa `url` trong `src/lib/site.ts` thành đúng tên miền đang chạy, build lại — nếu không, `sitemap.xml`, canonical URL và Open Graph sẽ trỏ sai địa chỉ.
+- **Khai báo Google**: đưa `https://tenmien-that/sitemap.xml` vào Google Search Console.
 
-### Cách B — Upload thủ công
+### Nếu muốn chuyển sang hosting khác không hỗ trợ Git
+
+File `public/.htaccess` và cấu hình `output: "export"` vẫn cho phép upload thủ công lên bất kỳ Apache shared hosting nào:
 
 1. Chạy `npm run build` trên máy.
-2. Mở thư mục `out/`, chọn **toàn bộ nội dung bên trong** (không nén cả thư mục `out`).
-3. Nén thành `site.zip`.
-4. hPanel → **Files → File Manager** → vào `public_html`.
-5. Xoá file mặc định của Hostinger (`default.php`, `index.php`) nếu có.
-6. Upload `site.zip` rồi bấm **Extract**.
-7. Kiểm tra `public_html/.htaccess` đã tồn tại. Nếu File Manager ẩn file bắt đầu bằng dấu chấm, bật **Settings → Show hidden files**. Thiếu file này thì các đường dẫn con sẽ báo 404.
-
-### Sau khi deploy lần đầu
-
-- **Bật SSL**: hPanel → Security → SSL → cài chứng chỉ miễn phí cho tên miền.
-- **Ép HTTPS**: mở `public_html/.htaccess`, bỏ dấu `#` ở khối *Ép HTTPS*.
-- **Cập nhật tên miền thật**: sửa `url` trong `src/lib/site.ts` rồi build lại — nếu không, `sitemap.xml` sẽ trỏ sai địa chỉ.
-- **Khai báo Google**: đưa `https://tenmien.com/sitemap.xml` vào Google Search Console.
+2. Mở thư mục `out/`, chọn **toàn bộ nội dung bên trong** (không nén cả thư mục `out`), nén thành zip.
+3. Upload lên `public_html` qua File Manager, giải nén.
+4. Kiểm tra `.htaccess` đã có trong `public_html` (bật *Show hidden files* nếu File Manager ẩn nó) — thiếu file này thì các đường dẫn con sẽ báo 404.
 
 ---
 
