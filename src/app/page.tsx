@@ -109,9 +109,9 @@ export default function HomePage() {
 
         <div className="mt-14 grid gap-5 sm:grid-cols-3">
           {[
-            { src: "/images/work/aodai-03.webp", alt: "Khung hình từ dự án fashion film Áo Dài “Yên”" },
-            { src: "/images/work/coffee-02.webp", alt: "Ảnh thương hiệu cho dự án cà phê Agreco" },
-            { src: "/images/work/food-04.webp", alt: "Ảnh ẩm thực thương mại cho thương hiệu Lê Gia" },
+            { src: "/images/work/aodai-02.webp", alt: "Khung hình từ dự án fashion film Áo Dài “Yên”" },
+            { src: "/images/work/coffee-05.webp", alt: "Ảnh thương hiệu cho dự án cà phê Agreco" },
+            { src: "/images/work/food-02.webp", alt: "Ảnh ẩm thực thương mại cho thương hiệu Lê Gia" },
           ].map((img, i) => (
             <div
               key={img.src}
@@ -124,7 +124,7 @@ export default function HomePage() {
                 alt={img.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                className="object-cover transition-transform duration-700 hover:scale-105"
                 data-parallax={i === 1 ? "10" : "6"}
               />
             </div>
