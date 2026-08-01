@@ -9,8 +9,7 @@ export const site = {
   tagline: "Kiến tạo nội dung, kết nối thành công",
   description:
     "Diary Agency là đối tác giải pháp truyền thông toàn diện cho doanh nghiệp: chiến lược truyền thông, chiến lược kinh doanh, thúc đẩy chuyển đổi số, thiết kế website, quảng cáo đa nền tảng, sản xuất hình ảnh và ứng dụng trí tuệ nhân tạo.",
-  // Đổi thành tên miền thật sau khi trỏ domain trên Hostinger.
-  url: "https://diaryagency.vn",
+  url: "https://diaryagencygiaiphaptruyenthong.com",
   locale: "vi_VN",
 
   contact: {
