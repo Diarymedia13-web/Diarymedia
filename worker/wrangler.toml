@@ -1,0 +1,7 @@
+name = "diary-agency-chat"
+main = "src/index.ts"
+compatibility_date = "2026-07-01"
+
+# Secret ANTHROPIC_API_KEY được đặt qua lệnh:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+# không khai báo giá trị thật trong file này.

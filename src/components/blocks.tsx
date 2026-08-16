@@ -84,7 +84,7 @@ export function ServiceCard({ service, group }: { service: Service; group: strin
     <article
       data-reveal
       data-reveal-group={group}
-      className="group relative flex flex-col rounded-block border border-line bg-ink-2 p-7 transition-all duration-500 hover:border-brand/40 hover:bg-surface sm:p-8"
+      className="group relative flex flex-col rounded-block border border-line bg-ink-2/55 backdrop-blur-sm p-7 transition-all duration-500 hover:border-brand/40 hover:bg-surface/75 sm:p-8"
     >
       <div className="flex items-start justify-between gap-4">
         <span className="flex size-12 items-center justify-center rounded-2xl bg-brand/12 text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-brand-ink">
@@ -121,7 +121,7 @@ export function FeaturedWork() {
           data-reveal
           data-reveal-group="featured"
           className={cx(
-            "group relative overflow-hidden rounded-block border border-line bg-ink-2 transition-colors duration-300 hover:border-brand/40",
+            "group relative overflow-hidden rounded-block border border-line bg-ink-2/55 backdrop-blur-sm transition-colors duration-300 hover:border-brand/40",
             i === 0 && "sm:col-span-2 lg:col-span-2",
           )}
         >

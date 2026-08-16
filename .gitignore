@@ -7,3 +7,8 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 *.zip
+
+# Lịch sử hội thoại Telegram — dữ liệu riêng tư của người dùng, chỉ nằm trên máy.
+# Giữ lại .gitkeep để cấu trúc thư mục vẫn có trong Git.
+telegram/data/*
+!telegram/data/.gitkeep

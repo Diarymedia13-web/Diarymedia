@@ -17,7 +17,7 @@ const columns = [
   {
     title: "Công ty",
     links: [
-      { href: "/ve-chung-toi/", label: "Về Diary Agency" },
+      { href: "/ve-chung-toi/", label: "Về Day Agency" },
       { href: "/ve-chung-toi/#founder", label: "Founder" },
       { href: "/du-an/", label: "Dự án tiêu biểu" },
       { href: "/lien-he/", label: "Liên hệ hợp tác" },
@@ -29,7 +29,7 @@ export default function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-line bg-ink-2 pb-10 pt-20 sm:mt-32">
+    <footer className="relative mt-24 overflow-hidden border-t border-line bg-ink-2/60 pb-10 pt-20 backdrop-blur-xl sm:mt-32">
       {/* Vầng sáng cam mờ neo dưới đáy trang */}
       <div
         aria-hidden
@@ -40,17 +40,14 @@ export default function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Cột thương hiệu */}
           <div className="lg:col-span-5">
-            <Link href="/" className="flex w-fit items-center gap-3" aria-label={site.name}>
+            <Link href="/" className="flex w-fit items-center" aria-label={site.name}>
               <Image
-                src="/images/brand/logo-mark.png"
-                alt=""
-                width={180}
-                height={206}
-                className="h-11 w-auto"
+                src="/images/brand/logo-wordmark.png"
+                alt={site.name}
+                width={573}
+                height={388}
+                className="h-14 w-auto"
               />
-              <span className="text-xl font-bold tracking-tight text-fg">
-                Diary<span className="text-brand">Agency</span>
-              </span>
             </Link>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-fg-muted">
               {site.tagline}. Đối tác giải pháp truyền thông toàn diện — từ chiến lược, hạ tầng số,

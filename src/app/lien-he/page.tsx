@@ -8,7 +8,7 @@ import ContactForm from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
-  description: `Liên hệ Diary Agency để nhận tư vấn giải pháp truyền thông cho doanh nghiệp. Hotline ${site.contact.phoneDisplay}, email ${site.contact.email}.`,
+  description: `Liên hệ Day Agency để nhận tư vấn giải pháp truyền thông cho doanh nghiệp. Hotline ${site.contact.phoneDisplay}, email ${site.contact.email}.`,
   alternates: { canonical: "/lien-he/" },
 };
 
@@ -80,7 +80,7 @@ export default function ContactPage() {
             );
 
             const cls =
-              "group flex flex-col bg-ink-2 p-7 transition-colors duration-500 hover:bg-surface sm:p-8";
+              "group flex flex-col bg-ink-2/55 backdrop-blur-sm p-7 transition-colors duration-500 hover:bg-surface/75 sm:p-8";
 
             return href ? (
               <a

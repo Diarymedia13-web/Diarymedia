@@ -7,7 +7,7 @@ import StatBand from "@/components/stat-band";
 export const metadata: Metadata = {
   title: "Dự án tiêu biểu",
   description:
-    "Tuyển tập dự án Diary Agency đã thực hiện: TVC Panasonic, fashion film Áo Dài Yên, giải chạy AIA, Danang Guitar Festival, nhiếp ảnh thương mại Lê Gia và Agreco Coffee.",
+    "Tuyển tập dự án Day Agency đã thực hiện: TVC Panasonic, fashion film Áo Dài Yên, giải chạy AIA, Danang Guitar Festival, nhiếp ảnh thương mại Lê Gia và Agreco Coffee.",
   alternates: { canonical: "/du-an/" },
 };
 

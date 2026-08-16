@@ -19,5 +19,6 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "out"]
+  "//exclude-telegram": "Worker Telegram chạy trên Node chứ không qua Next.js, và dùng tsconfig riêng ở telegram/tsconfig.json (bật allowImportingTsExtensions). Không loại trừ thì trình kiểm tra kiểu của Next sẽ soi cả thư mục đó bằng cấu hình này và làm hỏng bản build website.",
+  "exclude": ["node_modules", "out", "telegram"]
 }

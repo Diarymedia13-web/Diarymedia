@@ -1,0 +1,15 @@
+{
+  "name": "diary-agency-chat-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker proxy giữ ANTHROPIC_API_KEY an toàn, cho chat widget trên website Diary Agency gọi Claude API.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4",
+    "typescript": "^5",
+    "wrangler": "^4"
+  }
+}

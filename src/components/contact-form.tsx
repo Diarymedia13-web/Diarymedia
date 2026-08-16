@@ -75,7 +75,7 @@ export default function ContactForm() {
       if (json.success) {
         setStatus("success");
         setMessage(
-          "Đã nhận được yêu cầu của bạn. Đội ngũ Diary Agency sẽ liên hệ trong vòng 24 giờ làm việc.",
+          "Đã nhận được yêu cầu của bạn. Đội ngũ Day Agency sẽ liên hệ trong vòng 24 giờ làm việc.",
         );
         form.reset();
       } else {

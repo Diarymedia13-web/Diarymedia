@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,8 +14,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  *  - Thêm class `js-ready` lên <html> rồi mới ẩn phần tử, nên khi tắt JS
  *    hoặc script lỗi thì nội dung vẫn hiển thị đầy đủ.
  *  - Tôn trọng `prefers-reduced-motion`: bỏ qua hoàn toàn phần animate.
+ *
+ * PHẢI chạy lại sau MỖI lần đổi trang (`pathname` nằm trong danh sách phụ
+ * thuộc của useEffect). Component này sống trong layout dùng chung, nên khi
+ * người dùng bấm menu để chuyển trang thì layout KHÔNG dựng lại — nếu chỉ
+ * chạy một lần lúc mở web, các khối `[data-reveal]` của trang mới sẽ dính
+ * `opacity: 0` từ CSS mà không có ScrollTrigger nào bật chúng lên, khiến cả
+ * trang trông như trống trơn. Đây từng là lỗi thật ở trang /giai-phap/.
  */
 export default function MotionProvider() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
@@ -79,16 +89,34 @@ export default function MotionProvider() {
       });
     });
 
+    // Sau khi đổi trang, chiều cao và vị trí các khối đều khác — tính lại ngay
+    // ở khung hình kế tiếp, nếu không ScrollTrigger vẫn dùng mốc của trang cũ.
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+
     // Ảnh tải xong làm thay đổi chiều cao trang → cần tính lại mốc kích hoạt.
     const onLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", onLoad);
 
+    /* Lưới an toàn: nội dung KHÔNG BAO GIỜ được phép ẩn vĩnh viễn. Nếu vì lý
+       do nào đó (lỗi script, mốc cuộn tính sai...) mà một khối vẫn còn
+       `opacity: 0` sau 2.5 giây, hiện thẳng nó ra. Thà mất hiệu ứng còn hơn
+       mất nội dung — đúng lỗi đã xảy ra ở trang /giai-phap/. */
+    const safety = window.setTimeout(() => {
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        if (getComputedStyle(el).opacity === "0") {
+          gsap.set(el, { opacity: 1, y: 0, clearProps: "transform" });
+        }
+      });
+    }, 2500);
+
     return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(safety);
       window.removeEventListener("load", onLoad);
       ctx.revert();
       document.documentElement.classList.remove("js-ready");
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

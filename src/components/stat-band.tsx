@@ -30,7 +30,7 @@ export default function StatBand() {
   return (
     <div ref={ref} className="grid grid-cols-2 gap-px overflow-hidden rounded-block bg-line lg:grid-cols-4">
       {site.stats.map((s) => (
-        <div key={s.label} className="bg-ink-2 px-6 py-9 sm:px-8 sm:py-11">
+        <div key={s.label} className="bg-ink-2/55 backdrop-blur-sm px-6 py-9 sm:px-8 sm:py-11">
           {/* Cỡ chữ nhỏ hơn t-display để con số 4 ký tự như "12–48h" không bị xuống dòng */}
           <p
             className="whitespace-nowrap text-[clamp(2rem,3.4vw,3rem)] font-extrabold leading-none tracking-tight text-gradient-brand"

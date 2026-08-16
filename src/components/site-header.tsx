@@ -52,20 +52,17 @@ export default function SiteHeader() {
       >
         <Link
           href="/"
-          className="relative z-10 flex shrink-0 items-center gap-2.5"
+          className="relative z-10 flex shrink-0 items-center"
           aria-label={`${site.name} — về trang chủ`}
         >
           <Image
-            src="/images/brand/logo-mark.png"
-            alt=""
-            width={180}
-            height={206}
+            src="/images/brand/logo-wordmark.png"
+            alt={site.name}
+            width={573}
+            height={388}
             priority
-            className="h-8 w-auto sm:h-9"
+            className="h-10 w-auto sm:h-11"
           />
-          <span className="text-[15px] font-bold tracking-tight text-fg sm:text-base">
-            Diary<span className="text-brand">Agency</span>
-          </span>
         </Link>
 
         {/* Điều hướng desktop — viên thuốc kính mờ nổi trên nội dung */}
@@ -73,7 +70,7 @@ export default function SiteHeader() {
           aria-label="Điều hướng chính"
           className={cx(
             "hidden items-center gap-1 rounded-full border px-1.5 py-1.5 backdrop-blur-xl transition-colors duration-500 lg:flex",
-            scrolled ? "border-white/12 bg-ink-2/80" : "border-white/10 bg-white/[0.06]",
+            scrolled ? "border-line bg-surface/85" : "border-line/70 bg-surface/60",
           )}
         >
           {nav.map((item) => (
@@ -84,8 +81,8 @@ export default function SiteHeader() {
               className={cx(
                 "cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
                 isActive(item.href)
-                  ? "bg-white/12 text-fg"
-                  : "text-fg-muted hover:bg-white/[0.07] hover:text-fg",
+                  ? "bg-ink-2 text-fg"
+                  : "text-fg-muted hover:bg-ink-2/70 hover:text-fg",
               )}
             >
               {item.label}
@@ -96,7 +93,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-2.5">
           <a
             href={`tel:${site.contact.phoneIntl}`}
-            className="hidden cursor-pointer items-center gap-2 rounded-full border border-white/12 px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg md:inline-flex"
+            className="hidden cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg md:inline-flex"
           >
             <Phone size={15} strokeWidth={2.2} aria-hidden />
             {site.contact.phoneDisplay}
@@ -114,7 +111,7 @@ export default function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Đóng menu" : "Mở menu"}
-            className="relative z-10 flex size-11 cursor-pointer items-center justify-center rounded-full border border-white/12 bg-ink-2/70 text-fg backdrop-blur-xl transition-colors hover:border-brand/50 lg:hidden"
+            className="relative z-10 flex size-11 cursor-pointer items-center justify-center rounded-full border border-line bg-surface/85 text-fg backdrop-blur-xl transition-colors hover:border-brand/50 lg:hidden"
           >
             {open ? <X size={19} aria-hidden /> : <Menu size={19} aria-hidden />}
           </button>

@@ -59,7 +59,7 @@ export default function WorkGallery() {
             type="button"
             onClick={() => setActive(p)}
             className={cx(
-              "group relative flex cursor-pointer flex-col overflow-hidden rounded-block border border-line bg-ink-2 text-left transition-colors duration-300 hover:border-brand/40",
+              "group relative flex cursor-pointer flex-col overflow-hidden rounded-block border border-line bg-ink-2/55 backdrop-blur-sm text-left transition-colors duration-300 hover:border-brand/40",
               p.span === "tall" && "sm:row-span-2",
             )}
           >
@@ -124,7 +124,7 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
         className="mx-auto my-6 w-full max-w-5xl px-4 sm:my-12"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="overflow-hidden rounded-block border border-line bg-ink-2">
+        <div className="overflow-hidden rounded-block border border-line bg-ink-2/55 backdrop-blur-sm">
           <div className="relative aspect-[16/9]">
             <Image
               src={project.cover}

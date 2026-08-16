@@ -14,7 +14,7 @@ import { CtaBlock, PageHero, ServiceCard } from "@/components/blocks";
 export const metadata: Metadata = {
   title: "Giải pháp truyền thông cho doanh nghiệp",
   description:
-    "Hai dòng dịch vụ của Diary Agency: giải pháp doanh nghiệp (chiến lược truyền thông, chiến lược kinh doanh, chuyển đổi số, website, quảng cáo, AI) và sản xuất sáng tạo (TVC, viral video, sự kiện, livestream, nhiếp ảnh thương mại).",
+    "Hai dòng dịch vụ của Day Agency: giải pháp doanh nghiệp (chiến lược truyền thông, chiến lược kinh doanh, chuyển đổi số, website, quảng cáo, AI) và sản xuất sáng tạo (TVC, viral video, sự kiện, livestream, nhiếp ảnh thương mại).",
   alternates: { canonical: "/giai-phap/" },
 };
 
@@ -46,7 +46,7 @@ const packages = [
   {
     name: "Đối tác toàn diện",
     tag: "Dành cho chuỗi & tập đoàn",
-    body: "Diary Agency đóng vai trò phòng marketing thuê ngoài: chiến lược, sản xuất, quảng cáo, chuyển đổi số và ứng dụng AI trong cùng một đầu mối.",
+    body: "Day Agency đóng vai trò phòng marketing thuê ngoài: chiến lược, sản xuất, quảng cáo, chuyển đổi số và ứng dụng AI trong cùng một đầu mối.",
     items: [
       "Toàn bộ hạng mục gói Tăng trưởng",
       "Chiến lược kinh doanh & phễu bán hàng",
@@ -155,7 +155,7 @@ export default function SolutionsPage() {
                 className={
                   p.highlight
                     ? "grain relative isolate flex flex-col overflow-hidden rounded-block grad-copper p-8 sm:p-9"
-                    : "flex flex-col rounded-block border border-line bg-ink-2 p-8 transition-colors duration-500 hover:border-brand/40 sm:p-9"
+                    : "flex flex-col rounded-block border border-line bg-ink-2/55 backdrop-blur-sm p-8 transition-colors duration-500 hover:border-brand/40 sm:p-9"
                 }
               >
                 <div className="relative z-10 flex items-center justify-between gap-3">

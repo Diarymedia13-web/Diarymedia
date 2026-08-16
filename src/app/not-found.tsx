@@ -11,13 +11,13 @@ export default function NotFound() {
       </h1>
       <p className="t-lead mt-6 max-w-md">
         Có thể đường dẫn đã thay đổi hoặc bạn gõ nhầm địa chỉ. Quay lại trang chủ để tiếp tục khám
-        phá Diary Agency.
+        phá Day Agency.
       </p>
       <div className="mt-9 flex flex-wrap gap-3">
         <ButtonLink href="/" variant="solid">
           Về trang chủ
         </ButtonLink>
-        <ButtonLink href="/lien-he/" variant="outline">
+        <ButtonLink href="/lien-he/" variant="outline-ink">
           Liên hệ với chúng tôi
         </ButtonLink>
       </div>

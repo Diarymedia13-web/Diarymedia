@@ -4,7 +4,9 @@ import { site } from "@/lib/site";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import FloatingCta from "@/components/floating-cta";
+import ChatWidget from "@/components/chat-widget";
 import MotionProvider from "@/components/motion-provider";
+import AmbientBackground from "@/components/ambient-background";
 import "./globals.css";
 
 /* Cả ba font đều nạp subset `vietnamese` để dấu tiếng Việt hiển thị đúng,
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
     "thiết kế website doanh nghiệp",
     "chạy quảng cáo",
     "AI cho doanh nghiệp",
-    "Diary Agency",
+    "Day Agency",
   ],
   authors: [{ name: site.name }],
   creator: site.name,
@@ -78,11 +80,34 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08080a",
+  // Mảng theo prefers-color-scheme là màu mặc định cho tới khi JS chạy xong
+  // và ThemeToggle đồng bộ lại theo lựa chọn thủ công của người dùng.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f0e6d3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1710" },
+  ],
   width: "device-width",
   initialScale: 1,
   // Không đặt maximumScale — người dùng phải luôn phóng to được trang.
 };
+
+/**
+ * Script chống-nháy theme: chạy đồng bộ trước khi trình duyệt vẽ khung hình
+ * đầu tiên, nên phải là inline + không async/defer/module. Đọc lựa chọn đã
+ * lưu; nếu chưa từng chọn thì theo prefers-color-scheme của hệ điều hành.
+ * Không có JS (hoặc bị chặn) → không có data-theme → CSS mặc định về bản kem sáng.
+ */
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("day-theme");
+    var theme = stored === "light" || stored === "dark"
+      ? stored
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {}
+})();
+`;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -121,11 +146,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Bỏ qua điều hướng, tới nội dung chính
         </a>
+        <AmbientBackground />
         <MotionProvider />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
         <FloatingCta />
+        <ChatWidget />
       </body>
     </html>
   );

@@ -4,11 +4,11 @@
  */
 
 export const site = {
-  name: "Diary Agency",
+  name: "Day Agency",
   legalId: "4001291895",
   tagline: "Kiến tạo nội dung, kết nối thành công",
   description:
-    "Diary Agency là đối tác giải pháp truyền thông toàn diện cho doanh nghiệp: chiến lược truyền thông, chiến lược kinh doanh, thúc đẩy chuyển đổi số, thiết kế website, quảng cáo đa nền tảng, sản xuất hình ảnh và ứng dụng trí tuệ nhân tạo.",
+    "Day Agency là đối tác giải pháp truyền thông toàn diện cho doanh nghiệp: chiến lược truyền thông, chiến lược kinh doanh, thúc đẩy chuyển đổi số, thiết kế website, quảng cáo đa nền tảng, sản xuất hình ảnh và ứng dụng trí tuệ nhân tạo.",
   url: "https://diaryagencygiaiphaptruyenthong.com",
   locale: "vi_VN",
 
@@ -73,9 +73,9 @@ export const site = {
     quote:
       "Truyền thông không chỉ là kể chuyện, mà là nghệ thuật chạm đến cảm xúc và tạo ra giá trị thật cho thương hiệu.",
     bio: [
-      "Là người sáng lập Diary Agency, Nguyễn Hồ Thanh Pháp mang trong mình tầm nhìn sâu rộng về ngành truyền thông và sáng tạo nội dung. Với kinh nghiệm dày dặn cùng khả năng định hướng chiến lược, anh không chỉ tạo ra những sản phẩm chất lượng mà còn xây dựng một đội ngũ vững mạnh, luôn sẵn sàng đổi mới và bứt phá.",
+      "Là người sáng lập Day Agency, Nguyễn Hồ Thanh Pháp mang trong mình tầm nhìn sâu rộng về ngành truyền thông và sáng tạo nội dung. Với kinh nghiệm dày dặn cùng khả năng định hướng chiến lược, anh không chỉ tạo ra những sản phẩm chất lượng mà còn xây dựng một đội ngũ vững mạnh, luôn sẵn sàng đổi mới và bứt phá.",
       "Sau hơn bốn năm đứng sau hàng nghìn dự án sản xuất, anh nhận ra điều doanh nghiệp Việt Nam thiếu không phải là một video đẹp — mà là một hệ thống truyền thông chạy được: từ chiến lược, nội dung, kênh phân phối cho tới đo lường hiệu quả kinh doanh.",
-      "Đó là lý do Diary Agency hôm nay không dừng ở vai trò nhà sản xuất, mà trở thành đối tác giải pháp truyền thông toàn diện — nơi chiến lược, công nghệ và trí tuệ nhân tạo được đưa vào cùng một quy trình với máy quay và ánh sáng.",
+      "Đó là lý do Day Agency hôm nay không dừng ở vai trò nhà sản xuất, mà trở thành đối tác giải pháp truyền thông toàn diện — nơi chiến lược, công nghệ và trí tuệ nhân tạo được đưa vào cùng một quy trình với máy quay và ánh sáng.",
     ],
   },
 } as const;

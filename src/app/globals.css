@@ -1,37 +1,38 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DIARY AGENCY — DESIGN TOKENS
-   Bảng màu lấy trực tiếp từ logo trong portfolio: gradient đồng/cam
-   (#D2601C → #F0873F → #FBC79A) đặt trên nền tối gần như đen.
+   DAY AGENCY — DESIGN TOKENS
+   Bảng màu neo theo logo thật: nền giấy kem ấm + chữ khối gỗ nâu trầm + tia
+   sáng cam vàng công nghệ/AI toả sau logo. Mặc định SÁNG (chế độ kem). Có
+   chế độ tối đi kèm — xem khối "CHẾ ĐỘ TỐI" bên dưới.
    ========================================================================= */
 
 @theme {
-  /* --- Nền & bề mặt --- */
-  --color-ink: #08080a;
-  --color-ink-2: #0e0e11;
-  --color-surface: #151518;
-  --color-surface-2: #1c1c20;
-  --color-line: #26262b;
+  /* --- Nền & bề mặt (mặc định: giấy kem ấm, đúng nền logo) --- */
+  --color-ink: #f0e6d3;
+  --color-ink-2: #e8dcc2;
+  --color-surface: #faf5ea;
+  --color-surface-2: #fffcf5;
+  --color-line: #ddccaa;
 
-  /* --- Chữ --- */
-  --color-fg: #f6f6f7;
-  --color-fg-muted: #a3a3ad;
-  --color-fg-dim: #6f6f7a;
+  /* --- Chữ: nâu gỗ trầm, lấy đúng màu chữ khối trong logo --- */
+  --color-fg: #3a2a1c;
+  --color-fg-muted: #6e5a45;
+  --color-fg-dim: #96805f;
 
-  /* --- Thương hiệu (từ logo Diary) --- */
-  --color-brand: #f0873f;
-  --color-brand-light: #fbc79a;
-  --color-brand-deep: #d2601c;
-  --color-brand-ember: #a8380a;
-  --color-brand-ink: #2a1005;
+  /* --- Thương hiệu: cam vàng hổ phách toả sáng sau logo --- */
+  --color-brand: #e08a2e;
+  --color-brand-light: #f5c177;
+  --color-brand-deep: #b5661a;
+  --color-brand-ember: #7a431a;
+  --color-brand-ink: #2b1608;
 
   /* --- Typography --- */
   --font-display: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
-  /* --- Bo góc: khối lớn bo mềm như phong cách tham chiếu --- */
+  /* --- Bo góc: khối lớn bo mềm --- */
   --radius-card: 1.5rem;
   --radius-block: 2rem;
   --radius-hero: 2.5rem;
@@ -42,6 +43,28 @@
 }
 
 /* ============================================================================
+   CHẾ ĐỘ TỐI
+   Ghi đè đúng những biến ở @theme phía trên — nền gỗ tối, cùng họ nâu/cam
+   với bản sáng để không lệch thương hiệu khi chuyển chế độ.
+   ========================================================================= */
+:root[data-theme="dark"] {
+  --color-ink: #1c1710;
+  --color-ink-2: #241d14;
+  --color-surface: #2b2318;
+  --color-surface-2: #33291b;
+  --color-line: #3e3222;
+
+  --color-fg: #f0e6d3;
+  --color-fg-muted: #b8a689;
+  --color-fg-dim: #8a7860;
+
+  --color-brand: #f0973a;
+  --color-brand-light: #ffc98a;
+  --color-brand-deep: #d2792a;
+  --color-brand-ember: #a85a1e;
+}
+
+/* ============================================================================
    NỀN TẢNG
    ========================================================================= */
 
@@ -49,13 +72,18 @@
   border-color: var(--color-line);
 }
 
+/* Màu nền đặt trên <html>, KHÔNG đặt trên <body>. Lớp nền động
+   (`.ambient-layer`) nằm ở z-index -1 bên trong body — nếu body có nền đục
+   thì lớp đó bị che mất. */
 html {
+  background: var(--color-ink);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  transition: background-color 0.3s ease;
 }
 
 body {
-  background: var(--color-ink);
+  background: transparent;
   color: var(--color-fg);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -63,21 +91,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background: var(--color-brand);
-  color: #12060a;
+  color: #2b1608;
 }
 
-/* Focus ring nhìn thấy rõ cho điều hướng bàn phím — không bao giờ tắt outline. */
 :focus-visible {
   outline: 2px solid var(--color-brand);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Thanh cuộn tông tối đồng bộ với giao diện */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -86,7 +113,7 @@ body {
   background: var(--color-ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e2e34;
+  background: color-mix(in srgb, var(--color-fg) 22%, transparent);
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
@@ -98,7 +125,6 @@ body {
    TYPOGRAPHY
    ========================================================================= */
 
-/* Tiêu đề khổng lồ kiểu editorial — co giãn mượt theo viewport */
 .t-hero {
   font-family: var(--font-display);
   font-weight: 800;
@@ -137,7 +163,6 @@ body {
   color: var(--color-fg-muted);
 }
 
-/* Nhãn mono nhỏ (#01, SELECTED WORK…) — chữ ký thị giác của bố cục */
 .t-label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -157,36 +182,37 @@ body {
   color: transparent;
 }
 
-/* Các nền gradient lớn cho hero từng trang — đều neo vào tông cam đồng của logo */
+/* Các nền gradient lớn cho hero từng trang — cùng họ kem/gỗ nâu/cam hổ phách
+   của logo, mỗi biến thể lệch sắc độ khác nhau để các khối không đơn điệu. */
 .grad-fire {
   background:
-    radial-gradient(120% 90% at 12% 6%, #ffb066 0%, transparent 55%),
-    radial-gradient(130% 110% at 92% 12%, #ff6a1f 0%, transparent 60%),
-    linear-gradient(160deg, #f2701c 0%, #c2400f 48%, #5e1c07 100%);
+    radial-gradient(120% 90% at 15% 0%, #ffd9a0 0%, transparent 55%),
+    radial-gradient(90% 70% at 90% 100%, #e08a2e 0%, transparent 60%),
+    linear-gradient(160deg, #f0e6d3 0%, #d8c39a 55%, #96805f 100%);
 }
 
 .grad-ember {
   background:
-    radial-gradient(110% 90% at 88% 8%, #ffc487 0%, transparent 55%),
-    radial-gradient(120% 100% at 8% 92%, #b9310c 0%, transparent 58%),
-    linear-gradient(145deg, #e2571f 0%, #8f2a0c 55%, #34120a 100%);
+    radial-gradient(110% 90% at 88% 8%, #ffc98a 0%, transparent 55%),
+    radial-gradient(120% 100% at 8% 92%, #7a431a 0%, transparent 58%),
+    linear-gradient(145deg, #b5661a 0%, #5c3010 55%, #2b1608 100%);
 }
 
 .grad-copper {
   background:
-    radial-gradient(100% 80% at 20% 90%, #ffd7ae 0%, transparent 50%),
-    radial-gradient(120% 110% at 85% 10%, #f0873f 0%, transparent 62%),
-    linear-gradient(150deg, #c76a2a 0%, #7a3312 52%, #241009 100%);
+    radial-gradient(100% 80% at 20% 90%, #ffe8bf 0%, transparent 50%),
+    radial-gradient(120% 110% at 85% 10%, #e08a2e 0%, transparent 62%),
+    linear-gradient(150deg, #d2792a 0%, #7a431a 52%, #2b1a0c 100%);
 }
 
 .grad-dusk {
   background:
-    radial-gradient(110% 90% at 78% 10%, #ffa45c 0%, transparent 52%),
-    radial-gradient(130% 120% at 10% 80%, #7b1f3a 0%, transparent 60%),
-    linear-gradient(155deg, #e0561f 0%, #8a2340 55%, #1f0d14 100%);
+    radial-gradient(110% 90% at 78% 10%, #f5c177 0%, transparent 52%),
+    radial-gradient(130% 120% at 10% 80%, #6b4423 0%, transparent 60%),
+    linear-gradient(155deg, #b5661a 0%, #4a2a0e 55%, #1f120a 100%);
 }
 
-/* Vầng sáng cam mềm phía sau các khối nội dung */
+/* Vầng sáng cam mềm phía sau các khối nội dung — dùng sau logo, quanh CTA */
 .glow-brand {
   position: relative;
 }
@@ -194,7 +220,7 @@ body {
   content: "";
   position: absolute;
   inset: -20%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(240, 135, 63, 0.16), transparent 70%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(224, 138, 46, 0.22), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -205,7 +231,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.055;
+  opacity: 0.05;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -214,12 +240,342 @@ body {
   border-top: 1px solid var(--color-line);
 }
 
+/* Cạnh đáy uốn lượn hữu cơ cho thẻ hero chính. Xem `<OrganicCard>` trong ui.tsx. */
+.wave-edge {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  line-height: 0;
+  z-index: 5;
+}
+.wave-edge svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Vòng phát sáng mạch đập nhẹ quanh logo/biểu tượng trung tâm. */
+.pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(224, 138, 46, 0.35);
+  animation: pulse-ring 3.2s var(--ease-out-expo) infinite;
+}
+.pulse-ring-2 {
+  animation-delay: -1.6s;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Đốm sáng cam "thở" nhẹ — đặt đè lên đúng điểm sáng có sẵn trong ảnh (vùng
+   tam giác AI, các chấm kết nối) để ảnh tĩnh có cảm giác đang hoạt động. */
+.glow-dot {
+  position: absolute;
+  border-radius: 9999px;
+  /* left/top trong page.tsx đánh dấu TÂM đốm sáng — dời ngược lại nửa kích
+     thước để đúng vị trí thay vì lấy góc trên-trái làm mốc. */
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 205, 140, 0.95) 0%, rgba(224, 138, 46, 0.55) 45%, transparent 72%);
+  mix-blend-mode: screen;
+  animation: glow-breathe 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* Ảnh tự phóng to/thu nhỏ rất chậm — cảm giác "đang thở", không gây chóng mặt. */
+@keyframes slow-zoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+.hero-slow-zoom {
+  animation: slow-zoom 16s ease-in-out infinite;
+}
+
+/* ============================================================================
+   NỀN SỐNG — lớp khí quyển chuyển động phía sau toàn bộ trang
+   Xem `<AmbientBackground>` (ambient-background.tsx). Cố định sau nội dung,
+   không bắt chuột, chỉ animate transform/opacity nên không tốn hiệu năng.
+   ========================================================================= */
+
+.ambient-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Quầng sáng lớn trôi theo quỹ đạo riêng — tạo chiều sâu chuyển động cho nền */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+}
+.ambient-orb-1 {
+  width: 46vw;
+  height: 46vw;
+  left: -8%;
+  top: -10%;
+  background: radial-gradient(circle, rgba(224, 138, 46, 0.85), rgba(224, 138, 46, 0.25) 45%, transparent 70%);
+  animation: orb-drift-1 26s ease-in-out infinite;
+}
+.ambient-orb-2 {
+  width: 38vw;
+  height: 38vw;
+  right: -6%;
+  top: 12%;
+  background: radial-gradient(circle, rgba(181, 102, 26, 0.7), rgba(245, 193, 119, 0.25) 45%, transparent 70%);
+  animation: orb-drift-2 32s ease-in-out infinite;
+}
+.ambient-orb-3 {
+  width: 42vw;
+  height: 42vw;
+  left: 22%;
+  bottom: -14%;
+  background: radial-gradient(circle, rgba(122, 67, 26, 0.6), rgba(181, 102, 26, 0.22) 45%, transparent 70%);
+  animation: orb-drift-3 38s ease-in-out infinite;
+}
+.ambient-orb-4 {
+  width: 30vw;
+  height: 30vw;
+  right: 18%;
+  bottom: 6%;
+  background: radial-gradient(circle, rgba(240, 151, 58, 0.65), rgba(122, 67, 26, 0.2) 45%, transparent 70%);
+  animation: orb-drift-4 29s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(14vw, 8vh, 0) scale(1.18);
+  }
+  66% {
+    transform: translate3d(6vw, 18vh, 0) scale(0.92);
+  }
+}
+@keyframes orb-drift-2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  40% {
+    transform: translate3d(-16vw, 14vh, 0) scale(0.88);
+  }
+  70% {
+    transform: translate3d(-6vw, 26vh, 0) scale(1.2);
+  }
+}
+@keyframes orb-drift-3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate3d(-18vw, -16vh, 0) scale(1.22);
+  }
+}
+@keyframes orb-drift-4 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  45% {
+    transform: translate3d(12vw, -20vh, 0) scale(0.85);
+  }
+}
+
+/* Hạt bụi sáng bay lên chậm — lớp chuyển động nhỏ nhất, tạo cảm giác không khí */
+.ambient-mote {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(181, 102, 26, 0.9);
+  box-shadow: 0 0 10px rgba(224, 138, 46, 0.85);
+  animation: mote-rise linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes mote-rise {
+  0% {
+    transform: translate3d(0, 12vh, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(6vw, -104vh, 0);
+    opacity: 0;
+  }
+}
+
+/* Máy di động yếu hơn nhiều: giảm bán kính blur (thao tác tốn kém nhất) và
+   bớt số hạt bụi, giữ đúng cảm giác chuyển động mà không tụt khung hình. */
+@media (max-width: 767px) {
+  .ambient-orb {
+    filter: blur(55px);
+  }
+  .ambient-mote:nth-child(even) {
+    display: none;
+  }
+}
+
+/* ============================================================================
+   HIỆU ỨNG TRÊN ẢNH HERO
+   ========================================================================= */
+
+/* Dải sáng chéo quét ngang qua ảnh — như đèn rọi lướt trên bề mặt */
+.hero-sheen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
+}
+.hero-sheen::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 28%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 226, 178, 0.35) 42%,
+    rgba(255, 240, 214, 0.6) 50%,
+    rgba(255, 226, 178, 0.35) 58%,
+    transparent 100%
+  );
+  transform: rotate(18deg);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: sheen-sweep 6.5s var(--ease-in-out-quint) infinite;
+}
+@keyframes sheen-sweep {
+  0% {
+    transform: rotate(18deg) translateX(-60%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(18deg) translateX(560%);
+    opacity: 0;
+  }
+}
+
+/* Vòng nan hoa xoay chậm sau tam giác AI — gợi "bộ máy đang chạy" */
+.ai-halo {
+  position: absolute;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(224, 138, 46, 0.45) 24deg,
+    transparent 60deg,
+    transparent 120deg,
+    rgba(245, 193, 119, 0.4) 156deg,
+    transparent 200deg,
+    transparent 260deg,
+    rgba(224, 138, 46, 0.35) 300deg,
+    transparent 340deg
+  );
+  filter: blur(6px);
+  mix-blend-mode: screen;
+  animation: halo-spin 14s linear infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+.ai-halo-reverse {
+  animation-name: halo-spin-reverse;
+  animation-duration: 22s;
+  opacity: 0.65;
+}
+@keyframes halo-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes halo-spin-reverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* Xung sáng chạy dọc theo đường mạch nối trong ảnh — "dữ liệu đang truyền" */
+.data-pulse {
+  position: absolute;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 214, 156, 0.95), transparent);
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  animation: data-run 3.6s linear infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@keyframes data-run {
+  0% {
+    transform: translateX(-100%) scaleX(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(340%) scaleX(1);
+    opacity: 0;
+  }
+}
+
 /* ============================================================================
    CHUYỂN ĐỘNG
    ========================================================================= */
 
-/* Trạng thái ban đầu của phần tử sẽ được GSAP reveal khi cuộn tới.
-   Chỉ ẩn khi JS đã khởi động (html.js-ready) → không JS thì nội dung vẫn hiện. */
 .js-ready [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
@@ -250,7 +606,6 @@ body {
   animation: float-slow 7s ease-in-out infinite;
 }
 
-/* Tôn trọng lựa chọn giảm chuyển động của hệ điều hành */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -267,6 +622,17 @@ body {
     transform: none;
   }
   .marquee-track {
+    animation: none;
+  }
+  .pulse-ring,
+  .ambient-mote,
+  .hero-sheen,
+  .data-pulse {
+    display: none;
+  }
+  /* Giữ quầng sáng nền và vòng nan hoa làm trang trí tĩnh, chỉ bỏ chuyển động. */
+  .ambient-orb,
+  .ai-halo {
     animation: none;
   }
 }

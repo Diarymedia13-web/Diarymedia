@@ -8,7 +8,7 @@ import StatBand from "@/components/stat-band";
 export const metadata: Metadata = {
   title: "Về chúng tôi",
   description:
-    "Diary Agency — công ty tiên phong trong sản xuất nội dung và truyền thông sáng tạo tại Việt Nam. Câu chuyện thương hiệu, giá trị cốt lõi và founder Nguyễn Hồ Thanh Pháp.",
+    "Day Agency — công ty tiên phong trong sản xuất nội dung và truyền thông sáng tạo tại Việt Nam. Câu chuyện thương hiệu, giá trị cốt lõi và founder Nguyễn Hồ Thanh Pháp.",
   alternates: { canonical: "/ve-chung-toi/" },
 };
 
@@ -16,7 +16,7 @@ const milestones = [
   {
     year: "2021",
     title: "Những khung hình đầu tiên",
-    body: "Diary khởi đầu từ một ekip nhỏ nhận quay chụp sự kiện tại Đà Nẵng, với niềm tin rằng mỗi sản phẩm truyền thông đều phải là một câu chuyện chứ không chỉ là tư liệu.",
+    body: "Day khởi đầu từ một ekip nhỏ nhận quay chụp sự kiện tại Đà Nẵng, với niềm tin rằng mỗi sản phẩm truyền thông đều phải là một câu chuyện chứ không chỉ là tư liệu.",
   },
   {
     year: "2022",
@@ -31,7 +31,7 @@ const milestones = [
   {
     year: "2025 – nay",
     title: "Từ nhà sản xuất thành đối tác giải pháp",
-    body: "Diary Agency mở rộng sang giải pháp truyền thông toàn diện: chiến lược, chuyển đổi số, website, quảng cáo và ứng dụng trí tuệ nhân tạo cho doanh nghiệp.",
+    body: "Day Agency mở rộng sang giải pháp truyền thông toàn diện: chiến lược, chuyển đổi số, website, quảng cáo và ứng dụng trí tuệ nhân tạo cho doanh nghiệp.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        label="Về Diary Agency"
+        label="Về Day Agency"
         title={
           <>
             Về
@@ -70,7 +70,7 @@ export default function AboutPage() {
 
           <div className="flex flex-col gap-5 lg:col-span-6 lg:col-start-7">
             <p className="t-lead" data-reveal data-reveal-group="story">
-              Diary Agency là công ty tiên phong trong lĩnh vực sản xuất nội dung và truyền thông
+              Day Agency là công ty tiên phong trong lĩnh vực sản xuất nội dung và truyền thông
               sáng tạo tại Việt Nam. Với phương châm “Kiến tạo nội dung, kết nối thành công”, chúng
               tôi không ngừng đổi mới để mang đến những giải pháp truyền thông chất lượng cao, giúp
               doanh nghiệp nâng tầm thương hiệu và chinh phục khách hàng mục tiêu.
@@ -83,7 +83,7 @@ export default function AboutPage() {
             </p>
             <p className="text-[15px] leading-relaxed text-fg-muted" data-reveal data-reveal-group="story">
               Với hơn 4 năm kinh nghiệm, hơn 2.000 khách hàng tin tưởng và hơn 1.000 dự án thành
-              công, Diary Agency tự hào là đối tác đáng tin cậy của nhiều doanh nghiệp, tập đoàn và
+              công, Day Agency tự hào là đối tác đáng tin cậy của nhiều doanh nghiệp, tập đoàn và
               thương hiệu lớn tại Việt Nam.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
         >
           <Image
             src="/images/bts-02.webp"
-            alt="Ekip Diary Agency căn khung hình tại hiện trường sản xuất"
+            alt="Ekip Day Agency căn khung hình tại hiện trường sản xuất"
             fill
             sizes="100vw"
             className="object-cover"
@@ -191,7 +191,7 @@ export default function AboutPage() {
               key={v.no}
               data-reveal
               data-reveal-group="val-cards"
-              className="group bg-ink-2 p-8 transition-colors duration-500 hover:bg-surface sm:p-10"
+              className="group bg-ink-2/55 backdrop-blur-sm p-8 transition-colors duration-500 hover:bg-surface/75 sm:p-10"
             >
               <span
                 className="text-5xl font-bold text-line transition-colors duration-500 group-hover:text-brand"

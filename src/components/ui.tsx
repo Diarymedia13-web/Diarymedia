@@ -39,7 +39,7 @@ export function ButtonLink({
 }: {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "solid" | "ghost" | "outline";
+  variant?: "primary" | "solid" | "ghost" | "outline" | "outline-ink";
   className?: string;
   external?: boolean;
 }) {
@@ -56,6 +56,8 @@ export function ButtonLink({
     solid: "bg-brand py-1.5 pl-6 pr-1.5 text-brand-ink hover:bg-brand-light",
     outline:
       "border border-white/25 py-1.5 pl-6 pr-1.5 text-white hover:border-white/60 hover:bg-white/5",
+    // Viền — dùng trên nền sáng/giấy kem, chữ đậm để đủ tương phản (khác "outline" ở trên là cho nền tối)
+    "outline-ink": "border border-line py-1.5 pl-6 pr-1.5 text-fg hover:border-brand/50 hover:bg-brand/5",
     ghost: "px-1 py-1 text-fg-muted hover:text-brand",
   } as const;
 
@@ -118,6 +120,36 @@ export function GradientBlock({
   return (
     <div className={cx("grain relative isolate overflow-hidden rounded-hero", gradient, className)}>
       {children}
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Thẻ "giấy mềm" hữu cơ: bo tròn ba góc trên, cạnh đáy uốn lượn thay vì
+   thẳng — vẽ bằng một dải SVG cùng màu nền trang, phủ lên đáy khối để tạo
+   ảo giác thẻ "tan" vào nền. Dùng cho hero trang chủ (điểm nhấn thị giác
+   chính) — các khối gradient khác trong site vẫn dùng GradientBlock thường.
+   -------------------------------------------------------------------------- */
+export function OrganicCard({
+  children,
+  className,
+  waveFill = "var(--color-ink)",
+}: {
+  children: ReactNode;
+  className?: string;
+  waveFill?: string;
+}) {
+  return (
+    <div className={cx("relative isolate overflow-hidden rounded-t-hero", className)}>
+      {children}
+      <span className="wave-edge" aria-hidden>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,42 C 200,105 360,0 610,48 C 860,96 1040,12 1260,54 C 1350,72 1400,66 1440,58 L1440,120 L0,120 Z"
+            fill={waveFill}
+          />
+        </svg>
+      </span>
     </div>
   );
 }

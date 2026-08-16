@@ -5,9 +5,11 @@
   "description": "Website chính thức của Diary Agency — Giải pháp truyền thông toàn diện cho doanh nghiệp",
   "scripts": {
     "dev": "next dev -p 3000",
+    "dev:agent": "AGENT_DEV=1 next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "telegram": "npm start --prefix telegram",
     "serve": "npx --yes serve out -l 4173"
   },
   "dependencies": {
