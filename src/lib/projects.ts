@@ -4,7 +4,8 @@ export type ProjectCategory =
   | "Fashion Film"
   | "Nhiếp ảnh thương mại"
   | "Brand Film"
-  | "Giải pháp truyền thông";
+  | "Giải pháp truyền thông"
+  | "Thiết kế ấn phẩm";
 
 export interface Project {
   slug: string;
@@ -254,6 +255,88 @@ export const projects: Project[] = [
     ],
     span: "wide",
   },
+  {
+    slug: "an-lac-tam-thiet-ke-menu",
+    title: "Thiết kế menu nhà hàng chay An Lạc Tâm",
+    client: "An Lạc Tâm",
+    category: "Thiết kế ấn phẩm",
+    year: "2026",
+    location: "Đà Nẵng",
+    summary:
+      "Thiết kế trọn bộ menu cho nhà hàng chay An Lạc Tâm — tinh hoa ẩm thực Việt. Bố cục kết hợp hình ảnh món ăn thực tế với hoạ tiết sen và tông màu đỏ đô, vàng đồng gợi không gian ấm cúng, tĩnh tại đúng tinh thần ẩm thực chay Việt Nam.",
+    scope: [
+      "Định hướng bố cục & hệ chữ cho toàn bộ menu",
+      "Styling và ghép ảnh món ăn theo từng danh mục",
+      "Thiết kế trang bìa & hoạ tiết trang trí xuyên suốt",
+      "Chuẩn bị file in ấn hoàn chỉnh",
+    ],
+    cover: "/images/work/menu-anlactam-01.webp",
+    gallery: [
+      "/images/work/menu-anlactam-01.webp",
+      "/images/work/menu-anlactam-02.webp",
+      "/images/work/menu-anlactam-03.webp",
+      "/images/work/menu-anlactam-04.webp",
+      "/images/work/menu-anlactam-05.webp",
+      "/images/work/menu-anlactam-06.webp",
+      "/images/work/menu-anlactam-07.webp",
+    ],
+    span: "tall",
+  },
+  {
+    slug: "dana-tram-huong",
+    title: "Câu chuyện thương hiệu Dana Trầm Hương",
+    client: "Dana Trầm Hương",
+    category: "Nhiếp ảnh thương mại",
+    year: "2026",
+    location: "Đà Nẵng",
+    summary:
+      "Bộ ảnh phong cách phim tài liệu cho thương hiệu trầm hương Đà Nẵng: từ khoảnh khắc người thợ chế tác, cân đo nguyên liệu trầm thô cho tới hình ảnh trang phục mang nhận diện thương hiệu — giữ đúng chất mộc, trầm tĩnh của một nghề thủ công lâu đời.",
+    scope: [
+      "Chỉ đạo hình ảnh phong cách tài liệu",
+      "Ghi hình quy trình chế tác trầm hương",
+      "Ảnh sản phẩm & nhận diện thương hiệu",
+      "Hậu kỳ màu phim, giữ chất mộc nguyên liệu",
+    ],
+    cover: "/images/work/dana-tramhuong-10.webp",
+    gallery: [
+      "/images/work/dana-tramhuong-10.webp",
+      "/images/work/dana-tramhuong-01.webp",
+      "/images/work/dana-tramhuong-06.webp",
+      "/images/work/dana-tramhuong-09.webp",
+      "/images/work/dana-tramhuong-11.webp",
+      "/images/work/dana-tramhuong-03.webp",
+      "/images/work/dana-tramhuong-05.webp",
+      "/images/work/dana-tramhuong-07.webp",
+    ],
+    span: "wide",
+  },
+  {
+    slug: "zoseo-viet-nam-short-video",
+    title: "Quay short video sản phẩm giày thể thao",
+    client: "Zoseo Việt Nam",
+    category: "TVC & Phim quảng cáo",
+    year: "2026",
+    location: "Đà Nẵng",
+    summary:
+      "Sản xuất bộ short video và ảnh sản phẩm cho thương hiệu giày thể thao Zoseo Việt Nam: người mẫu trình diễn tại các bối cảnh ngoài trời ở Đà Nẵng, cận cảnh chất liệu và công nghệ đế giày, đúng nhịp nội dung ngắn cho mạng xã hội.",
+    scope: [
+      "Casting & đạo diễn hình ảnh",
+      "Quay short video đa bối cảnh",
+      "Ảnh sản phẩm & cận cảnh chi tiết",
+      "Dựng bản ngắn cho mạng xã hội",
+    ],
+    cover: "/images/work/zoseo-vietnam-01.webp",
+    gallery: [
+      "/images/work/zoseo-vietnam-01.webp",
+      "/images/work/zoseo-vietnam-04.webp",
+      "/images/work/zoseo-vietnam-02.webp",
+      "/images/work/zoseo-vietnam-03.webp",
+      "/images/work/zoseo-vietnam-06.webp",
+      "/images/work/zoseo-vietnam-05.webp",
+      "/images/work/zoseo-vietnam-07.webp",
+    ],
+    span: "tall",
+  },
 ];
 
 export const projectCategories: ProjectCategory[] = [
@@ -263,6 +346,7 @@ export const projectCategories: ProjectCategory[] = [
   "Fashion Film",
   "Nhiếp ảnh thương mại",
   "Brand Film",
+  "Thiết kế ấn phẩm",
 ];
 
 /**

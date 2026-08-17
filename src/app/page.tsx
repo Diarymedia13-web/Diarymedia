@@ -387,6 +387,41 @@ export default function HomePage() {
         </div>
       </Container>
 
+      {/* ================= HẬU TRƯỜNG ================= */}
+      <section className="relative isolate mt-24 overflow-hidden sm:mt-32">
+        <Image
+          src="/images/work/bts-hero-01.webp"
+          alt="Ekip Day Agency đang quay hình trong một buổi tối sản xuất sự kiện"
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_30%]"
+          data-reveal
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent" />
+        <span className="grain absolute inset-0" aria-hidden />
+
+        <Container className="relative z-10 py-24 sm:py-32">
+          <SectionLabel tone="light" className="mb-5" data-reveal>
+            Hậu trường sản xuất
+          </SectionLabel>
+          <h2
+            className="max-w-2xl text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-white"
+            style={{ fontFamily: "var(--font-display)" }}
+            data-reveal
+            data-reveal-group="bts"
+          >
+            Phía sau mỗi khung hình
+            <br />
+            là một ekip đang chạy hết mình.
+          </h2>
+          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/80" data-reveal data-reveal-group="bts">
+            Không có bức ảnh dàn dựng nào ở đây — đây là chính đội ngũ Day Agency giữa một buổi tối
+            sản xuất thật, máy quay vẫn đang chạy.
+          </p>
+        </Container>
+      </section>
+
       {/* ================= GIÁ TRỊ CỐT LÕI ================= */}
       <Container className="mt-24 sm:mt-32">
         <div className="grid gap-12 lg:grid-cols-12">

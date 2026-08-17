@@ -114,6 +114,42 @@ export default function AboutPage() {
         </div>
       </Container>
 
+      {/* ================= HẬU TRƯỜNG ================= */}
+      <section className="relative isolate mt-24 overflow-hidden sm:mt-32">
+        <Image
+          src="/images/work/bts-hero-02.webp"
+          alt="Ekip Day Agency ghi hình ngoài trời tại Đà Nẵng"
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_35%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/10" />
+        <div className="absolute inset-0 bg-gradient-to-l from-ink/75 via-transparent to-transparent" />
+        <span className="grain absolute inset-0" aria-hidden />
+
+        <Container className="relative z-10 py-24 sm:py-32">
+          <div className="ml-auto max-w-lg text-right">
+            <SectionLabel tone="light" className="mb-5" data-reveal>
+              Một ngày làm việc của chúng tôi
+            </SectionLabel>
+            <h2
+              className="text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-tight text-white"
+              style={{ fontFamily: "var(--font-display)" }}
+              data-reveal
+              data-reveal-group="bts2"
+            >
+              Nắng, gió, deadline —
+              <br />
+              vẫn ra hiện trường đúng giờ.
+            </h2>
+            <p className="mt-6 text-[15px] leading-relaxed text-white/80" data-reveal data-reveal-group="bts2">
+              Từ sáng sớm tới tối muộn, ở bất kỳ địa hình nào — miễn dự án cần, ekip Day Agency có
+              mặt.
+            </p>
+          </div>
+        </Container>
+      </section>
+
       {/* ================= FOUNDER ================= */}
       <section id="founder" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
