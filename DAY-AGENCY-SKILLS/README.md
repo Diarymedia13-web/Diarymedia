@@ -2,6 +2,11 @@
 
 Bộ kỹ năng AI nội bộ dành cho DAY AGENCY.
 
+## Cách dùng mặc định: KHÔNG CẦN NHỚ TỪ KHÓA
+Anh chỉ cần nói nhu cầu bằng ngôn ngữ tự nhiên như đang giao việc cho team. Ví dụ: `Anh đang cần thêm khách ngành thực phẩm`, `Ads đang tốn nhưng lead kém`, `Lên giúp anh kế hoạch 90 ngày`, `Khách này deal sao để dễ chốt`.
+
+`day-director` sẽ tự hiểu mục tiêu, xác định bài toán, chọn skill phù hợp và phối hợp nhiều workflow nếu cần. Không yêu cầu anh nhớ tên skill, phiên bản V1/V2/V3 hay câu lệnh kỹ thuật.
+
 ## Nguyên tắc
 - Skill DAY AGENCY là năng lực tái sử dụng của agency, không học nội dung riêng của dự án khách hàng.
 - Mọi đầu ra phải gắn với mục tiêu kinh doanh, không chạy theo vanity metrics.
@@ -9,8 +14,14 @@ Bộ kỹ năng AI nội bộ dành cho DAY AGENCY.
 - Không bịa số liệu, case study hoặc kết quả.
 - Nội dung DAY: hook mạnh tự nhiên, ý rõ, ngắn gọn đủ ý, icon vừa phải.
 - Khi có dữ liệu mới hoặc thông tin nền tảng thay đổi, phải xác minh trước khi dùng.
+- Hỏi lại tối thiểu; nếu đủ ngữ cảnh thì tự triển khai và nêu giả định ngắn gọn.
 
-## Skill lõi v1
+## Lớp điều phối
+- `day-director` — giao diện ngôn ngữ tự nhiên, tự route nhu cầu.
+- V2 — Growth OS cho chẩn đoán và vận hành tăng trưởng.
+- V3 — Control Tower cho bài toán chiến lược/liên phòng ban.
+
+## Skill lõi
 1. `brand-context` — nguồn sự thật về DAY AGENCY.
 2. `social-media-strategy` — chiến lược social và lựa chọn kênh.
 3. `competitor-intelligence` — phân tích đối thủ và khoảng trống thị trường.
@@ -18,8 +29,10 @@ Bộ kỹ năng AI nội bộ dành cho DAY AGENCY.
 5. `lead-generation` — tìm và chấm điểm khách hàng B2B.
 6. `short-video-strategy` — nghiên cứu, hook, format và short-video plan.
 
-## Cách gọi
-Ví dụ: `Dùng skill social-media-strategy để xây chiến lược 90 ngày cho DAY AGENCY.`
+## Cách gọi nâng cao (không bắt buộc)
+Nếu muốn ép dùng đúng một workflow, vẫn có thể nói: `Dùng social-media-strategy để...`. Nhưng mặc định không cần.
+
+Xem thêm: `COMMAND-FREE-USAGE.md`.
 
 ## Nguồn tham khảo
 Thiết kế hệ thống tham khảo Agent Skills convention và các repo open-source có cấu trúc SKILL.md; nội dung trong thư mục này được chuẩn hóa riêng cho DAY AGENCY.
