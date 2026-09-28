@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Phone, MessageCircle, X, MessagesSquare } from "lucide-react";
 import { site } from "@/lib/site";
 import { cx } from "./ui";
@@ -10,6 +11,7 @@ import { cx } from "./ui";
  * Chỉ xuất hiện sau khi người dùng đã cuộn qua vùng hero để không che nội dung đầu trang.
  */
 export default function FloatingCta() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -40,6 +42,10 @@ export default function FloatingCta() {
       className: "bg-brand text-brand-ink hover:bg-brand-light",
     },
   ];
+
+  // Landing page chiến dịch (/audit, /thank-you) chỉ có đúng 1 CTA: đăng ký
+  // audit — cụm liên hệ nhanh này mở nhiều lối thoát khỏi funnel nên ẩn hẳn.
+  if (pathname.startsWith("/audit") || pathname.startsWith("/thank-you")) return null;
 
   return (
     <div

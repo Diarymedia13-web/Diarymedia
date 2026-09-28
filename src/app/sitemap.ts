@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/du-an/", priority: 0.8 },
     { path: "/ve-chung-toi/", priority: 0.7 },
     { path: "/lien-he/", priority: 0.8 },
+    { path: "/audit/", priority: 0.8 },
   ];
 
   return routes.map(({ path, priority }) => ({

@@ -36,12 +36,14 @@ export function ButtonLink({
   variant = "primary",
   className,
   external,
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   variant?: "primary" | "solid" | "ghost" | "outline" | "outline-ink";
   className?: string;
   external?: boolean;
+  onClick?: () => void;
 }) {
   // `inline-flex` nằm trong base nên đừng truyền `hidden` qua className —
   // hai utility cùng thuộc tính `display` sẽ đá nhau. Muốn ẩn thì bọc nút
@@ -91,6 +93,7 @@ export function ButtonLink({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={onClick}
         className={cx(base, variants[variant], className)}
       >
         {inner}
@@ -99,7 +102,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={cx(base, variants[variant], className)}>
+    <Link href={href} onClick={onClick} className={cx(base, variants[variant], className)}>
       {inner}
     </Link>
   );

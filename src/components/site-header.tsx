@@ -15,8 +15,19 @@ const nav = [
   { href: "/ve-chung-toi/", label: "Về chúng tôi" },
 ];
 
+// Landing page chiến dịch (/audit) dùng nav rút gọn, chỉ neo trong cùng
+// trang — không dẫn khách sang trang khác khiến traffic quảng cáo thoát funnel.
+const auditNav = [
+  { href: "#cach-tiep-can", label: "Giải pháp" },
+  { href: "#growth-system", label: "Quy trình" },
+  { href: "#audit-scope", label: "Audit" },
+];
+
 export default function SiteHeader() {
   const pathname = usePathname();
+  // Landing chiến dịch: /audit dùng nav rút gọn; /thank-you đi theo luôn vì
+  // là điểm đến cuối của cùng funnel, không cần nav đầy đủ của site chính.
+  const isAudit = pathname.startsWith("/audit") || pathname.startsWith("/thank-you");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,7 +38,10 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Đóng menu và khoá cuộn nền khi menu di động đang mở
+  // Đóng menu khi đổi trang thật. Bấm mục neo (#id, dùng ở nav /audit)
+  // KHÔNG đổi pathname nên effect này không chạy — phải đóng menu thủ công
+  // ở onClick của từng mục trong menu di động (xem bên dưới), nếu không
+  // menu che kín màn hình sẽ không tự tắt sau khi bấm.
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -73,14 +87,14 @@ export default function SiteHeader() {
             scrolled ? "border-line bg-surface/85" : "border-line/70 bg-surface/60",
           )}
         >
-          {nav.map((item) => (
+          {(isAudit ? auditNav : nav).map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
+              aria-current={!isAudit && isActive(item.href) ? "page" : undefined}
               className={cx(
                 "cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
-                isActive(item.href)
+                !isAudit && isActive(item.href)
                   ? "bg-ink-2 text-fg"
                   : "text-fg-muted hover:bg-ink-2/70 hover:text-fg",
               )}
@@ -91,17 +105,19 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <a
-            href={`tel:${site.contact.phoneIntl}`}
-            className="hidden cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg md:inline-flex"
-          >
-            <Phone size={15} strokeWidth={2.2} aria-hidden />
-            {site.contact.phoneDisplay}
-          </a>
+          {!isAudit && (
+            <a
+              href={`tel:${site.contact.phoneIntl}`}
+              className="hidden cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg md:inline-flex"
+            >
+              <Phone size={15} strokeWidth={2.2} aria-hidden />
+              {site.contact.phoneDisplay}
+            </a>
+          )}
 
           <span className="hidden md:block">
-            <ButtonLink href="/lien-he/" variant="primary">
-              Nhận tư vấn
+            <ButtonLink href={isAudit ? "#dang-ky-audit" : "/lien-he/"} variant="primary">
+              {isAudit ? "Đăng ký Audit" : "Nhận tư vấn"}
             </ButtonLink>
           </span>
 
@@ -122,16 +138,20 @@ export default function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="fixed inset-0 z-0 bg-ink/97 backdrop-blur-2xl lg:hidden"
+        // z-45: dưới header (z-50, vẫn bấm được nút đóng) nhưng trên mọi
+        // thanh CTA dính cuối trang trong nội dung (vd. sticky CTA ở /audit,
+        // z-40) — nếu không, menu mở ra vẫn thấy thanh CTA đè lên trên.
+        className="fixed inset-0 z-[45] bg-ink/97 backdrop-blur-2xl lg:hidden"
       >
         <nav aria-label="Điều hướng di động" className="flex h-full flex-col justify-center px-7">
-          {nav.map((item, i) => (
+          {(isAudit ? auditNav : nav).map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setOpen(false)}
               className={cx(
                 "flex cursor-pointer items-baseline gap-4 border-b border-line py-5 text-3xl font-bold tracking-tight transition-colors sm:text-4xl",
-                isActive(item.href) ? "text-brand" : "text-fg hover:text-brand",
+                !isAudit && isActive(item.href) ? "text-brand" : "text-fg hover:text-brand",
               )}
               style={{ fontFamily: "var(--font-display)" }}
             >
@@ -141,8 +161,13 @@ export default function SiteHeader() {
           ))}
 
           <div className="mt-10 flex flex-col gap-3">
-            <ButtonLink href="/lien-he/" variant="solid" className="w-fit">
-              Nhận tư vấn miễn phí
+            <ButtonLink
+              href={isAudit ? "#dang-ky-audit" : "/lien-he/"}
+              variant="solid"
+              className="w-fit"
+              onClick={() => setOpen(false)}
+            >
+              {isAudit ? "Đăng ký Audit miễn phí" : "Nhận tư vấn miễn phí"}
             </ButtonLink>
             <a
               href={`tel:${site.contact.phoneIntl}`}

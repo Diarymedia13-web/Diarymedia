@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Sparkles, X, Send, Loader2 } from "lucide-react";
 import { site } from "@/lib/site";
 import { cx } from "./ui";
@@ -28,6 +29,7 @@ const GREETING: ChatMessage = {
 const FALLBACK_ERROR = `Không kết nối được với trợ lý. Vui lòng gọi ${site.contact.phoneDisplay} hoặc nhắn Zalo để được hỗ trợ trực tiếp.`;
 
 export default function ChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
   const [input, setInput] = useState("");
@@ -38,7 +40,9 @@ export default function ChatWidget() {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, open]);
 
-  if (!WORKER_URL) return null;
+  // Landing page chiến dịch (/audit, /thank-you) chỉ có đúng 1 CTA: đăng ký
+  // audit — widget chat mở ra một lối thoát khỏi funnel nên ẩn hẳn ở đây.
+  if (!WORKER_URL || pathname.startsWith("/audit") || pathname.startsWith("/thank-you")) return null;
 
   async function handleSend(e: React.FormEvent) {
     e.preventDefault();
