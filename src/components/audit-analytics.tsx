@@ -47,6 +47,18 @@ export default function AuditAnalytics() {
             fbq('init', '${META_PIXEL_ID}');fbq('track', 'PageView');`}
         </Script>
       )}
+
+      {/* OpenAI Ads Pixel — pixel ID thật do sếp cung cấp, KHÔNG dùng biến
+          môi trường và KHÔNG sửa nội dung snippet theo đúng yêu cầu, vì đây
+          là mã chính thức đã cấu hình sẵn "Lead Created" trong Ads Manager.
+          Đã xác minh: bzrcdn.openai.com có chứng chỉ TLS hợp lệ đứng tên
+          chính domain này và nội dung SDK khớp với công cụ đo lường quảng
+          cáo thật. Sự kiện "lead_created" được bắn riêng trong audit-form.tsx
+          — CHỈ sau khi Web3Forms xác nhận gửi thành công, không bắn khi mới
+          mở trang, bấm nút, hay gửi lỗi. */}
+      <Script id="audit-openai-ads-pixel" strategy="afterInteractive">
+        {`!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"XLizin1Gr99iwKZd9tt61w",debug:true});`}
+      </Script>
     </>
   );
 }

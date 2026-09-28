@@ -43,6 +43,7 @@ declare global {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     fbq?: (...args: unknown[]) => void;
+    oaiq?: (...args: unknown[]) => void;
   }
 }
 
@@ -138,6 +139,11 @@ export default function AuditForm() {
       });
       window.fbq?.("track", "Lead");
       window.dataLayer?.push({ event: "audit_lead_submit", ...attribution });
+      // OpenAI Ads — sự kiện chuẩn "lead_created" (category customer_action,
+      // tra trực tiếp trong SDK oaiq.min.js, không đoán). Field "type" bên
+      // trong PHẢI đúng bằng tên category ("customer_action"), không phải
+      // tên event — đây là quy ước của chính SDK, không phải lỗi gõ nhầm.
+      window.oaiq?.("measure", "lead_created", { type: "customer_action" });
 
       form.reset();
       router.push("/thank-you/");
