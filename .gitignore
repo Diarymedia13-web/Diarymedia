@@ -8,7 +8,14 @@ out/
 next-env.d.ts
 *.zip
 
-# Lịch sử hội thoại Telegram — dữ liệu riêng tư của người dùng, chỉ nằm trên máy.
-# Giữ lại .gitkeep để cấu trúc thư mục vẫn có trong Git.
-telegram/data/*
-!telegram/data/.gitkeep
+# Hệ thống trợ lý AI (bot Telegram — gồm cả lịch sử chat thật trong
+# telegram/telegram/data/, agent config...) — cố tình CHƯA đưa vào repo theo
+# quyết định của sếp (repo này đang PUBLIC). Ghi rõ ở đây để công cụ "Stage
+# All" của IDE không tự động chọn nhầm nữa — đã xảy ra 2 lần.
+# Muốn đưa chính thức vào Git thì xoá các dòng dưới đây.
+.claude/
+.vscode/
+CLAUDE.md
+agent/
+diary_agent_os_pack/
+telegram/
