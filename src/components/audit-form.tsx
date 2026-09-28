@@ -107,9 +107,17 @@ export default function AuditForm() {
     setStatus("sending");
     setMessage("");
 
+    const companyName = String(data.get("Tên doanh nghiệp") ?? "").trim() || "(chưa rõ tên)";
+    // Ghép nguồn quảng cáo thành 1 dòng đọc hiểu ngay, không bắt người nhận
+    // mail phải tự suy ra từ utm_source/utm_campaign rời rạc.
+    const sourceSummary = attribution.utm_source
+      ? `${attribution.utm_source}${attribution.utm_medium ? ` (${attribution.utm_medium})` : ""}${attribution.utm_campaign ? ` — chiến dịch ${attribution.utm_campaign}` : ""}`
+      : "Không có UTM — khách vào thẳng trang, không qua link quảng cáo";
+
     data.append("access_key", ACCESS_KEY);
-    data.append("subject", `[${site.name}] Đăng ký Digital Growth Audit`);
+    data.append("subject", `[DAY AUDIT] Lead mới – ${companyName}`);
     data.append("from_name", `Chiến dịch Audit — ${site.name}`);
+    data.append("Nguồn lead", sourceSummary);
     Object.entries(attribution).forEach(([key, value]) => data.append(key, value));
 
     try {
@@ -134,9 +142,12 @@ export default function AuditForm() {
       form.reset();
       router.push("/thank-you/");
     } catch {
+      // Cố tình không hiện lỗi kỹ thuật/API gốc — người dùng chỉ cần biết
+      // hướng xử lý tiếp theo. Dữ liệu form không bị xoá (không gọi
+      // form.reset() ở nhánh này) nên không phải nhập lại từ đầu.
       setStatus("error");
       setMessage(
-        `Không gửi được yêu cầu. Vui lòng thử lại hoặc nhắn Zalo ${site.contact.phoneDisplay} — chúng tôi lên lịch audit trong ngày làm việc.`,
+        `Chưa thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ DAY Agency qua Zalo ${site.contact.phoneDisplay}.`,
       );
     }
   }

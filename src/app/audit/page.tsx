@@ -432,6 +432,10 @@ export default function AuditPage() {
 
           <div className="mt-12" data-reveal>
             <AuditForm />
+            <p className="mt-5 text-center text-sm text-fg-dim">
+              Thông tin được sử dụng để DAY Agency liên hệ và thực hiện đánh giá theo yêu cầu của
+              doanh nghiệp.
+            </p>
           </div>
         </Container>
       </section>
