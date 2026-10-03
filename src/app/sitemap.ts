@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/ve-chung-toi/", priority: 0.7 },
     { path: "/lien-he/", priority: 0.8 },
     { path: "/audit/", priority: 0.8 },
+    { path: "/chinh-sach-bao-mat/", priority: 0.3 },
   ];
 
   return routes.map(({ path, priority }) => ({

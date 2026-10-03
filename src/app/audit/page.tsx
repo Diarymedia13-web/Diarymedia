@@ -434,7 +434,13 @@ export default function AuditPage() {
             <AuditForm />
             <p className="mt-5 text-center text-sm text-fg-dim">
               Thông tin được sử dụng để DAY Agency liên hệ và thực hiện đánh giá theo yêu cầu của
-              doanh nghiệp.
+              doanh nghiệp.{" "}
+              <a
+                href="/chinh-sach-bao-mat/"
+                className="cursor-pointer font-semibold text-brand underline-offset-4 hover:underline"
+              >
+                Xem chính sách bảo mật
+              </a>
             </p>
           </div>
         </Container>
