@@ -138,7 +138,7 @@ export function FeaturedWork() {
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
               <div>
                 <p className="t-label text-brand-light">
-                  {p.category} · {p.year}
+                  {p.category}
                 </p>
                 <h3 className={cx("mt-2 font-bold tracking-tight text-white", i === 0 ? "text-2xl sm:text-3xl" : "text-lg")}
                   style={{ fontFamily: "var(--font-display)" }}>

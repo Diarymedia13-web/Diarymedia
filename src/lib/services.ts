@@ -242,7 +242,7 @@ export const processSteps = [
 
 export const faqs = [
   {
-    q: "Day Agency khác gì với một đơn vị sản xuất video thông thường?",
+    q: "Diary Media khác gì với một đơn vị sản xuất video thông thường?",
     a: "Đơn vị sản xuất nhận brief và giao file. Chúng tôi bắt đầu từ bài toán kinh doanh: định vị, thông điệp, kênh phân phối và cách đo lường. Sản xuất hình ảnh chỉ là một mắt xích trong hệ thống đó — nên nội dung làm ra có đích đến rõ ràng thay vì nằm im trên fanpage.",
   },
   {
@@ -262,7 +262,7 @@ export const faqs = [
     a: "AI được dùng ở nơi nó thực sự tạo hiệu quả: nhân bản biến thể nội dung để test quảng cáo, dựng hình ảnh concept, chatbot tư vấn và trợ lý nội bộ trên dữ liệu riêng của doanh nghiệp. Phần cảm xúc và ý tưởng lõi vẫn do con người chịu trách nhiệm.",
   },
   {
-    q: "Day Agency nhận dự án ở khu vực nào?",
+    q: "Diary Media nhận dự án ở khu vực nào?",
     a: "Trụ sở đặt tại Đà Nẵng, ekip triển khai trên toàn quốc. Với các hạng mục chiến lược, website, quảng cáo và AI, chúng tôi làm việc từ xa hiệu quả với doanh nghiệp ở bất kỳ tỉnh thành nào.",
   },
 ];

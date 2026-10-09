@@ -43,9 +43,6 @@ export default function WorkGallery() {
               )}
             >
               {f}
-              <span className={cx("ml-2 text-xs", isOn ? "text-brand-ink/60" : "text-fg-dim")}>
-                {count}
-              </span>
             </button>
           );
         })}
@@ -72,6 +69,11 @@ export default function WorkGallery() {
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent opacity-70" />
+              {p.before && (
+                <span className="t-label absolute left-4 top-4 rounded-full border border-brand/40 bg-ink/70 px-3 py-1.5 text-brand-light backdrop-blur-md">
+                  Trước / Sau
+                </span>
+              )}
               <span className="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-white opacity-0 backdrop-blur-md transition-all duration-300 group-hover:opacity-100">
                 <ArrowUpRight size={18} strokeWidth={2.4} aria-hidden />
               </span>
@@ -80,7 +82,6 @@ export default function WorkGallery() {
             <div className="flex flex-1 flex-col p-6">
               <div className="flex items-center gap-3">
                 <span className="t-label text-brand">{p.category}</span>
-                <span className="t-label text-fg-dim">{p.year}</span>
               </div>
               <h3 className="t-h3 mt-3 text-fg transition-colors group-hover:text-brand-light">
                 {p.title}
@@ -149,7 +150,6 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="t-label text-brand">{project.category}</span>
-                <span className="t-label text-fg-dim">{project.year}</span>
                 {project.location && <span className="t-label text-fg-dim">{project.location}</span>}
               </div>
               <h3 className="t-h2 mt-4">{project.title}</h3>
@@ -170,10 +170,66 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
             </div>
           </div>
 
+          {project.facts && (
+            <dl className="mx-6 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:mx-10 sm:grid-cols-3">
+              {project.facts.map((f) => (
+                <div key={f.label} className="bg-ink-2 px-5 py-5">
+                  <dt className="sr-only">{f.label}</dt>
+                  <dd>
+                    <span className="block text-3xl font-extrabold tracking-tight text-gradient-brand" style={{ fontFamily: "var(--font-display)" }}>
+                      {f.value}
+                    </span>
+                    <span className="mt-1 block text-sm text-fg-muted">{f.label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          {project.before && (
+            <div className="mt-10 grid gap-3 p-2 lg:grid-cols-12">
+              <figure className="flex flex-col lg:col-span-5">
+                <figcaption className="t-label mb-3 px-4 text-fg-dim sm:px-8 lg:px-4">Trước · bao bì cũ</figcaption>
+                <div className="grid flex-1 grid-cols-2 gap-2">
+                  {project.before.map((src, i) => (
+                    <div key={src} className="relative aspect-[3/4] overflow-hidden rounded-xl lg:aspect-auto">
+                      <Image
+                        src={src}
+                        alt={`${project.client} — bao bì trước khi định vị, hình ${i + 1}`}
+                        fill
+                        sizes="(max-width: 1024px) 50vw, 20vw"
+                        className="object-cover saturate-[0.7]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </figure>
+              <figure className="lg:col-span-7">
+                <figcaption className="t-label mb-3 px-4 text-brand sm:px-8 lg:px-4">Sau · Diary Media định vị lại</figcaption>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                  <Image
+                    src={project.cover}
+                    alt={`${project.client} — bao bì sau khi định vị`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+            </div>
+          )}
+
           {project.gallery.length > 1 && (
             <div className="grid gap-2 p-2 sm:grid-cols-2 lg:grid-cols-3">
-              {project.gallery.slice(1).map((src, i) => (
-                <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+              {project.gallery.slice(1).map((src, i, rest) => (
+                <div
+                  key={src}
+                  className={cx(
+                    "relative aspect-[4/3] overflow-hidden rounded-xl",
+                    // Số ảnh lẻ 2 ở hàng cuối → cho ảnh đầu chiếm 2 ô để lưới 3 cột lấp kín.
+                    i === 0 && rest.length % 3 === 2 && "lg:col-span-2 lg:aspect-auto",
+                  )}
+                >
                   <Image
                     src={src}
                     alt={`${project.title} — hình ${i + 2}`}

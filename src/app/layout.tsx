@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     "thiết kế website doanh nghiệp",
     "chạy quảng cáo",
     "AI cho doanh nghiệp",
-    "Day Agency",
+    "Diary Media",
   ],
   authors: [{ name: site.name }],
   creator: site.name,
@@ -61,53 +61,30 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — Giải pháp truyền thông toàn diện cho doanh nghiệp`,
     description: site.description,
-    images: [{ url: "/images/bts-02.webp", width: 1600, height: 1066, alt: site.name }],
+    images: [{ url: "/images/brand/diary-cover.jpg", width: 2048, height: 780, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Giải pháp truyền thông toàn diện`,
     description: site.description,
-    images: ["/images/bts-02.webp"],
+    images: ["/images/brand/diary-cover.jpg"],
   },
   // Bản demo (build với NEXT_PUBLIC_DEMO=1) bị chặn lập chỉ mục, tránh Google
   // coi link demo là bản sao trùng nội dung với tên miền chính sau này.
   robots: isDemo ? { index: false, follow: false } : { index: true, follow: true },
   alternates: { canonical: "/" },
   icons: {
-    icon: [{ url: "/images/brand/logo-mark.png", type: "image/png" }],
-    apple: [{ url: "/images/brand/logo-mark.png" }],
+    icon: [{ url: "/images/brand/diary-mark.png", type: "image/png" }],
+    apple: [{ url: "/images/brand/diary-mark.png" }],
   },
 };
 
 export const viewport: Viewport = {
-  // Mảng theo prefers-color-scheme là màu mặc định cho tới khi JS chạy xong
-  // và ThemeToggle đồng bộ lại theo lựa chọn thủ công của người dùng.
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f0e6d3" },
-    { media: "(prefers-color-scheme: dark)", color: "#1c1710" },
-  ],
+  themeColor: "#160b08",
   width: "device-width",
   initialScale: 1,
   // Không đặt maximumScale — người dùng phải luôn phóng to được trang.
 };
-
-/**
- * Script chống-nháy theme: chạy đồng bộ trước khi trình duyệt vẽ khung hình
- * đầu tiên, nên phải là inline + không async/defer/module. Đọc lựa chọn đã
- * lưu; nếu chưa từng chọn thì theo prefers-color-scheme của hệ điều hành.
- * Không có JS (hoặc bị chặn) → không có data-theme → CSS mặc định về bản kem sáng.
- */
-const themeInitScript = `
-(function () {
-  try {
-    var stored = localStorage.getItem("day-theme");
-    var theme = stored === "light" || stored === "dark"
-      ? stored
-      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.setAttribute("data-theme", theme);
-  } catch (e) {}
-})();
-`;
 
 const jsonLd = {
   "@context": "https://schema.org",

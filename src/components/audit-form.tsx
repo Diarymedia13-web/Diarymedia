@@ -116,7 +116,7 @@ export default function AuditForm() {
       : "Không có UTM — khách vào thẳng trang, không qua link quảng cáo";
 
     data.append("access_key", ACCESS_KEY);
-    data.append("subject", `[DAY AUDIT] Lead mới – ${companyName}`);
+    data.append("subject", `[DIARY AUDIT] Lead mới – ${companyName}`);
     data.append("from_name", `Chiến dịch Audit — ${site.name}`);
     data.append("Nguồn lead", sourceSummary);
     Object.entries(attribution).forEach(([key, value]) => data.append(key, value));
@@ -153,7 +153,7 @@ export default function AuditForm() {
       // form.reset() ở nhánh này) nên không phải nhập lại từ đầu.
       setStatus("error");
       setMessage(
-        `Chưa thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ DAY Agency qua Zalo ${site.contact.phoneDisplay}.`,
+        `Chưa thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ Diary Media qua Zalo ${site.contact.phoneDisplay}.`,
       );
     }
   }

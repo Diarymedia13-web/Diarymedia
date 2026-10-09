@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Chính sách bảo mật",
-  description: "Cách Day Agency thu thập, sử dụng và bảo vệ thông tin cá nhân của khách hàng.",
+  description: "Cách Diary Media thu thập, sử dụng và bảo vệ thông tin cá nhân của khách hàng.",
   alternates: { canonical: "/chinh-sach-bao-mat/" },
 };
 
@@ -26,7 +26,7 @@ const sections = [
   {
     title: "3. Chia sẻ thông tin",
     body: [
-      "Chúng tôi không bán dữ liệu cá nhân. Thông tin chỉ được chuyển cho các đơn vị giúp vận hành: dịch vụ gửi form Web3Forms để chuyển nội dung về hộp thư của Day Agency, và nền tảng quảng cáo đo lường (Meta, OpenAI, Google) khi bạn tương tác với quảng cáo của chúng tôi, dưới dạng dữ liệu đã mã hoá.",
+      "Chúng tôi không bán dữ liệu cá nhân. Thông tin chỉ được chuyển cho các đơn vị giúp vận hành: dịch vụ gửi form Web3Forms để chuyển nội dung về hộp thư của Diary Media, và nền tảng quảng cáo đo lường (Meta, OpenAI, Google) khi bạn tương tác với quảng cáo của chúng tôi, dưới dạng dữ liệu đã mã hoá.",
     ],
   },
   {

@@ -3,147 +3,91 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { site } from "@/lib/site";
 import { solutionServices, productionServices, processSteps, tracks } from "@/lib/services";
-import { ButtonLink, Container, OrganicCard, SectionHead, SectionLabel } from "@/components/ui";
+import { ButtonLink, Container, SectionHead, SectionLabel } from "@/components/ui";
 import { ClientMarquee, CtaBlock, FeaturedWork, ServiceCard } from "@/components/blocks";
 import StatBand from "@/components/stat-band";
+import Timecode from "@/components/timecode";
 
-const heroPillars = [
-  { no: "01", label: "Chiến lược truyền thông" },
-  { no: "02", label: "Thương hiệu & hạ tầng số" },
-  { no: "03", label: "Sản xuất hình ảnh" },
-  { no: "04", label: "Quảng cáo & AI" },
-];
+/* Đúng 5 mảng ghi trên ảnh bìa chính thức, thêm AI là hướng đi mới — không
+   đánh số vì đây là danh mục, không phải trình tự. */
+const heroServices = ["Visual Branding", "Creative Agency", "Event", "TVC", "Marketing", "AI"];
 
-/* Toạ độ tính theo % khung ảnh hero, khớp với các điểm phát sáng vẽ sẵn trong
-   `hero-banner.jpg` — đổi ảnh thì phải chỉnh lại hai mảng dưới đây. */
-const GLOW_DOTS = [
-  { left: "50%", top: "38%", size: "17%", delay: "0s" },
-  { left: "15.5%", top: "17%", size: "3%", delay: "-0.6s" },
-  { left: "31.5%", top: "22%", size: "3%", delay: "-1.4s" },
-  { left: "66.5%", top: "17%", size: "3%", delay: "-2.2s" },
-  { left: "21.5%", top: "80%", size: "3%", delay: "-0.3s" },
-  { left: "42.5%", top: "80%", size: "3%", delay: "-1.9s" },
-  { left: "77.5%", top: "80%", size: "3%", delay: "-2.6s" },
-  { left: "41%", top: "46%", size: "2.4%", delay: "-1.1s" },
-  { left: "59%", top: "46%", size: "2.4%", delay: "-2.9s" },
-  { left: "47%", top: "68%", size: "2.4%", delay: "-0.9s" },
-  { left: "54%", top: "24%", size: "2.4%", delay: "-2.4s" },
-  { left: "36%", top: "62%", size: "2.2%", delay: "-1.7s" },
-  { left: "63%", top: "62%", size: "2.2%", delay: "-3.1s" },
-];
-
-const DATA_PULSES = [
-  { left: "20%", top: "45%", width: "22%", delay: "0s", duration: "3.6s" },
-  { left: "58%", top: "45%", width: "22%", delay: "-1.8s", duration: "4.2s" },
-  { left: "26%", top: "68%", width: "18%", delay: "-2.6s", duration: "3.9s" },
-  { left: "55%", top: "70%", width: "20%", delay: "-1.1s", duration: "4.6s" },
-  { left: "38%", top: "30%", width: "14%", delay: "-3.2s", duration: "3.3s" },
+const BTS_STRIP = [
+  { src: "/images/bts/bts-14.webp", alt: "Đạo diễn đeo tai nghe bộ đàm theo dõi khung hình trên màn hình máy quay" },
+  { src: "/images/bts/bts-15.webp", alt: "Quay phim đẩy máy trên ray trượt trong căn hộ mẫu" },
+  { src: "/images/bts/bts-11.webp", alt: "Phỏng vấn nhân vật với đèn amaran và máy quay đặt trên chân" },
+  { src: "/images/bts/bts-18.webp", alt: "Máy quay gắn màn hình và bộ phát không dây trên ray trượt cạnh giường" },
+  { src: "/images/bts/bts-19.webp", alt: "Ekip chuyển thiết bị trước cửa showroom trước giờ quay" },
+  { src: "/images/bts/bts-23.webp", alt: "Ekip chỉ đạo diễn xuất cho nhóm công nhân trong cảnh quay ngoài trời lúc chiều tối" },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* ================= HERO ================= */}
+      {/* ================= HERO — khung ngắm máy quay ================= */}
       <Container size="wide" className="pt-24 sm:pt-28">
-        <OrganicCard className="grain glow-brand border border-line/60 bg-surface/55 backdrop-blur-2xl">
-          <div className="relative z-10 px-6 pb-16 pt-16 sm:px-10 sm:pb-20 sm:pt-20">
-            <h1 className="sr-only">{site.name} — giải pháp truyền thông toàn diện cho doanh nghiệp</h1>
-
-            <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_60px_-25px_rgba(58,42,28,0.35)]">
-              <Image
-                src="/images/brand/hero-banner.jpg"
-                alt="Logo DAY AGENCY dạng khối chữ nổi, bao quanh bởi các nhân vật minh hoạ đại diện bảy mảng dịch vụ: Social, Creative, AI Intelligence, Branding, Production, Media, Digital"
-                width={2033}
-                height={773}
-                priority
-                sizes="(max-width: 1024px) 100vw, 900px"
-                className="hero-slow-zoom h-auto w-full"
-              />
-
-              {/* Hai vòng nan hoa xoay ngược chiều nhau sau tam giác AI */}
-              <span
-                className="ai-halo"
-                style={{ left: "50%", top: "38%", width: "24%", aspectRatio: "1" }}
-                aria-hidden
-              />
-              <span
-                className="ai-halo ai-halo-reverse"
-                style={{ left: "50%", top: "38%", width: "17%", aspectRatio: "1" }}
-                aria-hidden
-              />
-
-              {/* Xung sáng chạy dọc các đường mạch nối giữa những khối dịch vụ */}
-              {DATA_PULSES.map((p) => (
-                <span
-                  key={`${p.left}-${p.top}`}
-                  className="data-pulse"
-                  style={{
-                    left: p.left,
-                    top: p.top,
-                    width: p.width,
-                    animationDelay: p.delay,
-                    animationDuration: p.duration,
-                  }}
-                  aria-hidden
-                />
-              ))}
-
-              {/* Đốm sáng "thở" đè đúng lên các điểm sáng có sẵn trong ảnh —
-                  vị trí tính theo % để luôn đúng chỗ dù ảnh co giãn theo màn hình. */}
-              {GLOW_DOTS.map((d) => (
-                <span
-                  key={`${d.left}-${d.top}`}
-                  className="glow-dot"
-                  style={{
-                    left: d.left,
-                    top: d.top,
-                    width: d.size,
-                    aspectRatio: "1",
-                    animationDelay: d.delay,
-                  }}
-                  aria-hidden
-                />
-              ))}
-
-              {/* Dải sáng chéo quét ngang toàn ảnh */}
-              <span className="hero-sheen" aria-hidden />
-            </div>
-
-            <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <p
-                  className="text-2xl font-bold leading-tight text-fg sm:text-[28px]"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Truyền thông tốt là truyền thông tạo ra doanh thu.
-                </p>
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-fg-muted">
-                  Chúng tôi không dừng ở việc giao một video đẹp. Day Agency xây dựng hệ thống
-                  truyền thông hoàn chỉnh cho doanh nghiệp — từ chiến lược, hạ tầng số, quảng cáo
-                  cho tới sản xuất hình ảnh và ứng dụng trí tuệ nhân tạo.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-                <ButtonLink href="/lien-he/" variant="solid">
-                  Nhận tư vấn miễn phí
-                </ButtonLink>
-                <ButtonLink href="/du-an/" variant="outline-ink">
-                  Xem dự án
-                </ButtonLink>
-              </div>
-            </div>
-
-            {/* Bốn trụ năng lực — nhịp thị giác đóng đáy hero */}
-            <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-7 lg:grid-cols-4">
-              {heroPillars.map((p) => (
-                <li key={p.no}>
-                  <span className="t-label text-fg-dim">#{p.no}</span>
-                  <p className="mt-1.5 text-[15px] font-semibold text-fg sm:text-base">{p.label}</p>
-                </li>
-              ))}
-            </ul>
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-line bg-black shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+          <Image
+            src="/images/brand/diary-cover.webp"
+            alt="Ảnh bìa Diary Media: logo công ty, các thương hiệu đã đồng hành và ekip đang vận hành máy quay tại phim trường"
+            width={2048}
+            height={780}
+            priority
+            sizes="(max-width: 1440px) 100vw, 1440px"
+            className="hero-slow-zoom h-auto w-full"
+          />
+          <span className="vf-corner vf-tl" aria-hidden />
+          <span className="vf-corner vf-tr" aria-hidden />
+          <span className="vf-corner vf-bl" aria-hidden />
+          <span className="vf-corner vf-br" aria-hidden />
+          <div
+            className="absolute left-[clamp(22px,3.6vw,56px)] top-[clamp(10px,1.8vw,26px)] z-[2] flex items-center gap-[0.6em] font-mono text-[clamp(8px,0.95vw,13px)] tracking-[0.12em] text-white/90"
+            aria-hidden
+          >
+            <span className="rec-dot size-[0.75em] rounded-full bg-[#ff3b30]" />
+            REC
+            <Timecode className="tabular-nums text-white/75" />
           </div>
-        </OrganicCard>
+        </div>
+
+        <div className="mt-10 grid gap-8 sm:mt-14 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <SectionLabel className="mb-5">{site.legalName} · Đà Nẵng</SectionLabel>
+            <h1
+              className="text-[clamp(2.1rem,4.4vw,3.9rem)] font-extrabold leading-[1.12] tracking-[-0.03em]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Hình ảnh kể câu chuyện.
+              <br />
+              <span className="text-gradient-brand">AI vận hành hệ thống.</span>
+            </h1>
+          </div>
+          <div className="flex flex-col items-start gap-7 lg:col-span-5">
+            <p className="text-[17px] leading-relaxed text-fg-muted">
+              Diary Media sản xuất hình ảnh, TVC và sự kiện cho thương hiệu, rồi dùng AI để biến nội
+              dung đó thành một hệ thống truyền thông đo được bằng khách hàng và doanh thu.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/audit/" variant="solid">
+                Nhận Digital Growth Audit
+              </ButtonLink>
+              <ButtonLink href="/du-an/" variant="outline-ink">
+                Xem dự án
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+
+        <ul className="mt-12 flex flex-wrap border-t border-line pt-6">
+          {heroServices.map((s) => (
+            <li
+              key={s}
+              className="t-label mb-3 mr-6 text-fg-muted last:mr-0 sm:mr-10"
+            >
+              {s}
+            </li>
+          ))}
+        </ul>
       </Container>
 
       <ClientMarquee />
@@ -168,7 +112,7 @@ export default function HomePage() {
           }
           cta={
             <ButtonLink href="/ve-chung-toi/" variant="solid">
-              Câu chuyện Day Agency
+              Câu chuyện Diary Media
             </ButtonLink>
           }
           group="intro"
@@ -210,7 +154,7 @@ export default function HomePage() {
               doanh nghiệp bạn cần
             </>
           }
-          lead="Day Agency vận hành hai dòng dịch vụ tách bạch. Một bên giải quyết bài toán hệ thống, một bên giải quyết bài toán sản xuất. Bạn có thể chọn riêng, hoặc kết hợp cả hai."
+          lead="Diary Media vận hành hai dòng dịch vụ tách bạch. Một bên giải quyết bài toán hệ thống, một bên giải quyết bài toán sản xuất. Bạn có thể chọn riêng, hoặc kết hợp cả hai."
           group="tracks"
         />
 
@@ -390,8 +334,8 @@ export default function HomePage() {
       {/* ================= HẬU TRƯỜNG ================= */}
       <section className="relative isolate mt-24 overflow-hidden sm:mt-32">
         <Image
-          src="/images/work/bts-hero-01.webp"
-          alt="Ekip Day Agency đang quay hình trong một buổi tối sản xuất sự kiện"
+          src="/images/bts/bts-12.webp"
+          alt="Ekip Diary Media dựng đèn và máy quay trong phòng họp của khách hàng SBS Villa"
           fill
           sizes="100vw"
           className="object-cover object-[center_30%]"
@@ -406,7 +350,7 @@ export default function HomePage() {
             Hậu trường sản xuất
           </SectionLabel>
           <h2
-            className="max-w-2xl text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-white"
+            className="max-w-3xl text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-white"
             style={{ fontFamily: "var(--font-display)" }}
             data-reveal
             data-reveal-group="bts"
@@ -416,18 +360,39 @@ export default function HomePage() {
             là một ekip đang chạy hết mình.
           </h2>
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/80" data-reveal data-reveal-group="bts">
-            Không có bức ảnh dàn dựng nào ở đây — đây là chính đội ngũ Day Agency giữa một buổi tối
-            sản xuất thật, máy quay vẫn đang chạy.
+            Không có ảnh dàn dựng nào ở đây — đây là ekip Diary Media trên phim trường thật: đèn,
+            máy quay và những người đứng sau mỗi khung hình.
           </p>
         </Container>
       </section>
+
+      <Container size="wide" className="mt-5">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          {BTS_STRIP.map((b) => (
+            <li
+              key={b.src}
+              data-reveal
+              data-reveal-group="bts-strip"
+              className="relative aspect-[3/4] overflow-hidden rounded-xl border border-line"
+            >
+              <Image
+                src={b.src}
+                alt={b.alt}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </li>
+          ))}
+        </ul>
+      </Container>
 
       {/* ================= GIÁ TRỊ CỐT LÕI ================= */}
       <Container className="mt-24 sm:mt-32">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionLabel className="mb-5" data-reveal>
-              Tại sao chọn Day Agency
+              Tại sao chọn Diary Media
             </SectionLabel>
             <h2 className="t-h2" data-reveal data-reveal-group="values">
               Tốc độ.

@@ -17,7 +17,7 @@ const columns = [
   {
     title: "Công ty",
     links: [
-      { href: "/ve-chung-toi/", label: "Về Day Agency" },
+      { href: "/ve-chung-toi/", label: "Về Diary Media" },
       { href: "/ve-chung-toi/#founder", label: "Founder" },
       { href: "/du-an/", label: "Dự án tiêu biểu" },
       { href: "/lien-he/", label: "Liên hệ hợp tác" },
@@ -42,11 +42,11 @@ export default function SiteFooter() {
           <div className="lg:col-span-5">
             <Link href="/" className="flex w-fit items-center" aria-label={site.name}>
               <Image
-                src="/images/brand/logo-wordmark.png"
+                src="/images/brand/diary-logo.png"
                 alt={site.name}
-                width={573}
-                height={388}
-                className="h-14 w-auto"
+                width={1000}
+                height={353}
+                className="h-12 w-auto"
               />
             </Link>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-fg-muted">

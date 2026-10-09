@@ -30,7 +30,7 @@ import AuditForm from "@/components/audit-form";
 export const metadata: Metadata = {
   title: "Digital Growth Audit cho doanh nghiệp",
   description:
-    "DAY Agency phân tích hệ thống thương hiệu, truyền thông, quảng cáo, thương mại điện tử, CRM và AI để xác định cơ hội tăng trưởng Digital cho doanh nghiệp.",
+    "Diary Media phân tích hệ thống thương hiệu, truyền thông, quảng cáo, thương mại điện tử, CRM và AI để xác định cơ hội tăng trưởng Digital cho doanh nghiệp.",
   alternates: { canonical: "/audit/" },
 };
 
@@ -127,7 +127,7 @@ const trustSteps = [
 ];
 
 /* --------------------------------------------------------------------------
-   Khối dòng chảy dùng chung cho DAY Approach và Growth System — chip nối
+   Khối dòng chảy dùng chung cho Diary Media Approach và Growth System — chip nối
    bằng mũi tên, tự xuống dòng trên màn hình nhỏ.
    -------------------------------------------------------------------------- */
 function FlowRow({
@@ -195,7 +195,7 @@ export default function AuditPage() {
               Có sản phẩm tốt nhưng Digital chưa tạo ra doanh thu?
             </h1>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-white/80">
-              DAY Agency giúp doanh nghiệp xây lại hệ thống từ chiến lược, thương hiệu, content,
+              Diary Media giúp doanh nghiệp xây lại hệ thống từ chiến lược, thương hiệu, content,
               TVC, quảng cáo, thương mại điện tử đến CRM và AI — để Digital không chỉ đẹp mà phải
               tạo ra tăng trưởng.
             </p>
@@ -204,7 +204,7 @@ export default function AuditPage() {
                 Nhận Digital Growth Audit
               </ButtonLink>
               <ButtonLink href="#audit-scope" variant="outline">
-                Xem DAY sẽ phân tích những gì
+                Xem Diary Media sẽ phân tích những gì
               </ButtonLink>
             </div>
           </div>
@@ -260,10 +260,10 @@ export default function AuditPage() {
       <section id="cach-tiep-can" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
           <SectionHead
-            label="Cách DAY làm việc"
+            label="Cách Diary Media làm việc"
             title={
               <>
-                DAY không bắt đầu
+                Diary Media không bắt đầu
                 <br />
                 từ &ldquo;chạy quảng cáo&rdquo;.
               </>
@@ -283,7 +283,7 @@ export default function AuditPage() {
         <Container className="mt-24 sm:mt-32">
           <SectionHead
             label="Digital Growth Audit"
-            title={<>DAY sẽ phân tích gì cho doanh nghiệp?</>}
+            title={<>Diary Media sẽ phân tích gì cho doanh nghiệp?</>}
             lead="Mười hạng mục — đủ để nhìn ra bức tranh toàn cảnh, không sa vào tiểu tiết."
             group="scope"
           />
@@ -353,7 +353,7 @@ export default function AuditPage() {
           <SectionHead
             label="Từ truyền thông đến hệ thống"
             title={<>Từ truyền thông đến hệ thống tăng trưởng</>}
-            lead="DAY không chỉ sản xuất content — DAY xây cả đường đi từ người lạ chưa biết thương hiệu tới khách hàng mang lại doanh thu."
+            lead="Diary Media không chỉ sản xuất content — chúng tôi xây cả đường đi từ người lạ chưa biết thương hiệu tới khách hàng mang lại doanh thu."
             group="system"
           />
 
@@ -363,10 +363,10 @@ export default function AuditPage() {
         </Container>
       </section>
 
-      {/* ================= WHY DAY ================= */}
+      {/* ================= WHY Diary Media ================= */}
       <section id="vi-sao-day" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
-          <SectionHead label="Vì sao DAY" title={<>Năng lực tạo nên khác biệt</>} group="why" />
+          <SectionHead label="Vì sao Diary Media" title={<>Năng lực tạo nên khác biệt</>} group="why" />
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {whyDay.map((w) => (
@@ -390,7 +390,7 @@ export default function AuditPage() {
       {/* ================= DAY SẼ LÀM GÌ SAU KHI NHẬN THÔNG TIN ================= */}
       <section id="quy-trinh-tiep-theo" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
-          <SectionHead label="Quy trình sau audit" title={<>DAY sẽ làm gì sau khi nhận thông tin?</>} group="trust" />
+          <SectionHead label="Quy trình sau audit" title={<>Diary Media sẽ làm gì sau khi nhận thông tin?</>} group="trust" />
 
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustSteps.map((step) => (
@@ -425,7 +425,7 @@ export default function AuditPage() {
               Nhận phân tích Digital Growth
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-fg" data-reveal>
-              Gửi thông tin doanh nghiệp. DAY sẽ xem xét hệ thống hiện tại và xác định những điểm
+              Gửi thông tin doanh nghiệp. Diary Media sẽ xem xét hệ thống hiện tại và xác định những điểm
               cần ưu tiên trước — hoàn toàn miễn phí, không ràng buộc.
             </p>
           </div>
@@ -433,7 +433,7 @@ export default function AuditPage() {
           <div className="mt-12" data-reveal>
             <AuditForm />
             <p className="mt-5 text-center text-sm text-fg-dim">
-              Thông tin được sử dụng để DAY Agency liên hệ và thực hiện đánh giá theo yêu cầu của
+              Thông tin được sử dụng để Diary Media liên hệ và thực hiện đánh giá theo yêu cầu của
               doanh nghiệp.{" "}
               <a
                 href="/chinh-sach-bao-mat/"

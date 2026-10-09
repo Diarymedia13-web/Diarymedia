@@ -57,7 +57,12 @@ export default function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href.replace(/\/$/, ""));
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className={cx(
+        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500",
+        scrolled ? "border-line/60 bg-ink/80 backdrop-blur-xl" : "border-transparent",
+      )}
+    >
       <div
         className={cx(
           "mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 transition-all duration-500 sm:px-8",
@@ -70,12 +75,12 @@ export default function SiteHeader() {
           aria-label={`${site.name} — về trang chủ`}
         >
           <Image
-            src="/images/brand/logo-wordmark.png"
+            src="/images/brand/diary-logo.png"
             alt={site.name}
-            width={573}
-            height={388}
+            width={1000}
+            height={353}
             priority
-            className="h-10 w-auto sm:h-11"
+            className="h-9 w-auto sm:h-10"
           />
         </Link>
 

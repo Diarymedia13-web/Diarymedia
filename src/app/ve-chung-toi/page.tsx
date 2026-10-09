@@ -8,7 +8,7 @@ import StatBand from "@/components/stat-band";
 export const metadata: Metadata = {
   title: "Về chúng tôi",
   description:
-    "Day Agency — công ty tiên phong trong sản xuất nội dung và truyền thông sáng tạo tại Việt Nam. Câu chuyện thương hiệu, giá trị cốt lõi và founder Nguyễn Hồ Thanh Pháp.",
+    "Diary Media — công ty tiên phong trong sản xuất nội dung và truyền thông sáng tạo tại Việt Nam. Câu chuyện thương hiệu, giá trị cốt lõi và founder Nguyễn Hồ Thanh Pháp.",
   alternates: { canonical: "/ve-chung-toi/" },
 };
 
@@ -31,7 +31,7 @@ const milestones = [
   {
     year: "2025 – nay",
     title: "Từ nhà sản xuất thành đối tác giải pháp",
-    body: "Day Agency mở rộng sang giải pháp truyền thông toàn diện: chiến lược, chuyển đổi số, website, quảng cáo và ứng dụng trí tuệ nhân tạo cho doanh nghiệp.",
+    body: "Diary Media mở rộng sang giải pháp truyền thông toàn diện: chiến lược, chuyển đổi số, website, quảng cáo và ứng dụng trí tuệ nhân tạo cho doanh nghiệp.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        label="Về Day Agency"
+        label="Về Diary Media"
         title={
           <>
             Về
@@ -70,7 +70,7 @@ export default function AboutPage() {
 
           <div className="flex flex-col gap-5 lg:col-span-6 lg:col-start-7">
             <p className="t-lead" data-reveal data-reveal-group="story">
-              Day Agency là công ty tiên phong trong lĩnh vực sản xuất nội dung và truyền thông
+              Diary Media là công ty tiên phong trong lĩnh vực sản xuất nội dung và truyền thông
               sáng tạo tại Việt Nam. Với phương châm “Kiến tạo nội dung, kết nối thành công”, chúng
               tôi không ngừng đổi mới để mang đến những giải pháp truyền thông chất lượng cao, giúp
               doanh nghiệp nâng tầm thương hiệu và chinh phục khách hàng mục tiêu.
@@ -83,7 +83,7 @@ export default function AboutPage() {
             </p>
             <p className="text-[15px] leading-relaxed text-fg-muted" data-reveal data-reveal-group="story">
               Với hơn 4 năm kinh nghiệm, hơn 2.000 khách hàng tin tưởng và hơn 1.000 dự án thành
-              công, Day Agency tự hào là đối tác đáng tin cậy của nhiều doanh nghiệp, tập đoàn và
+              công, Diary Media tự hào là đối tác đáng tin cậy của nhiều doanh nghiệp, tập đoàn và
               thương hiệu lớn tại Việt Nam.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
         >
           <Image
             src="/images/bts-02.webp"
-            alt="Ekip Day Agency căn khung hình tại hiện trường sản xuất"
+            alt="Ekip Diary Media căn khung hình tại hiện trường sản xuất"
             fill
             sizes="100vw"
             className="object-cover"
@@ -118,7 +118,7 @@ export default function AboutPage() {
       <section className="relative isolate mt-24 overflow-hidden sm:mt-32">
         <Image
           src="/images/work/bts-hero-02.webp"
-          alt="Ekip Day Agency ghi hình ngoài trời tại Đà Nẵng"
+          alt="Ekip Diary Media ghi hình ngoài trời tại Đà Nẵng"
           fill
           sizes="100vw"
           className="object-cover object-[center_35%]"
@@ -143,7 +143,7 @@ export default function AboutPage() {
               vẫn ra hiện trường đúng giờ.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-white/80" data-reveal data-reveal-group="bts2">
-              Từ sáng sớm tới tối muộn, ở bất kỳ địa hình nào — miễn dự án cần, ekip Day Agency có
+              Từ sáng sớm tới tối muộn, ở bất kỳ địa hình nào — miễn dự án cần, ekip Diary Media có
               mặt.
             </p>
           </div>

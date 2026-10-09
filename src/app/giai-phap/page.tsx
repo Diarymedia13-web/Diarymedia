@@ -14,7 +14,7 @@ import { CtaBlock, PageHero, ServiceCard } from "@/components/blocks";
 export const metadata: Metadata = {
   title: "Giải pháp truyền thông cho doanh nghiệp",
   description:
-    "Hai dòng dịch vụ của Day Agency: giải pháp doanh nghiệp (chiến lược truyền thông, chiến lược kinh doanh, chuyển đổi số, website, quảng cáo, AI) và sản xuất sáng tạo (TVC, viral video, sự kiện, livestream, nhiếp ảnh thương mại).",
+    "Hai dòng dịch vụ của Diary Media: giải pháp doanh nghiệp (chiến lược truyền thông, chiến lược kinh doanh, chuyển đổi số, website, quảng cáo, AI) và sản xuất sáng tạo (TVC, viral video, sự kiện, livestream, nhiếp ảnh thương mại).",
   alternates: { canonical: "/giai-phap/" },
 };
 
@@ -46,7 +46,7 @@ const packages = [
   {
     name: "Đối tác toàn diện",
     tag: "Dành cho chuỗi & tập đoàn",
-    body: "Day Agency đóng vai trò phòng marketing thuê ngoài: chiến lược, sản xuất, quảng cáo, chuyển đổi số và ứng dụng AI trong cùng một đầu mối.",
+    body: "Diary Media đóng vai trò phòng marketing thuê ngoài: chiến lược, sản xuất, quảng cáo, chuyển đổi số và ứng dụng AI trong cùng một đầu mối.",
     items: [
       "Toàn bộ hạng mục gói Tăng trưởng",
       "Chiến lược kinh doanh & phễu bán hàng",

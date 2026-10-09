@@ -1,67 +1,39 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DAY AGENCY — DESIGN TOKENS
-   Bảng màu neo theo logo thật: nền giấy kem ấm + chữ khối gỗ nâu trầm + tia
-   sáng cam vàng công nghệ/AI toả sau logo. Mặc định SÁNG (chế độ kem). Có
-   chế độ tối đi kèm — xem khối "CHẾ ĐỘ TỐI" bên dưới.
+   DIARY MEDIA — DESIGN TOKENS
+   Neo theo ảnh bìa + logo thật: nền nâu cà phê sậm như phông ảnh bìa, chữ màu
+   giấy ngà, điểm nhấn cam đồng lấy mẫu trực tiếp từ logo (#ff9a5d → #ffcda0).
+   Chỉ một chế độ màu — thương hiệu Diary Media vốn là nền tối.
    ========================================================================= */
 
 @theme {
-  /* --- Nền & bề mặt (mặc định: giấy kem ấm, đúng nền logo) --- */
-  --color-ink: #f0e6d3;
-  --color-ink-2: #e8dcc2;
-  --color-surface: #faf5ea;
-  --color-surface-2: #fffcf5;
-  --color-line: #ddccaa;
+  --color-ink: #160b08;
+  --color-ink-2: #1f110c;
+  --color-surface: #2a1710;
+  --color-surface-2: #33201a;
+  --color-line: #46291e;
 
-  /* --- Chữ: nâu gỗ trầm, lấy đúng màu chữ khối trong logo --- */
-  --color-fg: #3a2a1c;
-  --color-fg-muted: #6e5a45;
-  --color-fg-dim: #96805f;
+  --color-fg: #f5e9dc;
+  --color-fg-muted: #d2bca9;
+  --color-fg-dim: #9c8170;
 
-  /* --- Thương hiệu: cam vàng hổ phách toả sáng sau logo --- */
-  --color-brand: #e08a2e;
-  --color-brand-light: #f5c177;
-  --color-brand-deep: #b5661a;
-  --color-brand-ember: #7a431a;
-  --color-brand-ink: #2b1608;
+  --color-brand: #f39a62;
+  --color-brand-light: #ffcda0;
+  --color-brand-deep: #d9733f;
+  --color-brand-ember: #9a4a26;
+  --color-brand-ink: #2a1206;
 
-  /* --- Typography --- */
   --font-display: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
-  /* --- Bo góc: khối lớn bo mềm --- */
   --radius-card: 1.5rem;
   --radius-block: 2rem;
   --radius-hero: 2.5rem;
 
-  /* --- Nhịp chuyển động --- */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
-}
-
-/* ============================================================================
-   CHẾ ĐỘ TỐI
-   Ghi đè đúng những biến ở @theme phía trên — nền gỗ tối, cùng họ nâu/cam
-   với bản sáng để không lệch thương hiệu khi chuyển chế độ.
-   ========================================================================= */
-:root[data-theme="dark"] {
-  --color-ink: #1c1710;
-  --color-ink-2: #241d14;
-  --color-surface: #2b2318;
-  --color-surface-2: #33291b;
-  --color-line: #3e3222;
-
-  --color-fg: #f0e6d3;
-  --color-fg-muted: #b8a689;
-  --color-fg-dim: #8a7860;
-
-  --color-brand: #f0973a;
-  --color-brand-light: #ffc98a;
-  --color-brand-deep: #d2792a;
-  --color-brand-ember: #a85a1e;
 }
 
 /* ============================================================================
@@ -76,6 +48,7 @@
    (`.ambient-layer`) nằm ở z-index -1 bên trong body — nếu body có nền đục
    thì lớp đó bị che mất. */
 html {
+  color-scheme: dark;
   background: var(--color-ink);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -186,9 +159,9 @@ body {
    của logo, mỗi biến thể lệch sắc độ khác nhau để các khối không đơn điệu. */
 .grad-fire {
   background:
-    radial-gradient(120% 90% at 15% 0%, #ffd9a0 0%, transparent 55%),
-    radial-gradient(90% 70% at 90% 100%, #e08a2e 0%, transparent 60%),
-    linear-gradient(160deg, #f0e6d3 0%, #d8c39a 55%, #96805f 100%);
+    radial-gradient(110% 90% at 18% 10%, #c8774a 0%, transparent 55%),
+    radial-gradient(100% 90% at 90% 100%, #2a120c 0%, transparent 60%),
+    linear-gradient(150deg, #8a4128 0%, #5c2618 55%, #2a120c 100%);
 }
 
 .grad-ember {
@@ -569,6 +542,41 @@ body {
   100% {
     transform: translateX(340%) scaleX(1);
     opacity: 0;
+  }
+}
+
+/* ============================================================================
+   KHUNG NGẮM MÁY QUAY — chữ ký thị giác của hero trang chủ
+   4 góc khung + chấm REC, đặt đè lên ảnh bìa. Kích thước theo vw để vẫn cân
+   đối khi ảnh bìa co lại trên điện thoại.
+   ========================================================================= */
+
+.vf-corner {
+  position: absolute;
+  width: clamp(14px, 2.6vw, 38px);
+  height: clamp(14px, 2.6vw, 38px);
+  border-color: rgba(255, 205, 160, 0.9);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.vf-tl { top: clamp(8px, 1.4vw, 20px); left: clamp(8px, 1.4vw, 20px); border-top-width: 2px; border-left-width: 2px; }
+.vf-tr { top: clamp(8px, 1.4vw, 20px); right: clamp(8px, 1.4vw, 20px); border-top-width: 2px; border-right-width: 2px; }
+.vf-bl { bottom: clamp(8px, 1.4vw, 20px); left: clamp(8px, 1.4vw, 20px); border-bottom-width: 2px; border-left-width: 2px; }
+.vf-br { bottom: clamp(8px, 1.4vw, 20px); right: clamp(8px, 1.4vw, 20px); border-bottom-width: 2px; border-right-width: 2px; }
+
+.rec-dot {
+  animation: rec-blink 1.2s steps(1, end) infinite;
+}
+@keyframes rec-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0.15;
   }
 }
 

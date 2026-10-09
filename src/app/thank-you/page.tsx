@@ -33,13 +33,13 @@ export default function ThankYouPage() {
         <SectionLabel className="mb-4 mt-8 justify-center">Đã gửi thành công</SectionLabel>
         <h1 className="t-h2">Cảm ơn bạn đã gửi yêu cầu</h1>
         <p className="mx-auto mt-5 max-w-lg text-[17px] leading-relaxed text-fg">
-          DAY Agency đã nhận được thông tin doanh nghiệp của bạn. Chúng tôi sẽ xem xét trước khi
+          Diary Media đã nhận được thông tin doanh nghiệp của bạn. Chúng tôi sẽ xem xét trước khi
           trao đổi bước tiếp theo.
         </p>
 
         <div className="mt-10">
           <ButtonLink href="/" variant="solid">
-            Về DAY Agency
+            Về Diary Media
           </ButtonLink>
         </div>
       </Container>

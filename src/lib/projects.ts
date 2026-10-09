@@ -18,11 +18,49 @@ export interface Project {
   scope: string[];
   cover: string;
   gallery: string[];
+  /** Ảnh hiện trạng trước khi Diary Media vào cuộc — có thì hộp chi tiết hiện so sánh Trước / Sau. */
+  before?: string[];
+  /** Vài dữ kiện ngắn về khối lượng công việc. Chỉ ghi điều có thật, không ghi số liệu kinh doanh chưa kiểm chứng. */
+  facts?: { value: string; label: string }[];
   /** Tỉ lệ khung ảnh dùng cho ô lưới ở trang Dự án. */
   span: "tall" | "wide" | "square";
 }
 
 export const projects: Project[] = [
+  {
+    slug: "bien-hai-quan-muoi-tieu-phu-quoc",
+    title: "Tái định vị Muối Tiêu Dưỡng Sinh Phú Quốc",
+    client: "Biên Hải Quán — Đặc sản Phú Quốc",
+    category: "Giải pháp truyền thông",
+    year: "2026",
+    location: "Phú Quốc",
+    summary:
+      "Sản phẩm ngon, có khách quen, nhưng bao bì cũ dày chữ, màu sắc nặng và chưa kể được câu chuyện riêng — đặt lên kệ quà đặc sản là lẫn vào hàng chục sản phẩm na ná. Chúng tôi đi tìm điều chỉ Biên Hải Quán mới có: ông Út Trà Đá, người ngư dân Hai Trang ôm cây đàn, và ký ức muối tiêu rang ăn cùng cơm nắm. Từ đó xây lại toàn bộ hình ảnh thương hiệu theo tinh thần “Mộc mạc từ ký ức — đậm đà vị đảo”: hệ minh hoạ nét khắc tay, giấy kraft mộc, điểm nhấn đỏ đô, đồng bộ từ hũ 300g đến hộp quà tặng. Bộ ảnh và video định vị mới trở thành nền tảng hình ảnh cho các gian hàng thương mại điện tử đa kênh.",
+    scope: [
+      "Nghiên cứu & định vị lại thương hiệu",
+      "Xây dựng câu chuyện thương hiệu từ nhân vật ông Út Trà Đá",
+      "Thiết kế hệ minh hoạ & bao bì cho 4 dòng sản phẩm",
+      "Thiết kế hộp quà tặng cao cấp",
+      "Quay phim, chụp ảnh định vị sản phẩm",
+      "Triển khai gian hàng trên các sàn TMĐT đa kênh",
+    ],
+    cover: "/images/work/bienhaiquan-01.webp",
+    gallery: [
+      "/images/work/bienhaiquan-01.webp",
+      "/images/work/bienhaiquan-02.webp",
+      "/images/work/bienhaiquan-03.webp",
+      "/images/work/bienhaiquan-04.webp",
+      "/images/work/bienhaiquan-05.webp",
+      "/images/work/bienhaiquan-06.webp",
+    ],
+    before: ["/images/work/bienhaiquan-truoc-01.webp", "/images/work/bienhaiquan-truoc-02.webp"],
+    facts: [
+      { value: "4", label: "dòng sản phẩm đồng bộ một hệ bao bì" },
+      { value: "1", label: "câu chuyện thương hiệu xuyên suốt" },
+      { value: "Đa kênh", label: "gian hàng TMĐT dùng chung bộ hình ảnh" },
+    ],
+    span: "wide",
+  },
   {
     slug: "panasonic-giai-phap-khong-khi",
     title: "Giải pháp không khí toàn diện cho không gian làm việc",
@@ -355,11 +393,11 @@ export const projectCategories: ProjectCategory[] = [
  */
 const featuredOrder = [
   "le-frachie-organic-giai-phap-truyen-thong",
+  "bien-hai-quan-muoi-tieu-phu-quoc",
   "futaland-timesquare-noi-that",
   "tabalo-glamping-brand-film",
   "aia-duong-dua-bung-thinh-vuong",
   "ao-dai-yen-fashion-film",
-  "le-gia-brand-food",
 ];
 
 export const featuredProjects = featuredOrder
