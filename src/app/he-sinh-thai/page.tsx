@@ -11,7 +11,7 @@ import Letter from "@/components/he-sinh-thai/letter";
 import RootKeeper from "@/components/he-sinh-thai/root-keeper";
 
 const description =
-  "Hệ Sinh Thái DIARY — hợp tác giữa Diary Media và HTX Quê Hương Xanh: kết nối nhà sản xuất, thương mại hoá đặc sản Việt, livestream bán hàng, quà tặng doanh nghiệp, đào tạo KOC và giải pháp chuyển đổi số cho SME.";
+  "Hệ Sinh Thái DIARY — hợp tác giữa Diary Media và HTX Quê Hương Xanh (VINAGC): kết nối nhà sản xuất, thương mại hoá đặc sản Việt, livestream bán hàng, quà tặng doanh nghiệp, đào tạo KOC và giải pháp chuyển đổi số cho SME.";
 
 export const metadata: Metadata = {
   title: "Hệ Sinh Thái DIARY – Chuyển đổi kép SME",
@@ -72,7 +72,7 @@ export default function EcosystemPage() {
           </>
         }
         kicker={`${ecosystem.message}.`}
-        lead="Diary Media hợp tác cùng HTX Quê Hương Xanh kết nối nhà sản xuất, sáng tạo nội dung, thương mại hoá sản phẩm Việt và đồng hành phát triển doanh nghiệp SME — chuyển đổi kép: đưa sản phẩm ra thị trường và đưa doanh nghiệp lên số."
+        lead="Diary Media hợp tác cùng HTX Quê Hương Xanh (VINAGC) kết nối nhà sản xuất, sáng tạo nội dung, thương mại hoá sản phẩm Việt và đồng hành phát triển doanh nghiệp SME — chuyển đổi kép: đưa sản phẩm ra thị trường và đưa doanh nghiệp lên số."
         gradient="grad-ember"
         image="/images/work/dana-tramhuong-04.webp"
         imageAlt=""
