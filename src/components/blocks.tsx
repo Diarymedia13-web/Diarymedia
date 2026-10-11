@@ -82,9 +82,10 @@ export function ServiceCard({ service, group }: { service: Service; group: strin
   const Icon = icons[service.icon];
   return (
     <article
+      id={service.slug}
       data-reveal
       data-reveal-group={group}
-      className="group relative flex flex-col rounded-block border border-line bg-ink-2/55 backdrop-blur-sm p-7 transition-all duration-500 hover:border-brand/40 hover:bg-surface/75 sm:p-8"
+      className="group relative flex scroll-mt-28 flex-col rounded-block border border-line bg-ink-2/55 backdrop-blur-sm p-7 transition-all duration-500 hover:border-brand/40 hover:bg-surface/75 sm:p-8"
     >
       <div className="flex items-start justify-between gap-4">
         <span className="flex size-12 items-center justify-center rounded-2xl bg-brand/12 text-brand transition-colors duration-500 group-hover:bg-brand group-hover:text-brand-ink">

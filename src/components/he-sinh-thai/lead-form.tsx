@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { site } from "@/lib/site";
+import { celebrateWithDimo } from "@/lib/dimo";
 import {
   budgetTiers,
   giftCategories,
@@ -267,6 +268,7 @@ export default function HstxLeadForm({
       form.reset();
       setErrors({});
       setStatus("success");
+      celebrateWithDimo();
     } catch {
       // Không hiện lỗi kỹ thuật; dữ liệu đã nhập được giữ nguyên để gửi lại.
       setStatus("error");

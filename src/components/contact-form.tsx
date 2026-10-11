@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Check, AlertCircle, Loader2 } from "lucide-react";
 import { site } from "@/lib/site";
+import { celebrateWithDimo } from "@/lib/dimo";
 import { cx } from "./ui";
 
 /**
@@ -74,6 +75,7 @@ export default function ContactForm() {
 
       if (json.success) {
         setStatus("success");
+        celebrateWithDimo();
         setMessage(
           "Đã nhận được yêu cầu của bạn. Đội ngũ Diary Media sẽ liên hệ trong vòng 24 giờ làm việc.",
         );
@@ -115,7 +117,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-block border border-line bg-ink-2 p-6 sm:p-9">
+    <form id="form-lien-he" onSubmit={handleSubmit} className="scroll-mt-28 rounded-block border border-line bg-ink-2 p-6 sm:p-9">
       {/* Bẫy bot: người dùng thật không bao giờ điền vào ô này */}
       <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Phone, MessageCircle, X, MessagesSquare } from "lucide-react";
 import { site } from "@/lib/site";
+import { dimoConfig } from "@/lib/dimo";
 import { cx } from "./ui";
 
 /**
@@ -46,6 +47,9 @@ export default function FloatingCta() {
   // Landing page chiến dịch (/audit, /thank-you) chỉ có đúng 1 CTA: đăng ký
   // audit — cụm liên hệ nhanh này mở nhiều lối thoát khỏi funnel nên ẩn hẳn.
   if (pathname.startsWith("/audit") || pathname.startsWith("/thank-you")) return null;
+  // DIMO đứng ở cùng góc và đã gồm sẵn Zalo / Messenger / Gọi trong khung của
+  // mình — tắt DIMO (dimoConfig.enabled = false) thì nút nổi này tự hiện lại.
+  if (dimoConfig.enabled) return null;
 
   return (
     <div

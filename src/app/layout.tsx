@@ -5,6 +5,7 @@ import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import FloatingCta from "@/components/floating-cta";
 import ChatWidget from "@/components/chat-widget";
+import DimoAssistant from "@/components/dimo/dimo-assistant";
 import MotionProvider from "@/components/motion-provider";
 import AmbientBackground from "@/components/ambient-background";
 import "./globals.css";
@@ -130,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteFooter />
         <FloatingCta />
         <ChatWidget />
+        <DimoAssistant />
       </body>
     </html>
   );
