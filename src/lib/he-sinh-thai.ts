@@ -38,6 +38,17 @@ export const roles = [
   },
 ];
 
+/**
+ * Giám đốc HTX Quê Hương Xanh. `name` để trống → web chỉ hiện chức danh.
+ * Chỉ ghi chuyên môn đã được xác nhận; ảnh đã được sếp cung cấp để đăng.
+ */
+export const htxDirector: { name?: string; role: string; photo: string; expertise: string[] } = {
+  name: undefined,
+  role: "Giám đốc HTX Quê Hương Xanh",
+  photo: "/images/he-sinh-thai/giam-doc-htx.webp",
+  expertise: ["Nông nghiệp & nguồn hàng", "Quy trình chuyển đổi", "Tư vấn doanh nghiệp"],
+};
+
 export interface Pillar {
   id: string;
   name: string;
