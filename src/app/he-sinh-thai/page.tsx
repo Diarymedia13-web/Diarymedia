@@ -6,6 +6,7 @@ import { ecosystem, pillars, processSteps, publishedProducts, roles } from "@/li
 import { ButtonLink, Container, SectionHead, SectionLabel, cx } from "@/components/ui";
 import { PageHero } from "@/components/blocks";
 import EcosystemLeadForm from "@/components/he-sinh-thai/lead-form";
+import StoryIntro from "@/components/he-sinh-thai/story-intro";
 
 const description =
   "Hệ Sinh Thái DIARY — hợp tác giữa Diary Media và HTX Quê Hương Xanh: kết nối nhà sản xuất, thương mại hoá đặc sản Việt, livestream bán hàng, quà tặng doanh nghiệp, đào tạo KOC và giải pháp chuyển đổi số cho SME.";
@@ -76,6 +77,8 @@ export default function EcosystemPage() {
         viewfinder
       />
 
+      <StoryIntro />
+
       {/* ================= ĐỐI TÁC HỢP TÁC ================= */}
       <Container className="mt-24 sm:mt-32">
         <SectionHead
@@ -87,7 +90,7 @@ export default function EcosystemPage() {
               một hệ sinh thái
             </>
           }
-          lead="Nhiều sản phẩm Việt tốt nhưng chưa có thương hiệu, chưa có kênh bán. Nhiều SME muốn chuyển đổi số nhưng thiếu người đồng hành. Hệ Sinh Thái DIARY giải cả hai bài toán cùng lúc."
+          lead="Mỗi bên giữ một phần việc mình làm tốt nhất, cùng phối hợp vận hành một hệ sinh thái."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {roles.map((r) => (
