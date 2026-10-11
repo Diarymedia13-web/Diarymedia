@@ -43,10 +43,10 @@ export const roles = [
  * Chỉ ghi chuyên môn đã được xác nhận; ảnh đã được sếp cung cấp để đăng.
  */
 export const htxDirector: { name?: string; role: string; photo: string; expertise: string[] } = {
-  name: undefined,
+  name: "Huỳnh Thị Kim Tiên",
   role: "Giám đốc HTX Quê Hương Xanh",
   photo: "/images/he-sinh-thai/giam-doc-htx.webp",
-  expertise: ["Nông nghiệp & nguồn hàng", "Quy trình chuyển đổi", "Tư vấn doanh nghiệp"],
+  expertise: ["Nông nghiệp & nguồn hàng", "Đặc sản & nghề truyền thống", "Quy trình chuyển đổi", "Tư vấn doanh nghiệp"],
 };
 
 export interface Pillar {

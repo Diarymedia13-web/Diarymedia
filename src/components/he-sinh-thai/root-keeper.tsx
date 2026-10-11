@@ -18,9 +18,9 @@ export default function RootKeeper() {
   return (
     <section aria-labelledby="nguoi-giu-goc" className="mt-24 sm:mt-32">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Chân dung trong khung ngắm — ngôn ngữ hình ảnh chung của Diary */}
-          <div className="lg:col-span-5" data-reveal>
+          <div className="lg:sticky lg:top-28 lg:col-span-5" data-reveal>
             <figure className="relative mx-auto max-w-md">
               <div className="relative aspect-[4/5] overflow-hidden rounded-block">
                 <Image
@@ -47,25 +47,43 @@ export default function RootKeeper() {
             <SectionLabel>Người giữ gốc</SectionLabel>
             <h2 id="nguoi-giu-goc" className={cx(lora.className, "mt-5 text-[clamp(2rem,3.6vw,3rem)] font-semibold leading-[1.12] text-fg")}>
               “Một bên giữ gốc” —{" "}
-              <span className="italic text-gradient-brand">{d.name ? `là chị ${d.name}.` : "là chị."}</span>
+              <span className="italic text-gradient-brand">{d.name ? `là chị ${d.name.split(" ").slice(-2).join(" ")}.` : "là chị."}</span>
             </h2>
 
             <div className="mt-7 flex flex-col gap-5 text-[17px] leading-relaxed text-fg-muted">
               <p>
-                Đứng sau mạng lưới nhà sản xuất của Hệ Sinh Thái DIARY là Giám đốc HTX Quê Hương Xanh. Xuất phát từ
-                nông nghiệp, chị hiểu một sản phẩm từ chính gốc rễ của nó:{" "}
-                <span className="text-fg">đất, mùa vụ, cách làm ra và cả những khó khăn mà người sản xuất ít khi nói thành lời.</span>
+                Chị Kim Tiên là Giám đốc HTX Quê Hương Xanh — người đứng sau mạng lưới nhà sản xuất của Hệ Sinh Thái
+                DIARY. Gắn bó với nông nghiệp, chị hiểu một sản phẩm từ chính gốc rễ của nó:{" "}
+                <span className="text-fg">đất, mùa vụ, cách làm ra, và cả những khó khăn mà người sản xuất ít khi nói thành lời.</span>
               </p>
               <p>
-                Điều làm nên khác biệt là chị nhìn được cả hai phía. Một phía là nhà sản xuất cần chuẩn hoá để đi xa.
-                Phía kia là thị trường với những đòi hỏi về chất lượng, giấy tờ, bao bì và kênh bán. Chị đứng ở giữa,
-                tư vấn từng bước chuyển đổi để sản phẩm thật sự sẵn sàng trước khi bước ra thị trường.
+                Với các ngành nghề đặc sản và truyền thống, chị không chỉ nhìn vào sản phẩm cuối cùng mà hiểu cả nhịp
+                làm việc phía sau: mật ong phụ thuộc vào mùa hoa, nước mắm cần thời gian ủ chượp, trà đi theo từng lứa
+                hái, một món thủ công cần đôi tay người thợ lành nghề. Vì hiểu nhịp ấy, chị biết{" "}
+                <span className="text-fg">điều gì phải giữ nguyên để sản phẩm còn là chính nó</span>, và điều gì cần thay
+                đổi để nó đi được xa hơn — từ quy trình, giấy tờ, chất lượng ổn định cho tới bao bì và cách kể chuyện.
               </p>
-              <p className="text-fg">
-                Khi Diary Media mở đường bằng hình ảnh, câu chuyện và kênh bán, chị là người giữ cho con đường ấy luôn
-                bắt đầu từ một sản phẩm thật.
+              <p>
+                Điều chị trăn trở nhất là những cơ sở làm ra sản phẩm tốt nhưng phải tự mò mẫm một mình: không biết bắt
+                đầu chuẩn hoá từ đâu, không rõ thị trường cần gì, rồi bỏ cuộc giữa chừng. Chị muốn là người đi cùng họ từ
+                bước đầu tiên — ngồi lại lắng nghe, cùng nhìn ra điểm mạnh, vạch từng bước chuyển đổi vừa sức với từng
+                doanh nghiệp.
               </p>
             </div>
+
+            <p
+              className={cx(
+                lora.className,
+                "mt-8 border-l-2 border-brand/60 pl-5 text-[clamp(1.25rem,2vw,1.55rem)] italic leading-snug text-brand-light",
+              )}
+            >
+              Để không một nghề tốt nào phải dừng lại chỉ vì thiếu người dẫn đường.
+            </p>
+
+            <p className="mt-6 text-[17px] leading-relaxed text-fg">
+              Khi Diary Media mở đường bằng hình ảnh, câu chuyện và kênh bán, chị Kim Tiên là người giữ cho con đường ấy
+              luôn bắt đầu từ một sản phẩm thật.
+            </p>
 
             <ul className="mt-8 flex flex-wrap gap-2.5">
               {d.expertise.map((e) => (
