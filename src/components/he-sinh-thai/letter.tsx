@@ -55,20 +55,30 @@ export default function Letter() {
 
               <div className="mt-6 flex flex-col gap-4 text-[16.5px] leading-[1.75] sm:text-[17px]">
                 <p>
-                  Chúng tôi đã gặp rất nhiều doanh nghiệp làm ra sản phẩm tốt, giữ nghề rất thật, nhưng vẫn loay hoay
-                  với đầu ra, truyền thông và cách phát triển thị trường.
+                  Có một hũ mật ong rừng, một chai nước mắm ủ chượp theo cách của ông bà, một gói trà hái trên núi lúc
+                  sương còn chưa tan. Người làm ra chúng dậy từ khi trời còn tối, giữ nghề qua bao mùa mưa nắng.
                 </p>
                 <p>
-                  <strong className="font-bold text-[#2a170d]">Không phải vì doanh nghiệp chưa đủ giỏi.</strong> Mà vì
-                  hôm nay, để một giá trị thật đi xa hơn, cần nhiều hơn một sản phẩm tốt — cần một chiến lược rõ ràng,
-                  một hệ thống truyền thông đúng và một con đường chuyển đổi phù hợp.
-                </p>
-                <p className="font-semibold text-[#2a170d]">
-                  Hệ Sinh Thái DIARY ra đời với mong muốn đồng hành cùng những doanh nghiệp như vậy.
+                  Rồi những sản phẩm ấy nằm yên ở một góc chợ phiên, trên kệ một cửa hàng nhỏ ven đường.{" "}
+                  <strong className="font-bold text-[#2a170d]">Không phải vì không ngon.</strong> Mà vì những người cần
+                  nó nhất — một gia đình ở thành phố, một doanh nghiệp đang tìm quà Tết cho đối tác — chưa bao giờ biết
+                  rằng nó tồn tại.
                 </p>
                 <p>
-                  Chúng tôi kết nối năng lực truyền thông, công nghệ và thị trường với những giá trị sản xuất thật, để
-                  doanh nghiệp không phải tự xoay xở một mình trên hành trình phát triển.
+                  Chúng tôi cũng gặp rất nhiều chủ doanh nghiệp làm ăn tử tế. Họ biết mình phải lên mạng, lên sàn, làm
+                  livestream… nhưng mỗi việc thuê một nơi, mỗi kênh làm một kiểu. Tiền chi ra đều đặn, còn khách hàng
+                  thì vẫn chưa biết tìm đến từ đâu.
+                </p>
+                <p>
+                  <strong className="font-bold text-[#2a170d]">Không phải vì anh/chị chưa đủ giỏi.</strong> Mà vì hôm
+                  nay, để một giá trị thật đi xa, cần nhiều hơn một sản phẩm tốt — cần một câu chuyện được kể đúng, một
+                  hệ thống truyền thông chạy đều và một con đường chuyển đổi phù hợp.
+                </p>
+                <p className="font-semibold text-[#2a170d]">Hệ Sinh Thái DIARY ra đời từ chính những lần gặp ấy.</p>
+                <p>
+                  HTX Quê Hương Xanh đi cùng nhà sản xuất từ nơi làm ra. Diary Media mang hình ảnh, câu chuyện, kênh bán
+                  và công nghệ để đưa sản phẩm tới đúng người cần. Một bên giữ gốc, một bên mở đường — để anh/chị không
+                  phải xoay xở một mình.
                 </p>
                 <p>
                   <span className="font-semibold text-[#2a170d]">Chúng tôi tin rằng:</span>
@@ -88,9 +98,9 @@ export default function Letter() {
               {/* Tái bút = lời mời hồi âm — điểm chuyển đổi chính của khối */}
               <div className="mt-8 rounded-xl bg-[#3b2619]/[0.06] px-5 py-5 sm:px-6">
                 <p className="text-[16px] leading-relaxed">
-                  <span className="font-bold italic">Tái bút:</span> Nếu anh/chị đang có một sản phẩm tốt hay một bài toán
-                  phát triển chưa có lời giải, hãy hồi âm cho chúng tôi. Chỉ mất 3 phút — chúng tôi sẽ gọi lại để lắng
-                  nghe trước khi đề xuất bất cứ điều gì.
+                  <span className="font-bold italic">Tái bút:</span> Nếu hũ mật ong, chai nước mắm ấy là của anh/chị —
+                  hay anh/chị đang có một bài toán phát triển chưa có lời giải — hãy hồi âm cho chúng tôi. Chỉ mất 3
+                  phút. Chúng tôi sẽ gọi lại để lắng nghe trước khi đề xuất bất cứ điều gì.
                 </p>
                 <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 font-sans">
                   <Link
