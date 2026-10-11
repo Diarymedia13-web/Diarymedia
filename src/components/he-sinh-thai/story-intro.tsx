@@ -3,8 +3,8 @@ import { ArrowUpRight, Camera, Layers, LineChart, Sprout } from "lucide-react";
 import { ButtonLink, Container, SectionLabel } from "../ui";
 
 /**
- * Đoạn giới thiệu đầu trang Hệ Sinh Thái DIARY: câu chuyện → chuyển đổi kép
- * là gì, vì sao quan trọng → vì sao chọn chúng tôi. Bằng chứng duy nhất được
+ * Nối tiếp lá tâm thư: chuyển đổi kép là gì, vì sao quan trọng → vì sao chọn
+ * chúng tôi. Bằng chứng duy nhất được
  * nêu là dự án Biên Hải Quán có thật; không dùng số liệu chưa kiểm chứng.
  */
 const reasons = [
@@ -32,40 +32,12 @@ const reasons = [
 
 export default function StoryIntro() {
   return (
-    <section aria-labelledby="cau-chuyen-title">
-      {/* ---------- Câu chuyện ---------- */}
-      <Container className="mt-24 sm:mt-32">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5" data-reveal>
-            <SectionLabel>Vì sao có Hệ Sinh Thái DIARY</SectionLabel>
-            <h2 id="cau-chuyen-title" className="t-h2 mt-5">
-              Sản phẩm tốt không tự bán được.
-              <span className="text-gradient-brand"> Doanh nghiệp giỏi không tự chuyển đổi được.</span>
-            </h2>
-          </div>
-          <div className="flex flex-col gap-5 text-[17px] leading-relaxed text-fg-muted lg:col-span-7" data-reveal>
-            <p>
-              Một hũ mật ong rừng, một chai nước mắm làm theo cách của ông bà, một gói trà hái trên núi — làm ra bằng
-              cả chục năm kinh nghiệm, nhưng vẫn nằm yên ở chợ phiên hay trên kệ một cửa hàng nhỏ.{" "}
-              <strong className="font-semibold text-fg">Không phải vì không ngon, mà vì người cần mua chưa từng biết đến nó.</strong>
-            </p>
-            <p>
-              Ở phía bên kia, rất nhiều doanh nghiệp vừa và nhỏ biết mình phải lên mạng, lên sàn, làm livestream, dùng
-              dữ liệu khách hàng… nhưng mỗi việc thuê một nơi, mỗi kênh làm một kiểu. Tiền chi ra mà không biết đồng
-              nào mang về khách.
-            </p>
-            <p className="text-fg">
-              Hệ Sinh Thái DIARY ra đời từ chính hai khoảng trống đó: Diary Media mang năng lực thương hiệu, nội dung và
-              công nghệ; HTX Quê Hương Xanh mang mạng lưới nhà sản xuất và nguồn hàng thật. Hai bên cùng làm một việc —
-              đưa giá trị bản địa ra thị trường hiện đại.
-            </p>
-          </div>
-        </div>
-      </Container>
-
+    <section aria-label="Chuyển đổi kép và lý do chọn Hệ Sinh Thái DIARY">
       {/* ---------- Chuyển đổi kép ---------- */}
-      <Container className="mt-20 sm:mt-24">
-        <div className="relative grid gap-5 md:grid-cols-2">
+      <Container className="mt-24 sm:mt-32">
+        <SectionLabel>Chuyển đổi kép là gì</SectionLabel>
+        <h2 className="t-h2 mt-5 max-w-3xl">Hai cuộc chuyển đổi phải đi cùng nhau</h2>
+        <div className="relative mt-10 grid gap-5 md:grid-cols-2">
           <article className="rounded-block border border-line bg-ink-2/60 p-8 sm:p-10" data-reveal data-reveal-group="dual">
             <SectionLabel tone="dim">Chuyển đổi thứ nhất</SectionLabel>
             <h3 className="t-h3 mt-3 text-fg">Từ “hàng làm ra” thành “thương hiệu được chọn”</h3>

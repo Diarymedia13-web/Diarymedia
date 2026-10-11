@@ -7,6 +7,7 @@ import { ButtonLink, Container, SectionHead, SectionLabel, cx } from "@/componen
 import { PageHero } from "@/components/blocks";
 import EcosystemLeadForm from "@/components/he-sinh-thai/lead-form";
 import StoryIntro from "@/components/he-sinh-thai/story-intro";
+import Letter from "@/components/he-sinh-thai/letter";
 
 const description =
   "Hệ Sinh Thái DIARY — hợp tác giữa Diary Media và HTX Quê Hương Xanh: kết nối nhà sản xuất, thương mại hoá đặc sản Việt, livestream bán hàng, quà tặng doanh nghiệp, đào tạo KOC và giải pháp chuyển đổi số cho SME.";
@@ -77,6 +78,7 @@ export default function EcosystemPage() {
         viewfinder
       />
 
+      <Letter />
       <StoryIntro />
 
       {/* ================= ĐỐI TÁC HỢP TÁC ================= */}
