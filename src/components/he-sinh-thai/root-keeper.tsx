@@ -77,7 +77,7 @@ export default function RootKeeper() {
                 "mt-8 border-l-2 border-brand/60 pl-5 text-[clamp(1.25rem,2vw,1.55rem)] italic leading-snug text-brand-light",
               )}
             >
-              Để không một nghề tốt nào phải dừng lại chỉ vì thiếu người dẫn đường.
+              Để những giá trị được tạo nên bằng tâm huyết không phải lặng lẽ biến mất giữa một thị trường không ngừng thay đổi.
             </p>
 
             <p className="mt-6 text-[17px] leading-relaxed text-fg">
