@@ -46,7 +46,7 @@ export const tracks: Record<
     key: "production",
     label: "Dòng 02",
     title: "Sản xuất sáng tạo",
-    lead: "Năng lực lõi làm nên tên tuổi Day trong hơn bốn năm: TVC, phim doanh nghiệp, viral video, sự kiện, livestream và nhiếp ảnh thương mại. Đặt riêng theo từng hạng mục, bàn giao trong 12 – 48 giờ.",
+    lead: "Năng lực lõi làm nên tên tuổi Diary Media trong hơn bốn năm: TVC, phim doanh nghiệp, viral video, sự kiện, livestream và nhiếp ảnh thương mại. Đặt riêng theo từng hạng mục, bàn giao trong 12 – 48 giờ.",
     forWho: "Thương hiệu, ban tổ chức sự kiện, agency cần đơn vị sản xuất tin cậy",
   },
 };

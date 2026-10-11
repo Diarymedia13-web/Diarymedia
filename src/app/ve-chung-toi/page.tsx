@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { ButtonLink, Container, SectionHead, SectionLabel } from "@/components/ui";
 import { CtaBlock, PageHero } from "@/components/blocks";
 import StatBand from "@/components/stat-band";
+import ProductionWall, { teamWall } from "@/components/production-wall";
 
 export const metadata: Metadata = {
   title: "Về chúng tôi",
@@ -16,7 +17,7 @@ const milestones = [
   {
     year: "2021",
     title: "Những khung hình đầu tiên",
-    body: "Day khởi đầu từ một ekip nhỏ nhận quay chụp sự kiện tại Đà Nẵng, với niềm tin rằng mỗi sản phẩm truyền thông đều phải là một câu chuyện chứ không chỉ là tư liệu.",
+    body: "Diary Media khởi đầu từ một ekip nhỏ nhận quay chụp sự kiện tại Đà Nẵng, với niềm tin rằng mỗi sản phẩm truyền thông đều phải là một câu chuyện chứ không chỉ là tư liệu.",
   },
   {
     year: "2022",
@@ -50,8 +51,8 @@ export default function AboutPage() {
         kicker="Kiến tạo nội dung, kết nối thành công."
         lead="Chúng tôi không chỉ là một đội ngũ sản xuất, mà là những người thổi hồn vào từng khung hình — và giờ là những người dựng nên hệ thống truyền thông cho doanh nghiệp Việt."
         gradient="grad-copper"
-        image="/images/team-01.webp"
-        imageAlt=""
+        backdrop={<ProductionWall columns={teamWall} />}
+        viewfinder
       />
 
       {/* ================= CÂU CHUYỆN ================= */}

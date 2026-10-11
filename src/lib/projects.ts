@@ -392,8 +392,8 @@ export const projectCategories: ProjectCategory[] = [
  * cần ảnh sạch chữ để lớp tiêu đề đè lên vẫn đọc được.
  */
 const featuredOrder = [
-  "le-frachie-organic-giai-phap-truyen-thong",
   "bien-hai-quan-muoi-tieu-phu-quoc",
+  "le-frachie-organic-giai-phap-truyen-thong",
   "futaland-timesquare-noi-that",
   "tabalo-glamping-brand-film",
   "aia-duong-dua-bung-thinh-vuong",

@@ -580,6 +580,23 @@ body {
   }
 }
 
+/* Tường ảnh hậu trường (hero trang Liên hệ) — cột ảnh trôi dọc liên tục */
+.wall-col {
+  animation: wall-drift 60s linear infinite;
+  will-change: transform;
+}
+.wall-col-down {
+  animation-direction: reverse;
+}
+@keyframes wall-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
 /* ============================================================================
    CHUYỂN ĐỘNG
    ========================================================================= */

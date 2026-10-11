@@ -5,6 +5,7 @@ import { faqs } from "@/lib/services";
 import { Container, SectionHead, SectionLabel } from "@/components/ui";
 import { PageHero } from "@/components/blocks";
 import ContactForm from "@/components/contact-form";
+import ProductionWall from "@/components/production-wall";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
@@ -58,8 +59,8 @@ export default function ContactPage() {
         kicker="Hãy cùng xây điều gì đó đáng nhớ."
         lead="Gửi yêu cầu qua form bên dưới hoặc gọi thẳng hotline. Chúng tôi phản hồi trong vòng 24 giờ làm việc và luôn bắt đầu bằng một buổi trao đổi miễn phí."
         gradient="grad-ember"
-        image="/images/work/gala-01.webp"
-        imageAlt=""
+        backdrop={<ProductionWall />}
+        viewfinder
       />
 
       {/* ================= KÊNH LIÊN HỆ ================= */}

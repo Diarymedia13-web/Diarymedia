@@ -256,7 +256,7 @@ export default function AuditPage() {
         </Container>
       </section>
 
-      {/* ================= DAY APPROACH ================= */}
+      {/* ================= CÁCH TIẾP CẬN ================= */}
       <section id="cach-tiep-can" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
           <SectionHead
@@ -387,7 +387,7 @@ export default function AuditPage() {
         </Container>
       </section>
 
-      {/* ================= DAY SẼ LÀM GÌ SAU KHI NHẬN THÔNG TIN ================= */}
+      {/* ================= DIARY MEDIA SẼ LÀM GÌ SAU KHI NHẬN THÔNG TIN ================= */}
       <section id="quy-trinh-tiep-theo" className="scroll-mt-28">
         <Container className="mt-24 sm:mt-32">
           <SectionHead label="Quy trình sau audit" title={<>Diary Media sẽ làm gì sau khi nhận thông tin?</>} group="trust" />

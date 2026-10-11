@@ -125,7 +125,14 @@ export function FeaturedWork() {
             i === 0 && "sm:col-span-2 lg:col-span-2",
           )}
         >
-          <div className={cx("relative", i === 0 ? "aspect-[16/10]" : "aspect-[4/3]")}>
+          {/* Ô thứ 2 đứng cạnh ô lớn trên desktop: kéo ảnh cao bằng hàng thay vì để trống nửa dưới */}
+          <div
+            className={cx(
+              "relative",
+              i === 0 ? "aspect-[16/10]" : "aspect-[4/3]",
+              i === 1 && "lg:aspect-auto lg:h-full",
+            )}
+          >
             <Image
               src={p.cover}
               alt={`${p.title} — ${p.client}`}
@@ -223,10 +230,16 @@ export function PageHero({
   image,
   imageAlt,
   kicker,
+  backdrop,
+  viewfinder = false,
 }: {
   label: string;
   title: React.ReactNode;
   lead: string;
+  /** Nền tuỳ biến (vd. tường ảnh chuyển động) — thay cho `image` khi có. */
+  backdrop?: React.ReactNode;
+  /** Thêm 4 góc khung ngắm + REC giống hero trang chủ. */
+  viewfinder?: boolean;
   gradient?: "grad-fire" | "grad-ember" | "grad-copper" | "grad-dusk";
   image?: string;
   imageAlt?: string;
@@ -235,7 +248,23 @@ export function PageHero({
   return (
     <Container size="wide" className="pt-24 sm:pt-28">
       <div className={cx("grain relative isolate overflow-hidden rounded-hero", gradient)}>
-        {image && (
+        {backdrop}
+        {viewfinder && (
+          <>
+            <span className="vf-corner vf-tl" aria-hidden />
+            <span className="vf-corner vf-tr" aria-hidden />
+            <span className="vf-corner vf-bl" aria-hidden />
+            <span className="vf-corner vf-br" aria-hidden />
+            <span
+              aria-hidden
+              className="t-label absolute left-[clamp(28px,3.6vw,56px)] top-[clamp(24px,3vw,44px)] z-10 flex items-center gap-2 text-white/85"
+            >
+              <span className="rec-dot size-2.5 rounded-full bg-[#ff3b30]" />
+              REC
+            </span>
+          </>
+        )}
+        {image && !backdrop && (
           <>
             <Image
               src={image}
