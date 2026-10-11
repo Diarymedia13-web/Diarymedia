@@ -178,7 +178,7 @@ export default function DimoAssistant() {
       className={cx(
         "dimo-root fixed z-40 flex flex-col items-end",
         "bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] sm:bottom-6 sm:right-6",
-        visible ? "dimo-enter" : "pointer-events-none opacity-0",
+        visible ? "dimo-enter" : "pointer-events-none invisible opacity-0",
       )}
     >
       {/* ---------- Panel ---------- */}
@@ -189,11 +189,11 @@ export default function DimoAssistant() {
           role="dialog"
           aria-modal="false"
           aria-labelledby="dimo-title"
-          className="dimo-panel mb-3 w-[min(92vw,360px)] overflow-hidden rounded-[1.6rem] bg-[#fffaf3] text-[#3b2619] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.55)] ring-1 ring-[#f0dcc4]"
+          className="dimo-panel mb-3 flex max-h-[calc(100dvh-12rem)] w-[min(92vw,360px)] flex-col overflow-hidden rounded-[1.6rem] sm:max-h-[calc(100dvh-13rem)] bg-[#fffaf3] text-[#3b2619] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.55)] ring-1 ring-[#f0dcc4]"
         >
-          <div className="relative flex items-end gap-3 bg-gradient-to-br from-[#fff1e2] to-[#ffe2c6] px-5 pb-4 pt-5">
+          <div className="relative flex shrink-0 items-end gap-3 bg-gradient-to-br from-[#fff1e2] to-[#ffe2c6] px-5 pb-4 pt-5">
             <DimoFigure pose="heart" className="-mb-1 h-[72px] w-auto shrink-0" />
-            <div className="min-w-0 pb-1 pr-7">
+            <div className="min-w-0 pb-1 pr-9">
               <p id="dimo-title" className="text-[15px] font-bold leading-snug text-[#3b2619]">
                 {copy.panelTitle}
               </p>
@@ -203,13 +203,13 @@ export default function DimoAssistant() {
               type="button"
               onClick={() => closePanel()}
               aria-label={copy.closeLabel}
-              className="absolute right-3 top-3 flex size-8 cursor-pointer items-center justify-center rounded-full text-[#7a5a44] transition hover:bg-white/70 hover:text-[#3b2619]"
+              className="absolute right-1.5 top-1.5 flex size-11 cursor-pointer items-center justify-center rounded-full text-[#7a5a44] transition hover:bg-white/70 hover:text-[#3b2619]"
             >
               <X size={17} aria-hidden />
             </button>
           </div>
 
-          <div className="px-4 pb-4 pt-3">
+          <div className="min-h-0 overflow-y-auto overscroll-contain px-4 pb-4 pt-3">
             <p className="mb-3 rounded-2xl bg-white px-3.5 py-2.5 text-[13px] leading-snug text-[#5c4130] shadow-sm">
               {pageHintFor(pathname)}
             </p>
@@ -236,7 +236,7 @@ export default function DimoAssistant() {
               ))}
             </ul>
 
-            <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#a07f68]">{copy.quickContactLabel}</p>
+            <p className="mb-2 mt-4 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#7a5a44]">{copy.quickContactLabel}</p>
             <div className="grid grid-cols-3 gap-2">
               {[
                 { label: "Zalo", href: site.contact.zalo, icon: MessageCircle, external: true },
@@ -263,8 +263,9 @@ export default function DimoAssistant() {
       {bubble && !open && (
         <div
           role="status"
-          className="dimo-bubble relative mb-2 mr-2 max-w-[min(78vw,280px)] rounded-[1.25rem] rounded-br-md bg-[#fffaf3] py-3 pl-4 pr-9 text-[#3b2619] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] ring-1 ring-[#f0dcc4]"
+          className="dimo-bubble relative mb-3 mr-3 max-w-[min(78vw,280px)] rounded-[1.25rem] rounded-br-md bg-[#fffaf3] py-3 pl-4 pr-10 text-[#3b2619] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] ring-1 ring-[#f0dcc4]"
         >
+          <span aria-hidden className="absolute -bottom-1.5 right-5 size-3.5 rotate-45 rounded-[3px] bg-[#fffaf3] ring-1 ring-[#f0dcc4] [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
           {bubble === "greet" ? (
             <>
               <p className="text-[14px] font-bold leading-snug">{copy.greeting}</p>
@@ -284,7 +285,7 @@ export default function DimoAssistant() {
             type="button"
             onClick={dismissBubble}
             aria-label="Ẩn lời chào của DIMO"
-            className="absolute right-2 top-2 flex size-7 cursor-pointer items-center justify-center rounded-full text-[#a07f68] transition hover:bg-[#f6e6d4] hover:text-[#3b2619]"
+            className="absolute right-0.5 top-0.5 flex size-11 cursor-pointer items-center justify-center rounded-full text-[#7a5a44] transition hover:bg-[#f6e6d4] hover:text-[#3b2619]"
           >
             <X size={15} aria-hidden />
           </button>

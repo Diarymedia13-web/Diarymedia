@@ -687,11 +687,12 @@ body {
 }
 .dimo-figure {
   transform-origin: 50% 100%;
-  animation: dimo-breathe 3.6s ease-in-out infinite, dimo-wave 1.6s ease-in-out 0.8s 1 both;
+  animation: dimo-float 4.2s ease-in-out infinite, dimo-wave 1.6s ease-in-out 0.8s 1 both;
 }
-@keyframes dimo-breathe {
-  0%, 100% { transform: translateY(0) scale(1, 1); }
-  50% { transform: translateY(-2px) scale(1.012, 0.992); }
+/* Chỉ dịch chuyển, không co giãn — không làm méo hình DIMO gốc */
+@keyframes dimo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 @keyframes dimo-wave {
   0%, 100% { rotate: 0deg; }
@@ -710,7 +711,7 @@ body {
 }
 @keyframes dimo-pop {
   0% { transform: scale(1); }
-  40% { transform: scale(0.9, 1.08); }
+  40% { transform: scale(0.94); }
   100% { transform: scale(1); }
 }
 .dimo-celebrate .dimo-figure {
@@ -723,14 +724,14 @@ body {
 .dimo-bubble,
 .dimo-panel {
   transform-origin: 100% 100%;
-  animation: dimo-pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: dimo-pop-in 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes dimo-pop-in {
   from { opacity: 0; transform: translateY(8px) scale(0.94); }
   to { opacity: 1; transform: none; }
 }
 .dimo-ping {
-  animation: dimo-ping 2.4s ease-out infinite;
+  animation: dimo-ping 2.4s ease-out 3;
 }
 @keyframes dimo-ping {
   0% { box-shadow: 0 0 0 0 rgba(243, 154, 98, 0.55); }
