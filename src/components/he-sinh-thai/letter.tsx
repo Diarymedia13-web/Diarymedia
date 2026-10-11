@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Lora } from "next/font/google";
 import { ArrowDown, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
@@ -20,16 +21,16 @@ const lora = Lora({
 
 export default function Letter() {
   return (
-    <section aria-labelledby="la-thu-title" className="relative mt-24 overflow-hidden py-6 sm:mt-32">
+    <section aria-labelledby="la-thu-title" className="relative mt-24 overflow-x-clip py-6 sm:mt-32">
       {/* Vầng sáng ấm như ánh đèn bàn chiếu lên lá thư */}
       <div
         aria-hidden
         className="pointer-events-none absolute right-[-10%] top-0 h-[640px] w-[760px] rounded-full bg-[radial-gradient(closest-side,rgba(243,154,98,0.22),transparent)] blur-2xl"
       />
       <Container size="wide" className="relative">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-start gap-14 lg:grid-cols-12 lg:gap-10">
           {/* ---------- Tiêu đề ---------- */}
-          <div className="lg:col-span-5" data-reveal>
+          <div className="lg:sticky lg:top-32 lg:col-span-5 lg:pt-16" data-reveal>
             <p className="t-label text-brand-light/80">Lá tâm thư gửi doanh nghiệp</p>
             <span aria-hidden className="mt-4 block h-px w-12 bg-brand/60" />
             <h2
@@ -45,12 +46,14 @@ export default function Letter() {
 
           {/* ---------- Lá thư ---------- */}
           <div className="lg:col-span-7" data-reveal>
+            <div className="letter-stack relative mx-auto max-w-[680px]">
             <article
               className={cx(
                 lora.className,
-                "letter-paper relative mx-auto max-w-[680px] rounded-[6px] px-7 pb-10 pt-11 text-[#3b2619] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.75),0_2px_0_rgba(255,255,255,0.4)_inset] sm:rotate-[1.2deg] sm:px-12 sm:pb-12 sm:pt-14",
+                "letter-paper relative px-7 pb-10 pt-11 text-[#3b2619] sm:rotate-[1.2deg] sm:px-12 sm:pb-12 sm:pt-14",
               )}
             >
+              <span aria-hidden className="letter-watermark" />
               <p className="text-[clamp(1.5rem,2.4vw,1.9rem)] font-medium italic text-[#4a2b1a]">Thưa anh/chị,</p>
 
               <div className="mt-6 flex flex-col gap-4 text-[16.5px] leading-[1.75] sm:text-[17px]">
@@ -60,9 +63,9 @@ export default function Letter() {
                 </p>
                 <p>
                   Rồi những sản phẩm ấy nằm yên ở một góc chợ phiên, trên kệ một cửa hàng nhỏ ven đường.{" "}
-                  <strong className="font-bold text-[#2a170d]">Không phải vì không ngon.</strong> Mà vì những người cần
-                  nó nhất — một gia đình ở thành phố, một doanh nghiệp đang tìm quà Tết cho đối tác — chưa bao giờ biết
-                  rằng nó tồn tại.
+                  <strong className="font-bold text-[#2a170d]">Không phải vì không ngon.</strong> Mà vì nó chưa được đến tay
+                  khách hàng thông qua những kênh họ đang tìm và mua mỗi ngày — sàn thương mại điện tử, mạng xã hội,
+                  livestream hay những bộ quà tặng doanh nghiệp.
                 </p>
                 <p>
                   Chúng tôi cũng gặp rất nhiều chủ doanh nghiệp làm ăn tử tế. Họ biết mình phải lên mạng, lên sàn, làm
@@ -92,7 +95,10 @@ export default function Letter() {
               <div className="relative mt-9 border-t border-[#3b2619]/20 pt-6">
                 <p className="italic text-[#4a2b1a]">Trân trọng,</p>
                 <p className="mt-1 text-[17px] font-semibold italic text-[#4a2b1a]">Diary Media × HTX Quê Hương Xanh</p>
-                <Signature className="pointer-events-none absolute -top-2 right-0 h-20 w-44 text-[#b86a3c] sm:right-4 sm:w-52" />
+                <Signature className="pointer-events-none absolute -top-2 right-16 h-20 w-40 text-[#a85f34] sm:right-24 sm:w-48" />
+                <span aria-hidden className="wax-seal absolute -top-5 right-0 sm:right-2">
+                  <Image src="/images/brand/diary-mark.png" alt="" width={512} height={512} className="h-8 w-8 opacity-90 mix-blend-luminosity" />
+                </span>
               </div>
 
               {/* Tái bút = lời mời hồi âm — điểm chuyển đổi chính của khối */}
@@ -124,6 +130,7 @@ export default function Letter() {
 
               <Sprig className="pointer-events-none absolute right-6 top-8 hidden h-28 w-20 rotate-12 text-[#c08b5c]/60 sm:block" />
             </article>
+            </div>
           </div>
         </div>
       </Container>
