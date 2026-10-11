@@ -20,6 +20,7 @@ const columns = [
       { href: "/ve-chung-toi/", label: "Về Diary Media" },
       { href: "/ve-chung-toi/#founder", label: "Founder" },
       { href: "/du-an/", label: "Dự án tiêu biểu" },
+      { href: "/he-sinh-thai/", label: "Hệ Sinh Thái DIARY" },
       { href: "/lien-he/", label: "Liên hệ hợp tác" },
     ],
   },

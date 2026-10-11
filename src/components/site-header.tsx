@@ -13,6 +13,7 @@ const nav = [
   { href: "/giai-phap/", label: "Giải pháp" },
   { href: "/du-an/", label: "Dự án" },
   { href: "/ve-chung-toi/", label: "Về chúng tôi" },
+  { href: "/he-sinh-thai/", label: "Hệ Sinh Thái DIARY" },
 ];
 
 // Landing page chiến dịch (/audit) dùng nav rút gọn, chỉ neo trong cùng
@@ -113,7 +114,7 @@ export default function SiteHeader() {
           {!isAudit && (
             <a
               href={`tel:${site.contact.phoneIntl}`}
-              className="hidden cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg md:inline-flex"
+              className="hidden cursor-pointer items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg-muted transition-colors duration-300 hover:border-brand/50 hover:text-fg xl:inline-flex"
             >
               <Phone size={15} strokeWidth={2.2} aria-hidden />
               {site.contact.phoneDisplay}
