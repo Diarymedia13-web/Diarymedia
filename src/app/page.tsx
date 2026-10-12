@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { site } from "@/lib/site";
-import { htxDirector } from "@/lib/he-sinh-thai";
 import { solutionServices, productionServices, processSteps, tracks } from "@/lib/services";
 import { ButtonLink, Container, SectionHead, SectionLabel } from "@/components/ui";
 import { ClientMarquee, CtaBlock, FeaturedWork, ServiceCard } from "@/components/blocks";
@@ -30,7 +29,7 @@ export default function HomePage() {
         <div className="relative overflow-hidden rounded-[1.25rem] border border-line bg-black shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
           <Image
             src="/images/brand/diary-cover.webp"
-            alt="Ảnh bìa Diary Media: logo công ty, các thương hiệu đã đồng hành, ekip phim trường và chị Huỳnh Thị Kim Tiên — Chủ tịch VINAGC, đối tác Hệ Sinh Thái DIARY"
+            alt="Ảnh bìa Diary Media: logo công ty, các thương hiệu đã đồng hành và ekip đang vận hành máy quay tại phim trường"
             width={2048}
             height={780}
             priority
@@ -48,39 +47,6 @@ export default function HomePage() {
             <span className="rec-dot size-[0.75em] rounded-full bg-[#ff3b30]" />
             REC
             <Timecode className="tabular-nums text-white/75" />
-          </div>
-
-          {/* Thông tin chị Kim Tiên, đặt trên khoảng nền đỏ sẫm bên phải ảnh bìa.
-              Toạ độ tính theo % ảnh 2048×780 nên bám đúng vị trí khi ảnh co giãn.
-              Màn nhỏ ảnh quá thấp để đọc được → ẩn, thông tin đầy đủ ở /he-sinh-thai/. */}
-          <div className="absolute bottom-[7%] left-[81.5%] right-[2.6%] z-[2] hidden md:block">
-            <p className="whitespace-nowrap font-mono text-[clamp(7px,0.66vw,10px)] uppercase tracking-[0.18em] text-brand-light/85">
-              Đối tác Hệ Sinh Thái
-            </p>
-            <span aria-hidden className="mt-[0.6vw] block h-px w-[2.6vw] bg-brand/70" />
-            <p
-              className="mt-[0.7vw] whitespace-nowrap text-[clamp(11px,1.32vw,19px)] font-extrabold leading-tight tracking-[-0.01em] text-fg"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {htxDirector.fullName}
-            </p>
-            <p className="mt-[0.3vw] text-[clamp(9px,0.92vw,14px)] font-semibold text-brand-light">
-              {htxDirector.fullRole}
-            </p>
-            <ul className="mt-[0.6vw] flex flex-col gap-[0.25vw] text-[clamp(8px,0.82vw,12.5px)] text-fg-muted">
-              {htxDirector.credentials.slice(0, 1).map((c) => (
-                <li key={c.id} className="flex items-center gap-[0.5em]">
-                  <span aria-hidden className="size-[0.4em] shrink-0 rounded-full bg-brand" />
-                  {c.title}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/he-sinh-thai/#nguoi-giu-goc"
-              className="mt-[0.8vw] inline-flex cursor-pointer items-center gap-1 text-[clamp(8px,0.82vw,12.5px)] font-semibold text-brand underline-offset-4 hover:underline"
-            >
-              Xem câu chuyện của chị →
-            </Link>
           </div>
         </div>
 
