@@ -68,8 +68,8 @@ export default function HomePage() {
               dung đó thành một hệ thống truyền thông đo được bằng khách hàng và doanh thu.
             </p>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href="/audit/" variant="solid">
-                Nhận Digital Growth Audit
+              <ButtonLink href="/he-sinh-thai/" variant="solid">
+                Khám phá Hệ Sinh Thái DIARY
               </ButtonLink>
               <ButtonLink href="/du-an/" variant="outline-ink">
                 Xem dự án
