@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Check, AlertCircle, Loader2 } from "lucide-react";
 import { site } from "@/lib/site";
-import { celebrateWithDimo } from "@/lib/dimo";
+import { sendLeadToReach } from "@/lib/reach";
 import { cx } from "./ui";
 
 /**
@@ -74,12 +74,19 @@ export default function ContactForm() {
       const json = await res.json();
 
       if (json.success) {
-        setStatus("success");
-        celebrateWithDimo();
-        setMessage(
-          "Đã nhận được yêu cầu của bạn. Đội ngũ Diary Media sẽ liên hệ trong vòng 24 giờ làm việc.",
-        );
+        window.gtag?.("event", "generate_lead", { event_category: "contact_form" });
+        await sendLeadToReach({
+          email: String(data.get("Email") ?? ""),
+          name: String(data.get("Họ và tên") ?? ""),
+          phone: String(data.get("Số điện thoại") ?? ""),
+          group: "lien-he",
+          note: "Form liên hệ /lien-he",
+        });
         form.reset();
+        // /thank-you/ là trang chuyển đổi của Google Ads: chỉ người gửi form thật mới tới được.
+        // Tải lại toàn trang (không dùng điều hướng nội bộ của Next) để thẻ Google trên /thank-you/
+        // chắc chắn chạy và Google Ads ghi nhận lượt chuyển đổi.
+        window.location.assign("/thank-you/");
       } else {
         throw new Error(json.message || "Gửi không thành công");
       }

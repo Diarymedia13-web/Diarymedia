@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowUpRight, AlertCircle, Loader2 } from "lucide-react";
 import { site } from "@/lib/site";
 
@@ -62,7 +61,6 @@ function captureAttribution() {
 }
 
 export default function AuditForm() {
-  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const attributionRef = useRef<Record<string, string> | null>(null);
@@ -146,7 +144,9 @@ export default function AuditForm() {
       window.oaiq?.("measure", "lead_created", { type: "customer_action" });
 
       form.reset();
-      router.push("/thank-you/");
+      // Tải lại toàn trang (không dùng điều hướng nội bộ của Next) để thẻ Google trên /thank-you/
+        // chắc chắn chạy và Google Ads ghi nhận lượt chuyển đổi.
+        window.location.assign("/thank-you/");
     } catch {
       // Cố tình không hiện lỗi kỹ thuật/API gốc — người dùng chỉ cần biết
       // hướng xử lý tiếp theo. Dữ liệu form không bị xoá (không gọi

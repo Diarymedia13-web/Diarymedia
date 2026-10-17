@@ -13,7 +13,7 @@ import AuditAnalytics from "@/components/audit-analytics";
    thêm một lượt xem trang đích riêng. */
 
 export const metadata: Metadata = {
-  title: "Đã nhận yêu cầu Digital Growth Audit",
+  title: "Đã nhận yêu cầu của bạn",
   robots: { index: false, follow: false },
   alternates: { canonical: "/thank-you/" },
 };

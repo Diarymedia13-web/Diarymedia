@@ -3,6 +3,75 @@ import { tracks, solutionServices, productionServices, processSteps, faqs } from
 
 interface Env {
   ANTHROPIC_API_KEY: string;
+  /** Mã API Hostinger (Reach). Đặt bằng: npx wrangler secret put REACH_API_TOKEN */
+  REACH_API_TOKEN?: string;
+  /**
+   * Tuỳ chọn. JSON ánh xạ nhóm nhu cầu → UUID tag trong Reach, VD:
+   * {"nha-san-xuat":"<uuid>","giai-phap":"<uuid>","lien-he":"<uuid>"}
+   * Đặt bằng: npx wrangler secret put REACH_TAG_MAP
+   */
+  REACH_TAG_MAP?: string;
+}
+
+const REACH_CONTACTS_URL = "https://developers.hostinger.com/api/reach/v1/contacts";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/** "0912 345 678" → "+84912345678" (Reach yêu cầu định dạng E.164). */
+function toE164(raw: string): string | undefined {
+  const digits = raw.replace(/[^\d+]/g, "");
+  if (/^\+\d{7,15}$/.test(digits)) return digits;
+  if (/^0\d{9}$/.test(digits)) return `+84${digits.slice(1)}`;
+  if (/^84\d{9}$/.test(digits)) return `+${digits}`;
+  return undefined;
+}
+
+/** Nhận lead từ form website và tạo liên hệ trong Hostinger Reach. */
+async function handleReachLead(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  if (!env.REACH_API_TOKEN) return json({ error: "Reach chưa được cấu hình." }, 503, headers);
+
+  let body: { email?: string; name?: string; phone?: string; group?: string; note?: string };
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Dữ liệu gửi lên không hợp lệ." }, 400, headers);
+  }
+
+  const email = String(body.email ?? "").trim().toLowerCase().slice(0, 200);
+  if (!EMAIL_RE.test(email)) return json({ error: "Email không hợp lệ." }, 400, headers);
+
+  const fullName = String(body.name ?? "").trim().slice(0, 100);
+  const group = String(body.group ?? "").trim().slice(0, 40);
+  let tagUuids: string[] = [];
+  try {
+    const map = env.REACH_TAG_MAP ? (JSON.parse(env.REACH_TAG_MAP) as Record<string, string>) : {};
+    if (group && map[group]) tagUuids = [map[group]];
+  } catch {
+    // REACH_TAG_MAP sai định dạng → vẫn tạo liên hệ, chỉ không gắn tag.
+  }
+
+  const contact: Record<string, unknown> = { email };
+  if (fullName) contact.name = fullName;
+  const phone = toE164(String(body.phone ?? ""));
+  if (phone) contact.phone = phone;
+  const note = String(body.note ?? "").trim().slice(0, 75);
+  if (note) contact.note = note;
+  if (tagUuids.length) contact.tag_uuids = tagUuids;
+
+  try {
+    const res = await fetch(REACH_CONTACTS_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.REACH_API_TOKEN}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(contact),
+    });
+    if (!res.ok) return json({ ok: false, status: res.status }, 502, headers);
+    return json({ ok: true }, 200, headers);
+  } catch {
+    return json({ ok: false }, 502, headers);
+  }
 }
 
 interface ChatMessage {
@@ -95,6 +164,10 @@ export default {
 
     if (request.method !== "POST") {
       return json({ error: "Method not allowed" }, 405, headers);
+    }
+
+    if (new URL(request.url).pathname === "/reach-lead") {
+      return handleReachLead(request, env, headers);
     }
 
     let body: { messages?: ChatMessage[] };

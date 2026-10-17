@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { site } from "@/lib/site";
-import { celebrateWithDimo } from "@/lib/dimo";
+import { sendLeadToReach } from "@/lib/reach";
 import {
   budgetTiers,
   giftCategories,
@@ -265,10 +265,22 @@ export default function HstxLeadForm({
 
       writeLog([...log, Date.now()]);
       window.dataLayer?.push({ event: "ecosystem_lead_submit", lead_type: type });
+      window.gtag?.("event", "generate_lead", { event_category: "ecosystem_form", lead_type: type });
+      // Lead có email → đưa vào Reach để nhận chuỗi email "Hành trình chuyển đổi kép".
+      await sendLeadToReach({
+        email: payload["Email"],
+        name: payload["Họ và tên"],
+        phone: payload["Số điện thoại"],
+        group: type,
+        note: `Hệ Sinh Thái – ${current.label}`,
+      });
       form.reset();
       setErrors({});
       setStatus("success");
-      celebrateWithDimo();
+      // /thank-you/ là trang chuyển đổi của Google Ads: chỉ người gửi form thật mới tới được.
+      // Tải lại toàn trang (không dùng điều hướng nội bộ của Next) để thẻ Google trên /thank-you/
+        // chắc chắn chạy và Google Ads ghi nhận lượt chuyển đổi.
+        window.location.assign("/thank-you/");
     } catch {
       // Không hiện lỗi kỹ thuật; dữ liệu đã nhập được giữ nguyên để gửi lại.
       setStatus("error");

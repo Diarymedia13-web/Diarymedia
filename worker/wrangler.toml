@@ -5,3 +5,7 @@ compatibility_date = "2026-07-01"
 # Secret ANTHROPIC_API_KEY được đặt qua lệnh:
 #   npx wrangler secret put ANTHROPIC_API_KEY
 # không khai báo giá trị thật trong file này.
+
+# Đẩy lead từ form website sang Hostinger Reach (route /reach-lead):
+#   npx wrangler secret put REACH_API_TOKEN   (mã API lấy trong Reach → Tích hợp → API Reach công khai)
+#   npx wrangler secret put REACH_TAG_MAP     (tuỳ chọn, JSON nhóm nhu cầu → UUID tag)
